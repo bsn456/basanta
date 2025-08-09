@@ -3,261 +3,364 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Basanta Ghimire - Energy Engineer</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Basanta Ghimire</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap">
   <style>
-    html, body {
+    * {
       margin: 0;
       padding: 0;
-      height: 100%;
-      min-height: 100vh;
-      font-family: 'Inter', sans-serif;
-      color: #fff;
       box-sizing: border-box;
     }
+
     body {
-      /* Full background image with dark overlay for contrast */
-      min-height: 100vh;
-      width: 100vw;
-      background: url('images/battery.png') center center / cover no-repeat fixed;
-      position: relative;
+      font-family: 'Source Sans 3', -apple-system, sans-serif;
+      background: #fdfdfd;
+      color: #1a1a1a;
+      line-height: 1.65;
+      font-weight: 300;
     }
-    body:before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(18, 22, 28, 0.55); /* dark overlay for readability */
-      z-index: 0;
-      pointer-events: none;
-      backdrop-filter: blur(2px);
-    }
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background: rgba(36,36,42,0.44);
-      backdrop-filter: blur(10px);
-      z-index: 10;
-      box-shadow: 0 2px 18px rgba(32,50,60,0.04);
-      padding: 0.7rem 0;
-      border-bottom: 1px solid rgba(180,200,220,0.03);
-    }
-    nav {
-      max-width: 1100px;
+
+    .container {
+      max-width: 960px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 100px 50px 60px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 120px;
+      border-bottom: 1px solid #f0f0f0;
+      padding-bottom: 80px;
+    }
+
+    .profile-image {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: #f5f5f5;
+      margin: 0 auto 40px;
+      background-image: url('images/basanta.jpg');
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    }
+
+    h1 {
+      font-family: 'Crimson Text', Georgia, serif;
+      font-size: 3.2rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      letter-spacing: -0.03em;
+      color: #0a0a0a;
+    }
+
+    .title {
+      font-size: 1.3rem;
+      color: #666;
+      font-weight: 400;
+      margin-bottom: 32px;
+      font-style: italic;
+      letter-spacing: 0.01em;
+    }
+
+    .description {
+      max-width: 640px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: #444;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(253, 253, 253, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid #eee;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 960px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 20px 50px;
     }
+
     .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #78e1ff;
-      letter-spacing: 0.01em;
+      font-family: 'Crimson Text', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      text-decoration: none;
     }
+
     .nav-links {
       display: flex;
-      gap: 2.1rem;
+      gap: 40px;
     }
+
     .nav-links a {
       text-decoration: none;
-      color: #f0f0f0;
-      font-weight: 500;
-      font-size: 1.05rem;
-      letter-spacing: 0.01em;
-      opacity: 0.93;
-      transition: color 0.3s, opacity 0.2s;
+      color: #666;
+      font-weight: 400;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
       position: relative;
     }
-    .nav-links a:after {
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #1a1a1a;
+    }
+
+    .nav-links a::after {
       content: '';
-      display: block;
-      width: 0%;
-      height: 2px;
-      background: #6cf2bc;
-      border-radius: 1px;
-      transition: width 0.25s;
       position: absolute;
-      left: 0; bottom: -4px;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #1a1a1a;
+      transition: width 0.3s ease;
     }
-    .nav-links a:hover, .nav-links a.active {
-      color: #8befc7;
-      opacity: 1;
-    }
-    .nav-links a:hover:after,
-    .nav-links a.active:after {
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
       width: 100%;
     }
 
-    .social-icons {
-      display: flex;
-      gap: 1.1rem;
-    }
-    .social-icons a {
-      background: rgba(35,47,54,.5);
-      border: 1.3px solid #bdd7e7;
-      border-radius: 11px;
-      width: 37px; height: 37px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      color: #d7fffe;
-      box-shadow: 0 2.5px 12px #71fbe912;
-      transition: all 0.22s;
-      text-decoration: none;
-    }
-    .social-icons a:hover {
-      background: #0fe5b5;
-      border-color: #0fe5b5;
-      color: #15323b;
-      transform: translateY(-3px) scale(1.08);
-      box-shadow: 0 6px 18px #19e69a31;
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr;
+      gap: 100px;
+      align-items: start;
     }
 
-    .glass-card {
-      position: relative;
-      margin: 120px auto 40px auto;
-      max-width: 800px;
-      width: 98%;
-      display: grid;
-      grid-template-columns: 1fr 260px;
-      gap: 3.5rem;
-      align-items: center;
-      background: rgba(255,255,255,0.15);
-      border-radius: 30px;
-      box-shadow: 0 8px 48px 0 rgba(32,212,185,0.11), 0 4px 20px 0 rgba(61,171,210,0.16);
-      backdrop-filter: blur(18px);
-      border: 1.2px solid rgba(177,222,205,0.17);
-      z-index: 2;
-      padding: 2.8rem 1.8rem;
+    .main-content {
+      padding-right: 40px;
     }
-    .content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+
+    .section {
+      margin-bottom: 80px;
     }
-    .profile-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    .profile-image {
-      width: 220px;
-      height: 220px;
-      border-radius: 30px;
-      background: url('images/basanta.jpg') center/cover;
-      box-shadow: 0 0 40px 0 #a6ffd9cc, 0 5px 32px 0 #12e1ea43;
-      margin-bottom: 2rem;
-      border: 3.2px solid #d2fcc7;
-    }
-    .profile-image:hover {
-      box-shadow: 0 0 55px 0 #bfffd2, 0 8px 48px 0 #0ff1cd55;
-    }
-    .hire-btn {
-      background: linear-gradient(92deg,#07a9ee 30%, #16e19c 100%);
-      color: white;
-      padding: 1.1rem 2.3rem;
-      border: none;
-      border-radius: 14px;
+
+    .section-title {
+      font-family: 'Crimson Text', Georgia, serif;
+      font-size: 1.8rem;
       font-weight: 600;
+      margin-bottom: 32px;
+      color: #0a0a0a;
+      letter-spacing: -0.01em;
+    }
+
+    .research-text {
       font-size: 1.1rem;
-      cursor: pointer;
-      letter-spacing: 0.01em;
-      text-shadow: 0 2px 18px #13e5c299;
-      transition: all 0.23s;
-      box-shadow: 0 2.5px 14px rgba(37, 202, 235, 0.18);
-      text-decoration: none;
+      color: #333;
+      line-height: 1.8;
+      margin-bottom: 40px;
     }
-    .hire-btn:hover {
-      background: linear-gradient(93deg,#53f6f1 0%, #82f7b1 86%);
-      color: #041b23;
-      transform: translateY(-2px) scale(1.04);
-      box-shadow: 0 12px 32px rgba(45, 203, 183, 0.13);
+
+    .sidebar {
+      position: sticky;
+      top: 120px;
     }
-    h1 {
-      font-size: 3.2rem;
-      font-weight: 300;
-      margin-bottom: 1rem;
-      color: #e6fff7;
-      line-height: 1.1;
-      letter-spacing: 0.014em;
+
+    .sidebar-section {
+      margin-bottom: 60px;
+      padding: 40px 0;
+      border-bottom: 1px solid #f0f0f0;
     }
-    h1 span.name {
-      font-weight: 700;
-      color: #13e1e7;
-      background: linear-gradient(93deg,#13e1e7,#00ffb8 83%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-fill-color: transparent;
-      position: relative;
-      z-index: 1;
+
+    .sidebar-section:last-child {
+      border-bottom: none;
     }
-    .subtitle {
+
+    .sidebar-title {
+      font-family: 'Crimson Text', Georgia, serif;
       font-size: 1.3rem;
-      color: #95fbc6;
-      margin-bottom: 1.6rem;
       font-weight: 600;
-      letter-spacing: 0.02em;
-      text-shadow: 0 2px 8px #1ea7a266;
+      margin-bottom: 24px;
+      color: #1a1a1a;
     }
-    .description {
-      font-size: 1.09rem;
-      color: #ddf7eb;
-      margin-bottom: 2rem;
-      line-height: 1.70;
-      max-width: 440px;
+
+    .contact-links {
+      list-style: none;
+    }
+
+    .contact-links li {
+      margin-bottom: 16px;
+    }
+
+    .contact-links a {
+      color: #333;
+      text-decoration: none;
+      font-size: 1rem;
       font-weight: 400;
+      transition: all 0.2s ease;
+      display: inline-block;
     }
-    @media (max-width: 920px) {
-      .glass-card { grid-template-columns: 1fr; gap: 2.1rem; text-align: center;}
-      .content {padding-right: 0;}
-      .profile-section {margin: 0 auto;}
-      header {padding-left: 1rem;padding-right:1rem;}
+
+    .contact-links a:hover {
+      color: #000;
+      transform: translateX(4px);
     }
-    @media (max-width: 600px) {
-      .glass-card { padding: 1.1em 0.5em;}
-      .profile-image { width: 130px; height: 130px;}
-      h1 { font-size: 2rem;}
-      .subtitle {font-size: 1.05rem;}
-      main {padding: 90px 0 18px 0;}
+
+    .expertise-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .expertise-list li {
+      font-size: 0.95rem;
+      color: #555;
+      padding: 8px 0;
+      border-bottom: 1px solid #f8f8f8;
+      transition: color 0.2s ease;
+    }
+
+    .expertise-list li:hover {
+      color: #1a1a1a;
+    }
+
+    .hire-button {
+      display: inline-block;
+      background: #1a1a1a;
+      color: white;
+      text-decoration: none;
+      padding: 18px 40px;
+      border-radius: 2px;
+      font-weight: 400;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      letter-spacing: 0.02em;
+    }
+
+    .hire-button:hover {
+      background: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 120px 25px 60px;
+      }
+
+      .nav-container {
+        padding: 15px 25px;
+      }
+
+      .nav-links {
+        gap: 24px;
+      }
+
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .main-content {
+        padding-right: 0;
+      }
+
+      .sidebar {
+        position: static;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .nav-container {
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px 25px;
+      }
+
+      .nav-links {
+        gap: 20px;
+      }
+
+      .profile-image {
+        width: 120px;
+        height: 120px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="logo">Basanta Ghimire</div>
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">Basanta Ghimire</a>
       <div class="nav-links">
         <a href="index.html" class="active">Home</a>
         <a href="aboutme.html">About</a>
         <a href="research.html">Research</a>
         <a href="cv.html">CV</a>
       </div>
-      <div class="social-icons">
-        <a href="https://linkedin.com/in/basanta-ghimire" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:basanta@email.com" title="Email"><i class="fas fa-envelope"></i></a>
-      </div>
-    </nav>
-  </header>
-  <main>
-    <div class="glass-card">
-      <div class="content">
-        <h1>Hi, I'm <span class="name">Basanta</span></h1>
-        <div class="subtitle">Energy Systems Engineer</div>
-        <div class="description">
-          I specialize in designing innovative energy generation and storage solutions.<br>
-          Passionate about sustainable technology and creating efficient power systems for the future.
-        </div>
-      </div>
-      <div class="profile-section">
-        <div class="profile-image"></div>
-        <a href="cv.html" class="hire-btn">Hire Me</a>
-      </div>
     </div>
-  </main>
+  </nav>
+
+  <div class="container">
+    <header>
+      <div class="profile-image"></div>
+      <h1>Basanta Ghimire</h1>
+      <div class="title">Energy Systems Engineer</div>
+      <div class="description">
+        Graduate student specializing in electrochemical energy storage systems and nanoparticle synthesis. 
+        Advancing sustainable technology through computational modeling and materials characterization.
+      </div>
+    </header>
+
+    <div class="content-grid">
+      <main class="main-content">
+        <div class="section">
+          <h2 class="section-title">Research</h2>
+          <div class="research-text">
+            My work focuses on developing next-generation energy storage solutions through advanced materials science. 
+            I employ computational methods including Python, MATLAB, and LAMMPS molecular dynamics simulations 
+            to understand and optimize electrochemical systems at the nanoscale.
+          </div>
+          <a href="cv.html" class="hire-button">View Full CV</a>
+        </div>
+      </main>
+
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">Connect</h3>
+          <ul class="contact-links">
+            <li><a href="mailto:basanta@email.com">Email</a></li>
+            <li><a href="https://linkedin.com/in/basanta-ghimire">LinkedIn</a></li>
+            <li><a href="cv.html">Curriculum Vitae</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">Expertise</h3>
+          <ul class="expertise-list">
+            <li>Electrochemical Energy Storage</li>
+            <li>Nanoparticle Synthesis</li>
+            <li>Materials Characterization</li>
+            <li>Computational Modeling</li>
+            <li>Python & MATLAB</li>
+            <li>LAMMPS Simulation</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
 </body>
 </html>
