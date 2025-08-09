@@ -3,41 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Basanta Ghimire - Energy Engineer</title>
+<title>Basanta Ghimire – Energy Engineer</title>
 
 <!-- Inter font -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<!-- Font Awesome brand / solid icons -->
+<!-- Font Awesome (new) -->
 <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* …———— your original CSS, unchanged ————… */
+/* — your entire original CSS, unchanged — */
 
-/* small tweak: icons now size by font-size rather than fixed box */
-.social-icons a{
-    display:inline-flex;align-items:center;justify-content:center;
-    padding:0;               /* remove fixed 36×36 so glyph stays crisp */
-    width:42px;height:42px;  /* keeps square click-target */
-    font-size:18px;          /* icon size */
-    background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;
-    color:#64748b;transition:.3s;
-}
-.social-icons a:hover{
-    background:#2563eb;border-color:#2563eb;color:#fff;transform:translateY(-2px);
-}
-
-/* contact grid icons use same adjustment */
-.contact-icon{
-    width:46px;height:46px;border-radius:10px;
-    display:flex;align-items:center;justify-content:center;
-    background:#f1f5f9;font-size:20px;color:#2563eb;
-}
-
-/* rest of your styles stay exactly as before */
+/* extra icon-size overrides (new) */
+.social-icons a{font-size:18px;width:42px;height:42px;}
+.section-icon i{font-size:32px;}
+.contact-icon  {font-size:20px;width:46px;height:46px;}
 </style>
 </head>
+
 <body>
 <header>
     <nav>
@@ -50,7 +34,7 @@
             <a href="#contact">Contact</a>
         </div>
 
-        <!-- real icons replace emojis -->
+        <!-- emojis ➜ Font Awesome icons (new) -->
         <div class="social-icons">
             <a href="https://www.linkedin.com/in/your-profile" title="LinkedIn">
                 <i class="fab fa-linkedin-in"></i>
@@ -66,7 +50,6 @@
 </header>
 
 <main>
-    <!-- ——— unchanged HTML below this line ——— -->
     <div class="container">
         <div class="content" id="home">
             <h1>Hi, I'm <span class="name">Basanta</span></h1>
@@ -138,7 +121,7 @@
 </main>
 
 <script>
-/* your original JS remains untouched */
+/* — your original JS exactly as before — */
 document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
     anchor.addEventListener('click',e=>{
         e.preventDefault();
