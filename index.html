@@ -9,7 +9,7 @@
 <style>
   :root{
     --bg:#f7fafc; --paper:#ffffff; --muted:#5b6b77; --text:#1c2833;
-    --line:#e6eef2; --accent:#1f9d72; --chip:#eef7f3;
+    --line:#e6eef2; --accent:#1f9d72; --chip:#eef7f3; --accent-2:#27c190;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{
@@ -41,7 +41,7 @@
     padding:24px;
   }
 
-  /* Header area (like screenshot) */
+  /* Header area */
   .header-grid{
     display:grid; grid-template-columns: 220px 1fr; gap:28px; align-items:center;
     border-bottom:1px solid var(--line); padding-bottom:18px;
@@ -60,11 +60,17 @@
   .inline-links a{
     color:#1b7f60; text-decoration:none; border-bottom:1px dotted #1b7f60;
   }
-  .social{display:flex; gap:10px; margin-top:14px}
+  .social{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
   .chip{
     padding:6px 10px; background:var(--chip); border:1px solid #d9eee6;
     border-radius:8px; font-weight:600; color:#206f55; font-size:14px;
     text-decoration:none;
+  }
+  .hire{
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    color:#ffffff; border:none;
+    padding:8px 12px; border-radius:8px; font-weight:700; font-size:14px;
+    text-decoration:none; box-shadow: 0 6px 18px rgba(31,157,114,.20);
   }
 
   /* About + Sections */
@@ -73,13 +79,25 @@
   .title{font-weight:700; font-size:26px; margin-bottom:12px; color:#263a44}
   .about{color:#485b68; line-height:1.9; font-size:16px; max-width: 780px}
 
-  /* Bottom two-column blocks */
   .grid-2{display:grid; grid-template-columns: 1fr 1fr; gap:28px; margin-top:14px}
   .sub-title{font-size:18px; font-weight:700; color:#2b404b; margin-bottom:10px}
   .list{display:grid; gap:10px; color:#516370}
   .edu-item{display:flex; flex-direction:column; gap:3px}
   .edu-degree{font-weight:700; color:#2d3f49}
   .edu-meta{font-size:14px; color:#6b7f8c}
+
+  /* Sticky CTA in right column footer area */
+  .cta-bar{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px; margin-top:16px; padding:14px 16px;
+    border:1px dashed #cfe9de; background:#f2fbf7; border-radius:10px;
+  }
+  .cta-text{color:#2a4a3f; font-weight:600}
+  .cta-btn{
+    background:linear-gradient(90deg, var(--accent), var(--accent-2));
+    color:#fff; padding:10px 14px; border:none; border-radius:8px;
+    font-weight:700; text-decoration:none; box-shadow:0 6px 18px rgba(31,157,114,.18);
+  }
 
   /* Responsive */
   @media (max-width:920px){
@@ -122,6 +140,8 @@
           <div class="social">
             <a class="chip" href="research.html">Projects</a>
             <a class="chip" href="aboutme.html">About me</a>
+            <!-- Hire Me button added here -->
+            <a class="hire" href="mailto:basanta@email.com?subject=Hire%20Basanta%20Ghimire">Hire Me</a>
           </div>
         </div>
       </div>
@@ -135,6 +155,12 @@
           build and test coin/split/pouch cells, and use LAMMPS/MATLAB/Python to design faster,
           more informative experiments. Recent highlights include the TRECO concept, wood‑based separators,
           and porous aluminum electrodes for enhanced surface area and performance.
+        </div>
+
+        <!-- Sticky CTA bar inside the main content -->
+        <div class="cta-bar">
+          <div class="cta-text">Open to full‑time roles in battery R&D, materials, and energy systems.</div>
+          <a class="cta-btn" href="mailto:basanta@email.com?subject=Hire%20Basanta%20Ghimire">Hire Me</a>
         </div>
       </div>
 
