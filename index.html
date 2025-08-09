@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basanta Ghimire - Energy Research Laboratory</title>
+    <title>Basanta Ghimire - Energy Engineer</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
         
         * {
             margin: 0;
@@ -14,63 +14,10 @@
         }
 
         body {
-            font-family: 'Rajdhani', sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: #e0e0e0;
-            background: #0d0d0d;
-            overflow-x: hidden;
-        }
-
-        /* Experimental Grid Background */
-        .lab-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 255, 127, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 127, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -2;
-            animation: gridShift 20s ease-in-out infinite;
-        }
-
-        @keyframes gridShift {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(25px, 25px); }
-        }
-
-        /* Floating Lab Equipment */
-        .lab-equipment {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .equipment-item {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #00ff7f;
-            border-radius: 50%;
-            opacity: 0;
-            animation: labFloat 15s infinite ease-in-out;
-        }
-
-        .equipment-item:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .equipment-item:nth-child(2) { left: 30%; animation-delay: 3s; }
-        .equipment-item:nth-child(3) { left: 50%; animation-delay: 6s; }
-        .equipment-item:nth-child(4) { left: 70%; animation-delay: 9s; }
-        .equipment-item:nth-child(5) { left: 90%; animation-delay: 12s; }
-
-        @keyframes labFloat {
-            0%, 100% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 1; transform: translateY(90vh) scale(1); }
-            90% { opacity: 1; transform: translateY(-10vh) scale(1); }
-            100% { transform: translateY(-20vh) scale(0); opacity: 0; }
+            color: #333;
+            background: #fafafa;
         }
 
         /* Header Navigation */
@@ -79,12 +26,11 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(13, 13, 13, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             z-index: 1000;
             padding: 1rem 0;
-            border-bottom: 1px solid rgba(0, 255, 127, 0.2);
-            box-shadow: 0 4px 30px rgba(0, 255, 127, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         nav {
@@ -97,29 +43,9 @@
         }
 
         .logo {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: #00ff7f;
-            text-shadow: 0 0 10px rgba(0, 255, 127, 0.5);
-            position: relative;
-        }
-
-        .logo::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: -15px;
-            width: 8px;
-            height: 8px;
-            background: #00ff7f;
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.3; transform: scale(1.5); }
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2563eb;
         }
 
         .nav-links {
@@ -130,596 +56,386 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #e0e0e0;
+            color: #64748b;
             font-weight: 400;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            position: relative;
-            font-family: 'Orbitron', monospace;
-        }
-
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            left: -10px;
-            top: 50%;
-            width: 4px;
-            height: 4px;
-            background: #00ff7f;
-            border-radius: 50%;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover::before {
-            opacity: 1;
-            transform: translateX(5px);
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #00ff7f;
-            text-shadow: 0 0 8px rgba(0, 255, 127, 0.6);
+            color: #2563eb;
         }
 
         .social-icons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         .social-icons a {
-            display: inline-block;
-            width: 32px;
-            height: 32px;
-            background: transparent;
-            border: 1px solid rgba(224, 224, 224, 0.3);
-            color: #e0e0e0;
-            text-align: center;
-            line-height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
             text-decoration: none;
-            font-size: 12px;
-            font-weight: 400;
-            border-radius: 2px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            font-family: 'Orbitron', monospace;
-        }
-
-        .social-icons a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 127, 0.2), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .social-icons a:hover::before {
-            left: 100%;
+            font-size: 16px;
+            transition: all 0.3s ease;
         }
 
         .social-icons a:hover {
-            border-color: #00ff7f;
-            color: #00ff7f;
-            box-shadow: 0 0 15px rgba(0, 255, 127, 0.3);
+            background: #2563eb;
+            border-color: #2563eb;
             transform: translateY(-2px);
         }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            position: relative;
+        /* Main Content */
+        main {
             margin-top: 80px;
-            overflow: hidden;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
         }
 
-        .hero-content {
-            flex: 1;
-            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
-            padding: 4rem;
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .content {
+            padding-right: 2rem;
+        }
+
+        .profile-section {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            position: relative;
+            align-items: center;
+            text-align: center;
         }
 
-        .hero-content::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: -50px;
-            width: 100px;
-            height: 100%;
-            background: linear-gradient(135deg, #0d0d0d 50%, #000000 50%);
-            z-index: 1;
-        }
-
-        .hero-image {
-            flex: 1;
+        .profile-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 20px;
             background: url('images/basanta.jpg');
             background-size: cover;
             background-position: center;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .hero-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 30% 70%, rgba(0, 255, 127, 0.1) 0%, transparent 40%),
-                linear-gradient(45deg, rgba(0, 0, 0, 0.3) 0%, transparent 100%);
-            z-index: 1;
-        }
-
-        .lab-scanner {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, #00ff7f, transparent);
-            animation: scan 4s ease-in-out infinite;
-            z-index: 2;
-        }
-
-        @keyframes scan {
-            0% { transform: translateY(0) scaleX(0.5); opacity: 0; }
-            50% { transform: translateY(50vh) scaleX(1); opacity: 1; }
-            100% { transform: translateY(100vh) scaleX(0.5); opacity: 0; }
-        }
-
-        .energy-readings {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(0, 255, 127, 0.3);
-            padding: 10px;
-            font-family: 'Orbitron', monospace;
-            font-size: 10px;
-            color: #00ff7f;
-            z-index: 3;
-        }
-
-        .reading-line {
-            display: flex;
-            justify-content: space-between;
-            margin: 2px 0;
-        }
-
-        .status-indicator {
-            width: 8px;
-            height: 8px;
-            background: #00ff7f;
-            border-radius: 50%;
-            margin-right: 5px;
-            animation: blink 1.5s ease-in-out infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        h1 {
-            font-family: 'Orbitron', monospace;
-            font-size: 4.5rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-            line-height: 1;
-            color: #ffffff;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-            position: relative;
-        }
-
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60%;
-            height: 2px;
-            background: linear-gradient(90deg, #00ff7f, transparent);
-            animation: expand 3s ease-in-out infinite;
-        }
-
-        @keyframes expand {
-            0%, 100% { width: 60%; }
-            50% { width: 80%; }
-        }
-
-        .subtitle {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.2rem;
-            color: #00ff7f;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             margin-bottom: 2rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            position: relative;
+            transition: transform 0.3s ease;
         }
 
-        .subtitle::before {
-            content: '[';
-            margin-right: 5px;
-            animation: blink 2s ease-in-out infinite;
-        }
-
-        .subtitle::after {
-            content: ']';
-            margin-left: 5px;
-            animation: blink 2s ease-in-out infinite reverse;
-        }
-
-        .hero-quote {
-            font-size: 1.1rem;
-            color: #b0b0b0;
-            margin-bottom: 2.5rem;
-            max-width: 450px;
-            line-height: 1.7;
-            font-weight: 300;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .hero-quote::before {
-            content: '>';
-            position: absolute;
-            left: 0;
-            color: #00ff7f;
-            font-family: 'Orbitron', monospace;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
+        .profile-image:hover {
+            transform: translateY(-5px);
         }
 
         .hire-btn {
-            background: transparent;
-            color: #00ff7f;
+            background: #2563eb;
+            color: white;
             padding: 1rem 2rem;
-            border: 2px solid #00ff7f;
-            text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 1px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 500;
+            font-size: 1rem;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
             text-align: center;
-            font-family: 'Orbitron', monospace;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hire-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 255, 127, 0.1);
-            transition: left 0.5s ease;
-        }
-
-        .hire-btn:hover::before {
-            left: 0;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
         .hire-btn:hover {
-            box-shadow: 0 0 25px rgba(0, 255, 127, 0.5);
+            background: #1d4ed8;
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
         }
 
-        .resume-btn {
-            background: rgba(224, 224, 224, 0.05);
-            color: #e0e0e0;
-            padding: 1rem 2rem;
-            border: 1px solid rgba(224, 224, 224, 0.2);
-            text-transform: uppercase;
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: #1e293b;
+            line-height: 1.1;
+        }
+
+        .name {
             font-weight: 600;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.4s ease;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #2563eb;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+            max-width: 500px;
+        }
+
+        .sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
             text-decoration: none;
-            display: inline-block;
-            text-align: center;
-            font-family: 'Orbitron', monospace;
+            color: inherit;
+            border: 1px solid #f1f5f9;
         }
 
-        .resume-btn:hover {
-            background: rgba(224, 224, 224, 0.1);
-            border-color: rgba(224, 224, 224, 0.4);
-            transform: translateY(-2px);
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            border-color: #2563eb;
         }
 
-        /* Services Section */
-        .services {
-            background: linear-gradient(135deg, #000000 0%, #0d0d0d 50%, #1a1a1a 100%);
-            color: #e0e0e0;
-            padding: 0;
+        .section-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-desc {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .contact-section {
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .contact-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 2rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-item {
             display: flex;
-            min-height: 450px;
-            position: relative;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
         }
 
-        .services::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(0, 255, 127, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 255, 127, 0.03) 0%, transparent 50%);
-            pointer-events: none;
+        .contact-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .service-item {
-            flex: 1;
-            text-align: center;
-            padding: 4rem 2rem;
-            position: relative;
-            z-index: 1;
-            transition: all 0.5s ease;
-            border-right: 1px solid rgba(224, 224, 224, 0.1);
-        }
-
-        .service-item:last-child {
-            border-right: none;
-        }
-
-        .service-item:hover {
-            background: rgba(0, 255, 127, 0.02);
-            transform: translateY(-15px);
-        }
-
-        .service-item:hover::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border: 1px solid rgba(0, 255, 127, 0.3);
-            pointer-events: none;
-        }
-
-        .service-icon {
-            width: 120px;
-            height: 120px;
-            background: transparent;
-            border: 2px solid rgba(224, 224, 224, 0.2);
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: #f1f5f9;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 2rem;
-            font-size: 3rem;
-            transition: all 0.5s ease;
-            position: relative;
-            overflow: hidden;
+            font-size: 18px;
+            color: #2563eb;
         }
 
-        .service-icon::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(transparent, rgba(0, 255, 127, 0.1), transparent);
-            animation: rotate360 4s linear infinite;
+        .contact-info h4 {
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
         }
 
-        @keyframes rotate360 {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .service-item:hover .service-icon {
-            border-color: #00ff7f;
-            transform: scale(1.1);
-            box-shadow: 0 0 30px rgba(0, 255, 127, 0.3);
-        }
-
-        .service-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #ffffff;
-        }
-
-        .service-description {
-            color: #b0b0b0;
-            font-size: 1rem;
-            max-width: 320px;
-            margin: 0 auto;
-            line-height: 1.7;
-            font-weight: 300;
+        .contact-info p {
+            color: #64748b;
+            font-size: 0.9rem;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
             }
 
-            .hero {
-                flex-direction: column;
-                height: auto;
-                margin-top: 60px;
+            .content {
+                padding-right: 0;
+                order: 2;
             }
 
-            .hero-content {
-                padding: 2rem;
+            .profile-section {
+                order: 1;
             }
 
-            .hero-content::after {
-                display: none;
-            }
-
-            .hero-image {
-                min-height: 400px;
-            }
-
-            h1 {
-                font-size: 3rem;
-            }
-
-            .subtitle {
-                font-size: 1rem;
-            }
-
-            .services {
-                flex-direction: column;
-            }
-
-            .service-item {
-                padding: 3rem 1rem;
-                border-right: none;
-                border-bottom: 1px solid rgba(224, 224, 224, 0.1);
-            }
-
-            .service-item:last-child {
-                border-bottom: none;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav {
-                padding: 0 1rem;
-            }
-
-            .hero-content {
-                padding: 1.5rem;
+            .profile-image {
+                width: 220px;
+                height: 220px;
             }
 
             h1 {
                 font-size: 2.5rem;
             }
 
-            .hero-quote {
-                font-size: 1rem;
+            .nav-links {
+                display: none;
+            }
+
+            .sections {
+                grid-template-columns: 1fr;
+            }
+
+            main {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="lab-grid"></div>
-    
-    <div class="lab-equipment">
-        <div class="equipment-item"></div>
-        <div class="equipment-item"></div>
-        <div class="equipment-item"></div>
-        <div class="equipment-item"></div>
-        <div class="equipment-item"></div>
-    </div>
-
     <header>
         <nav>
-            <div class="logo">LAB-BG</div>
+            <div class="logo">Basanta Ghimire</div>
             <div class="nav-links">
                 <a href="#home">Home</a>
+                <a href="#about">About</a>
                 <a href="#research">Research</a>
-                <a href="#experiments">Experiments</a>
-                <a href="#data">Data</a>
-                <a href="#publications">Publications</a>
                 <a href="#contact">Contact</a>
             </div>
             <div class="social-icons">
-                <a href="#" title="LinkedIn">LI</a>
-                <a href="#" title="GitHub">GH</a>
-                <a href="#" title="ResearchGate">RG</a>
-                <a href="#" title="Email">EM</a>
+                <a href="#" title="LinkedIn">💼</a>
+                <a href="#" title="GitHub">💻</a>
+                <a href="#" title="Email">📧</a>
             </div>
         </nav>
     </header>
 
     <main>
-        <section class="hero" id="home">
-            <div class="hero-content">
-                <h1>BASANTA<br>GHIMIRE</h1>
-                <p class="subtitle">Energy Research Specialist</p>
-                <p class="hero-quote">
-                    Experimenting with the fundamental forces of energy storage and generation. 
-                    Every test brings us closer to unlocking tomorrow's power solutions.
+        <div class="container">
+            <div class="content">
+                <h1>Hi, I'm <span class="name">Basanta</span></h1>
+                <p class="subtitle">Energy Systems Engineer</p>
+                <p class="description">
+                    I specialize in designing innovative energy generation and storage solutions. 
+                    Passionate about sustainable technology and creating efficient power systems 
+                    for the future.
                 </p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="hire-btn">Initiate Contact</a>
-                    <a href="#" class="resume-btn">Access Files</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="lab-scanner"></div>
-                <div class="energy-readings">
-                    <div class="reading-line">
-                        <span>ENERGY OUTPUT:</span>
-                        <span>99.7% EFFICIENCY</span>
-                    </div>
-                    <div class="reading-line">
-                        <span>STORAGE CAPACITY:</span>
-                        <span>OPTIMAL</span>
-                    </div>
-                    <div class="reading-line">
-                        <span>SYSTEM STATUS:</span>
-                        <span><span class="status-indicator"></span>ACTIVE</span>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <section class="services" id="research">
-            <div class="service-item">
-                <div class="service-icon">⚛️</div>
-                <h3 class="service-title">Quantum Energy Research</h3>
-                <p class="service-description">
-                    Investigating quantum mechanical approaches to energy transfer 
-                    and storage at the molecular level for next-generation power systems.
-                </p>
+                <div class="sections">
+                    <a href="#research" class="section-card">
+                        <span class="section-icon">🔬</span>
+                        <h3 class="section-title">Research</h3>
+                        <p class="section-desc">Latest projects & findings</p>
+                    </a>
+                    <a href="#about" class="section-card">
+                        <span class="section-icon">👨‍💼</span>
+                        <h3 class="section-title">About Me</h3>
+                        <p class="section-desc">Background & experience</p>
+                    </a>
+                    <a href="#" class="section-card">
+                        <span class="section-icon">📄</span>
+                        <h3 class="section-title">Download CV</h3>
+                        <p class="section-desc">View my resume</p>
+                    </a>
+                </div>
+
+                <div class="contact-section">
+                    <h2 class="contact-title">Let's Connect</h2>
+                    <div class="contact-grid">
+                        <a href="mailto:basanta@email.com" class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-info">
+                                <h4>Email</h4>
+                                <p>basanta@email.com</p>
+                            </div>
+                        </a>
+                        <a href="#" class="contact-item">
+                            <div class="contact-icon">💼</div>
+                            <div class="contact-info">
+                                <h4>LinkedIn</h4>
+                                <p>Connect with me</p>
+                            </div>
+                        </a>
+                        <a href="#" class="contact-item">
+                            <div class="contact-icon">💻</div>
+                            <div class="contact-info">
+                                <h4>GitHub</h4>
+                                <p>View my code</p>
+                            </div>
+                        </a>
+                        <a href="#" class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-info">
+                                <h4>Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="service-item">
-                <div class="service-icon">🧪</div>
-                <h3 class="service-title">Laboratory Testing</h3>
-                <p class="service-description">
-                    Advanced experimental protocols for battery chemistry, 
-                    thermal dynamics, and energy conversion efficiency analysis.
-                </p>
+
+            <div class="profile-section">
+                <div class="profile-image"></div>
+                <a href="#contact" class="hire-btn">Hire Me</a>
             </div>
-            <div class="service-item">
-                <div class="service-icon">📊</div>
-                <h3 class="service-title">Data Analysis</h3>
-                <p class="service-description">
-                    Computational modeling and statistical analysis of energy 
-                    patterns, grid optimization, and predictive power management.
-                </p>
-            </div>
-        </section>
+        </div>
     </main>
 
     <script>
@@ -737,72 +453,28 @@
             });
         });
 
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(13, 13, 13, 0.95)';
-                header.style.borderBottomColor = 'rgba(0, 255, 127, 0.4)';
-            } else {
-                header.style.background = 'rgba(13, 13, 13, 0.9)';
-                header.style.borderBottomColor = 'rgba(0, 255, 127, 0.2)';
-            }
-        });
+        // Add subtle animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-        // Dynamic energy readings
-        function updateEnergyReadings() {
-            const efficiency = (97 + Math.random() * 3).toFixed(1);
-            const readings = document.querySelector('.energy-readings');
-            if (readings) {
-                const efficiencySpan = readings.querySelector('.reading-line:first-child span:last-child');
-                if (efficiencySpan) {
-                    efficiencySpan.textContent = `${efficiency}% EFFICIENCY`;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
-            }
-        }
-
-        setInterval(updateEnergyReadings, 3000);
-
-        // Service item lab effects
-        document.querySelectorAll('.service-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.background = 'rgba(0, 255, 127, 0.03)';
             });
-            
-            item.addEventListener('mouseleave', function() {
-                this.style.background = 'transparent';
-            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.section-card, .contact-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
         });
-
-        // Create floating particles
-        function createLabParticle() {
-            const equipment = document.querySelector('.lab-equipment');
-            const particle = document.createElement('div');
-            particle.className = 'equipment-item';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = '0s';
-            particle.style.animationDuration = (10 + Math.random() * 10) + 's';
-            equipment.appendChild(particle);
-            
-            setTimeout(() => {
-                particle.remove();
-            }, 15000);
-        }
-
-        setInterval(createLabParticle, 5000);
-
-        // Lab scanning effect
-        function triggerLabScan() {
-            const scanner = document.querySelector('.lab-scanner');
-            if (scanner) {
-                scanner.style.animation = 'none';
-                setTimeout(() => {
-                    scanner.style.animation = 'scan 4s ease-in-out infinite';
-                }, 100);
-            }
-        }
-
-        setInterval(triggerLabScan, 15000);
     </script>
 </body>
 </html>
