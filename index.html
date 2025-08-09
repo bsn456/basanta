@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Basanta Ghimire</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap">
+  <title>Basanta Ghimire - Energy Engineer</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
   <style>
     * {
       margin: 0;
@@ -13,351 +13,283 @@
     }
 
     body {
-      font-family: 'Source Sans 3', -apple-system, sans-serif;
-      background: #fdfdfd;
-      color: #1a1a1a;
-      line-height: 1.65;
-      font-weight: 300;
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: #111;
+      line-height: 1.5;
+      font-weight: 400;
     }
 
     .container {
-      max-width: 960px;
+      max-width: 720px;
       margin: 0 auto;
-      padding: 100px 50px 60px;
+      padding: 60px 24px;
     }
 
-    header {
+    .header {
       text-align: center;
-      margin-bottom: 120px;
-      border-bottom: 1px solid #f0f0f0;
-      padding-bottom: 80px;
-    }
-
-    .profile-image {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      background: #f5f5f5;
-      margin: 0 auto 40px;
-      background-image: url('images/basanta.jpg');
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
-    }
-
-    h1 {
-      font-family: 'Crimson Text', Georgia, serif;
-      font-size: 3.2rem;
-      font-weight: 600;
-      margin-bottom: 16px;
-      letter-spacing: -0.03em;
-      color: #0a0a0a;
-    }
-
-    .title {
-      font-size: 1.3rem;
-      color: #666;
-      font-weight: 400;
-      margin-bottom: 32px;
-      font-style: italic;
-      letter-spacing: 0.01em;
-    }
-
-    .description {
-      max-width: 640px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      color: #444;
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: rgba(253, 253, 253, 0.95);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid #eee;
-      z-index: 100;
-    }
-
-    .nav-container {
-      max-width: 960px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 50px;
-    }
-
-    .logo {
-      font-family: 'Crimson Text', Georgia, serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: #1a1a1a;
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 40px;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #666;
-      font-weight: 400;
-      font-size: 0.95rem;
-      transition: color 0.3s ease;
-      position: relative;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: #1a1a1a;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: #1a1a1a;
-      transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover::after,
-    .nav-links a.active::after {
-      width: 100%;
-    }
-
-    .content-grid {
-      display: grid;
-      grid-template-columns: 1.8fr 1fr;
-      gap: 100px;
-      align-items: start;
-    }
-
-    .main-content {
-      padding-right: 40px;
-    }
-
-    .section {
       margin-bottom: 80px;
     }
 
-    .section-title {
-      font-family: 'Crimson Text', Georgia, serif;
-      font-size: 1.8rem;
-      font-weight: 600;
-      margin-bottom: 32px;
-      color: #0a0a0a;
-      letter-spacing: -0.01em;
+    .profile-pic {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #f0f0f0;
+      margin: 0 auto 32px;
+      background-image: url('images/basanta.jpg');
+      background-size: cover;
+      background-position: center;
     }
 
-    .research-text {
-      font-size: 1.1rem;
+    h1 {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .role {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 32px;
+      font-weight: 500;
+    }
+
+    .bio {
+      font-size: 16px;
       color: #333;
-      line-height: 1.8;
-      margin-bottom: 40px;
+      max-width: 480px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    .cta-section {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: #111;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: #000;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #111;
+      padding: 12px 24px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: #111;
+      background: #fafafa;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 80px;
+      margin-top: 80px;
+    }
+
+    .main {
+      border-right: 1px solid #f0f0f0;
+      padding-right: 60px;
+    }
+
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #111;
+    }
+
+    .section-content {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill {
+      background: #f8f8f8;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      color: #666;
+      border: 1px solid #eee;
     }
 
     .sidebar {
-      position: sticky;
-      top: 120px;
+      padding-top: 8px;
     }
 
-    .sidebar-section {
-      margin-bottom: 60px;
-      padding: 40px 0;
-      border-bottom: 1px solid #f0f0f0;
-    }
-
-    .sidebar-section:last-child {
-      border-bottom: none;
-    }
-
-    .sidebar-title {
-      font-family: 'Crimson Text', Georgia, serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-      color: #1a1a1a;
-    }
-
-    .contact-links {
-      list-style: none;
-    }
-
-    .contact-links li {
+    .contact-item {
       margin-bottom: 16px;
     }
 
-    .contact-links a {
-      color: #333;
+    .contact-item a {
+      color: #111;
       text-decoration: none;
-      font-size: 1rem;
-      font-weight: 400;
-      transition: all 0.2s ease;
-      display: inline-block;
-    }
-
-    .contact-links a:hover {
-      color: #000;
-      transform: translateX(4px);
-    }
-
-    .expertise-list {
-      list-style: none;
-      display: grid;
-      gap: 12px;
-    }
-
-    .expertise-list li {
-      font-size: 0.95rem;
-      color: #555;
-      padding: 8px 0;
-      border-bottom: 1px solid #f8f8f8;
+      font-size: 15px;
       transition: color 0.2s ease;
     }
 
-    .expertise-list li:hover {
-      color: #1a1a1a;
+    .contact-item a:hover {
+      color: #666;
     }
 
-    .hire-button {
-      display: inline-block;
-      background: #1a1a1a;
-      color: white;
-      text-decoration: none;
-      padding: 18px 40px;
-      border-radius: 2px;
-      font-weight: 400;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      letter-spacing: 0.02em;
+    .availability {
+      background: #f8fcf8;
+      border: 1px solid #e8f5e8;
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 32px;
+      text-align: center;
     }
 
-    .hire-button:hover {
-      background: #000;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    .availability-status {
+      color: #16a34a;
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .availability-text {
+      font-size: 13px;
+      color: #666;
     }
 
     @media (max-width: 768px) {
-      .container {
-        padding: 120px 25px 60px;
-      }
-
-      .nav-container {
-        padding: 15px 25px;
-      }
-
-      .nav-links {
-        gap: 24px;
-      }
-
-      h1 {
-        font-size: 2.4rem;
-      }
-
-      .content-grid {
+      .content {
         grid-template-columns: 1fr;
-        gap: 60px;
+        gap: 40px;
       }
 
-      .main-content {
+      .main {
+        border-right: none;
         padding-right: 0;
       }
 
-      .sidebar {
-        position: static;
+      .cta-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 200px;
+        text-align: center;
       }
     }
 
     @media (max-width: 480px) {
+      .container {
+        padding: 40px 16px;
+      }
+
       h1 {
-        font-size: 2rem;
+        font-size: 28px;
       }
 
-      .nav-container {
-        flex-direction: column;
-        gap: 16px;
-        padding: 20px 25px;
+      .role {
+        font-size: 16px;
       }
 
-      .nav-links {
-        gap: 20px;
-      }
-
-      .profile-image {
-        width: 120px;
-        height: 120px;
+      .content {
+        gap: 32px;
       }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <div class="nav-container">
-      <a href="index.html" class="logo">Basanta Ghimire</a>
-      <div class="nav-links">
-        <a href="index.html" class="active">Home</a>
-        <a href="aboutme.html">About</a>
-        <a href="research.html">Research</a>
-        <a href="cv.html">CV</a>
-      </div>
-    </div>
-  </nav>
-
   <div class="container">
-    <header>
-      <div class="profile-image"></div>
+    <header class="header">
+      <div class="profile-pic"></div>
       <h1>Basanta Ghimire</h1>
-      <div class="title">Energy Systems Engineer</div>
-      <div class="description">
-        Graduate student specializing in electrochemical energy storage systems and nanoparticle synthesis. 
-        Advancing sustainable technology through computational modeling and materials characterization.
+      <div class="role">Energy Systems Engineer</div>
+      <div class="bio">
+        PhD student developing next-generation battery technologies. 
+        Ready to bring deep research experience and computational expertise to industry challenges.
+      </div>
+      <div class="cta-section">
+        <a href="mailto:basanta@email.com" class="btn-primary">Let's Talk</a>
+        <a href="cv.html" class="btn-secondary">View Resume</a>
       </div>
     </header>
 
-    <div class="content-grid">
-      <main class="main-content">
+    <div class="content">
+      <main class="main">
         <div class="section">
-          <h2 class="section-title">Research</h2>
-          <div class="research-text">
-            My work focuses on developing next-generation energy storage solutions through advanced materials science. 
-            I employ computational methods including Python, MATLAB, and LAMMPS molecular dynamics simulations 
-            to understand and optimize electrochemical systems at the nanoscale.
+          <h2 class="section-title">What I Do</h2>
+          <div class="section-content">
+            I specialize in electrochemical energy storage, combining experimental synthesis with computational modeling. 
+            My research has focused on nanoparticle optimization using Python, MATLAB, and molecular dynamics simulations.
           </div>
-          <a href="cv.html" class="hire-button">View Full CV</a>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">Core Skills</h2>
+          <div class="skills">
+            <span class="skill">Battery Technology</span>
+            <span class="skill">Materials Science</span>
+            <span class="skill">Python</span>
+            <span class="skill">MATLAB</span>
+            <span class="skill">LAMMPS</span>
+            <span class="skill">Data Analysis</span>
+            <span class="skill">R&D</span>
+          </div>
         </div>
       </main>
 
       <aside class="sidebar">
-        <div class="sidebar-section">
-          <h3 class="sidebar-title">Connect</h3>
-          <ul class="contact-links">
-            <li><a href="mailto:basanta@email.com">Email</a></li>
-            <li><a href="https://linkedin.com/in/basanta-ghimire">LinkedIn</a></li>
-            <li><a href="cv.html">Curriculum Vitae</a></li>
-          </ul>
+        <div class="section">
+          <h3 class="section-title">Contact</h3>
+          <div class="contact-item">
+            <a href="mailto:basanta@email.com">Email</a>
+          </div>
+          <div class="contact-item">
+            <a href="https://linkedin.com/in/basanta-ghimire">LinkedIn</a>
+          </div>
+          <div class="contact-item">
+            <a href="cv.html">Resume</a>
+          </div>
         </div>
 
-        <div class="sidebar-section">
-          <h3 class="sidebar-title">Expertise</h3>
-          <ul class="expertise-list">
-            <li>Electrochemical Energy Storage</li>
-            <li>Nanoparticle Synthesis</li>
-            <li>Materials Characterization</li>
-            <li>Computational Modeling</li>
-            <li>Python & MATLAB</li>
-            <li>LAMMPS Simulation</li>
-          </ul>
+        <div class="availability">
+          <div class="availability-status">● Available for hire</div>
+          <div class="availability-text">Open to full-time opportunities</div>
         </div>
       </aside>
     </div>
