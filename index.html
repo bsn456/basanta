@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Basanta Ghimire - Energy Engineer</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
   <style>
     * {
       margin: 0;
@@ -14,216 +14,289 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #fff;
+      background: #fafafa;
       color: #111;
-      line-height: 1.5;
+      line-height: 1.6;
       font-weight: 400;
     }
 
     .container {
-      max-width: 720px;
+      max-width: 800px;
       margin: 0 auto;
-      padding: 40px 24px;
+      padding: 50px 30px;
+      background: white;
+      min-height: 100vh;
+      box-shadow: 0 0 40px rgba(0,0,0,0.03);
     }
 
     .header {
       text-align: center;
-      margin-bottom: 48px;
+      margin-bottom: 60px;
+      padding-bottom: 40px;
+      border-bottom: 2px solid #f0f0f0;
     }
 
     .profile-pic {
-      width: 80px;
-      height: 80px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       background: #f0f0f0;
-      margin: 0 auto 24px;
+      margin: 0 auto 30px;
       background-image: url('images/basanta.jpg');
       background-size: cover;
       background-position: center;
+      border: 3px solid #fff;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
     }
 
     h1 {
-      font-size: 32px;
-      font-weight: 600;
-      margin-bottom: 6px;
-      letter-spacing: -0.02em;
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.03em;
+      color: #000;
     }
 
     .role {
-      font-size: 18px;
+      font-size: 22px;
       color: #666;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       font-weight: 500;
     }
 
     .bio {
-      font-size: 16px;
-      color: #333;
-      max-width: 480px;
-      margin: 0 auto 24px;
-      line-height: 1.6;
+      font-size: 18px;
+      color: #444;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      line-height: 1.7;
     }
 
     .contact-links {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      margin-bottom: 24px;
+      gap: 30px;
+      margin-bottom: 35px;
       flex-wrap: wrap;
     }
 
     .contact-links a {
-      color: #666;
+      color: #333;
       text-decoration: none;
-      font-size: 14px;
-      transition: color 0.2s ease;
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      padding: 8px 16px;
+      border-radius: 25px;
+      background: #f8f8f8;
     }
 
     .contact-links a:hover {
-      color: #111;
+      color: #000;
+      background: #eee;
+      transform: translateY(-1px);
     }
 
     .cta-section {
       display: flex;
-      gap: 16px;
+      gap: 20px;
       justify-content: center;
       flex-wrap: wrap;
     }
 
     .btn-primary {
-      background: #111;
+      background: #000;
       color: white;
-      padding: 12px 24px;
+      padding: 16px 32px;
       border: none;
-      border-radius: 6px;
-      font-size: 15px;
-      font-weight: 500;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: 600;
       text-decoration: none;
       display: inline-block;
       transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     }
 
     .btn-primary:hover {
-      background: #000;
-      transform: translateY(-1px);
+      background: #111;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     }
 
     .btn-secondary {
       background: white;
-      color: #111;
-      padding: 12px 24px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-size: 15px;
-      font-weight: 500;
+      color: #000;
+      padding: 16px 32px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: 600;
       text-decoration: none;
       display: inline-block;
       transition: all 0.2s ease;
     }
 
     .btn-secondary:hover {
-      border-color: #111;
-      background: #fafafa;
+      border-color: #000;
+      background: #f9f9f9;
+      transform: translateY(-1px);
     }
 
     .content {
-      margin-top: 48px;
+      margin-top: 60px;
     }
 
     .section {
-      margin-bottom: 40px;
+      margin-bottom: 50px;
+      padding: 30px;
+      background: #fbfbfb;
+      border-radius: 12px;
+      border-left: 4px solid #000;
     }
 
     .section-title {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 16px;
-      color: #111;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #000;
     }
 
     .section-content {
-      font-size: 15px;
-      color: #555;
-      line-height: 1.6;
-      margin-bottom: 16px;
+      font-size: 17px;
+      color: #444;
+      line-height: 1.7;
+      margin-bottom: 20px;
     }
 
     .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
     }
 
     .skill {
-      background: #f8f8f8;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 14px;
-      color: #666;
-      border: 1px solid #eee;
-    }
-
-    .availability {
-      background: #f8fcf8;
-      border: 1px solid #e8f5e8;
+      background: white;
+      padding: 12px 18px;
       border-radius: 8px;
-      padding: 16px;
-      text-align: center;
-      margin-top: 32px;
-    }
-
-    .availability-status {
-      color: #16a34a;
+      font-size: 15px;
+      color: #333;
+      border: 1px solid #e0e0e0;
       font-weight: 500;
-      font-size: 14px;
-      margin-bottom: 4px;
+      text-align: center;
+      transition: all 0.2s ease;
     }
 
-    .availability-text {
-      font-size: 13px;
-      color: #666;
+    .skill:hover {
+      border-color: #000;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
     .research-item {
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #f0f0f0;
+      margin-bottom: 30px;
+      padding: 25px;
+      background: white;
+      border-radius: 10px;
+      border-left: 3px solid #666;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
     }
 
     .research-item:last-child {
-      border-bottom: none;
       margin-bottom: 0;
     }
 
     .research-title {
-      font-size: 16px;
-      font-weight: 500;
-      color: #111;
-      margin-bottom: 8px;
+      font-size: 19px;
+      font-weight: 600;
+      color: #000;
+      margin-bottom: 12px;
     }
 
     .research-desc {
-      font-size: 14px;
-      color: #666;
-      line-height: 1.5;
+      font-size: 16px;
+      color: #555;
+      line-height: 1.6;
     }
 
-    @media (max-width: 480px) {
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .tool {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid #e0e0e0;
+      transition: all 0.2s ease;
+    }
+
+    .tool:hover {
+      border-color: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .tool-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 6px;
+    }
+
+    .tool-desc {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .availability {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border: 2px solid #bbf7d0;
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .availability-status {
+      color: #16a34a;
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .availability-text {
+      font-size: 16px;
+      color: #374151;
+    }
+
+    @media (max-width: 600px) {
       .container {
-        padding: 32px 16px;
+        padding: 30px 20px;
       }
 
       h1 {
-        font-size: 28px;
+        font-size: 32px;
       }
 
       .role {
+        font-size: 18px;
+      }
+
+      .bio {
         font-size: 16px;
       }
 
       .contact-links {
         flex-direction: column;
-        gap: 12px;
+        align-items: center;
+        gap: 15px;
       }
 
       .cta-section {
@@ -233,8 +306,20 @@
 
       .btn-primary,
       .btn-secondary {
-        width: 200px;
+        width: 220px;
         text-align: center;
+      }
+
+      .section {
+        padding: 20px;
+      }
+
+      .skills {
+        grid-template-columns: 1fr;
+      }
+
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
@@ -246,68 +331,101 @@
       <h1>Basanta Ghimire</h1>
       <div class="role">Energy Systems Engineer</div>
       <div class="bio">
-        PhD student developing next-generation battery technologies. 
-        Ready to bring deep research experience and computational expertise to industry challenges.
+        PhD student at the forefront of next-generation battery technologies. 
+        Combining cutting-edge research with practical engineering solutions to tackle 
+        the world's energy storage challenges. Ready to bring deep technical expertise 
+        and innovative thinking to industry.
       </div>
       <div class="contact-links">
         <a href="mailto:basanta@email.com">basanta@email.com</a>
-        <a href="https://linkedin.com/in/basanta-ghimire">LinkedIn</a>
-        <a href="cv.html">Resume</a>
+        <a href="https://linkedin.com/in/basanta-ghimire">LinkedIn Profile</a>
+        <a href="cv.html">Download CV</a>
       </div>
       <div class="cta-section">
-        <a href="mailto:basanta@email.com" class="btn-primary">Let's Talk</a>
-        <a href="cv.html" class="btn-secondary">View Resume</a>
+        <a href="mailto:basanta@email.com" class="btn-primary">Let's Connect</a>
+        <a href="cv.html" class="btn-secondary">View Full Resume</a>
       </div>
     </header>
 
     <div class="content">
       <div class="section">
-        <h2 class="section-title">What I Do</h2>
+        <h2 class="section-title">What I Bring to Industry</h2>
         <div class="section-content">
-          I specialize in electrochemical energy storage, combining experimental synthesis with computational modeling. 
-          My research focuses on optimizing battery performance through advanced materials characterization and simulation.
+          I specialize in electrochemical energy storage systems, bridging the gap between fundamental research and real-world applications. My work combines experimental synthesis techniques with advanced computational modeling to optimize battery performance, reduce costs, and accelerate time-to-market for energy storage solutions.
+        </div>
+        <div class="section-content">
+          With expertise spanning materials science, data analysis, and simulation, I'm equipped to tackle complex engineering challenges in the rapidly evolving energy sector.
         </div>
       </div>
 
       <div class="section">
-        <h2 class="section-title">Research Focus</h2>
+        <h2 class="section-title">Research & Innovation</h2>
         <div class="research-item">
-          <div class="research-title">Nanoparticle Synthesis for Energy Storage</div>
+          <div class="research-title">Advanced Nanoparticle Synthesis</div>
           <div class="research-desc">
-            Developing novel synthesis methods for high-performance electrode materials using computational optimization.
+            Developing scalable synthesis methods for high-performance electrode materials. Focus on optimizing particle size distribution, surface morphology, and electrochemical properties through controlled synthesis parameters and machine learning optimization.
           </div>
         </div>
         <div class="research-item">
-          <div class="research-title">Molecular Dynamics Simulation</div>
+          <div class="research-title">Molecular Dynamics & Simulation</div>
           <div class="research-desc">
-            Using LAMMPS to model ion transport and interfacial behavior in next-generation battery systems.
+            Using LAMMPS and custom Python scripts to model ion transport mechanisms, interfacial behavior, and degradation processes in battery systems. Creating predictive models that guide experimental design and accelerate materials discovery.
           </div>
         </div>
         <div class="research-item">
-          <div class="research-title">Materials Characterization</div>
+          <div class="research-title">Materials Characterization & Analysis</div>
           <div class="research-desc">
-            Advanced analytical techniques to understand structure-property relationships in energy materials.
+            Expert in advanced analytical techniques including XRD, SEM, TEM, and electrochemical testing. Developing data pipelines to extract insights from complex datasets and establish structure-property relationships in energy materials.
           </div>
         </div>
       </div>
 
       <div class="section">
-        <h2 class="section-title">Core Skills</h2>
+        <h2 class="section-title">Technical Expertise</h2>
+        <div class="section-content">
+          My technical toolkit spans experimental techniques, computational methods, and data science approaches:
+        </div>
+        <div class="tools-grid">
+          <div class="tool">
+            <div class="tool-name">Python</div>
+            <div class="tool-desc">Data analysis, ML, automation</div>
+          </div>
+          <div class="tool">
+            <div class="tool-name">MATLAB</div>
+            <div class="tool-desc">Numerical modeling</div>
+          </div>
+          <div class="tool">
+            <div class="tool-name">LAMMPS</div>
+            <div class="tool-desc">Molecular dynamics</div>
+          </div>
+          <div class="tool">
+            <div class="tool-name">Git</div>
+            <div class="tool-desc">Version control</div>
+          </div>
+          <div class="tool">
+            <div class="tool-name">SQL</div>
+            <div class="tool-desc">Database management</div>
+          </div>
+          <div class="tool">
+            <div class="tool-name">R</div>
+            <div class="tool-desc">Statistical analysis</div>
+          </div>
+        </div>
         <div class="skills">
-          <span class="skill">Battery Technology</span>
-          <span class="skill">Materials Science</span>
-          <span class="skill">Python</span>
-          <span class="skill">MATLAB</span>
-          <span class="skill">LAMMPS</span>
-          <span class="skill">Data Analysis</span>
-          <span class="skill">R&D</span>
           <span class="skill">Electrochemistry</span>
+          <span class="skill">Materials Science</span>
+          <span class="skill">Battery Technology</span>
+          <span class="skill">Data Science</span>
+          <span class="skill">Machine Learning</span>
+          <span class="skill">Research & Development</span>
+          <span class="skill">Project Management</span>
+          <span class="skill">Technical Writing</span>
         </div>
       </div>
 
       <div class="availability">
-        <div class="availability-status">● Available for hire</div>
-        <div class="availability-text">Open to full-time opportunities</div>
+        <div class="availability-status">🟢 Available for Full-Time Opportunities</div>
+        <div class="availability-text">Actively seeking industry roles in energy storage, materials R&D, or related fields</div>
       </div>
     </div>
   </div>
