@@ -1,1 +1,241 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basanta Ghimire - CV</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: #fafafa;
+      color: #333;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+      z-index: 10;
+      padding: 1rem 0;
+    }
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #2563eb;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #64748b;
+      font-size: 0.95rem;
+      font-weight: 400;
+      transition: color 0.25s;
+    }
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+    }
+    .social-icons a {
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 8px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      color: #64748b;
+      font-size: 1.15rem;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .social-icons a:hover {
+      background: #2563eb;
+      color: #fff;
+      border-color: #2563eb;
+      transform: translateY(-2px);
+    }
+    main {
+      padding: 160px 0 36px 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+    .cv-content {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 2px 26px rgba(0,0,0,0.07);
+      max-width: 830px;
+      width: 100%;
+      padding: 2.2rem 2.3rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      letter-spacing: 0.02em;
+      color: #2563eb;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .info-row {
+      display: flex;
+      gap: 2.3rem;
+      flex-wrap: wrap;
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 1.5em;
+    }
+    .info-row span {
+      display: flex;
+      gap: 0.5em;
+      align-items: center;
+    }
+    .cv-section {
+      margin-bottom: 1.35em;
+    }
+    .cv-section h2 {
+      margin: 0 0 0.3em 0;
+      font-size: 1.2em;
+      color: #1e293b;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    .cv-section ul {
+      margin-left: 1.7em;
+    }
+    .cv-section li {
+      margin-bottom: 0.27em;
+    }
+    .cv-section p {
+      margin-bottom: 0.45em;
+    }
+    .cv-highlight { color: #2563eb; font-weight: 600; }
+    .references {
+      background: #f8fafc;
+      border-radius: 10px;
+      margin-top: 2em;
+      padding: 0.9em;
+      font-size: 1em;
+    }
+    @media (max-width: 700px) {
+      main { padding-top: 105px; }
+      .cv-content { padding: 1.1em 0.45em; }
+      .info-row { gap: 1em; }
+      h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Basanta Ghimire</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="aboutme.html">About</a>
+        <a href="research.html">Research</a>
+        <a href="cv.html">CV</a>
+      </div>
+      <div class="social-icons">
+        <a href="https://linkedin.com/in/basanta-ghimire"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/bsn456"><i class="fab fa-github"></i></a>
+        <a href="mailto:basanta@email.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="cv-content">
+      <h1>Basanta Ghimire</h1>
+      <div class="info-row">
+        <span><i class="fas fa-phone"></i> (+1)864-650-3941</span>
+        <span><i class="fas fa-envelope"></i> <a href="mailto:basanta@email.com">basanta@email.com</a></span>
+        <span><i class="fas fa-location-dot"></i> Clemson, SC, USA</span>
+      </div>
+      <div class="cv-section">
+        <h2>Professional Summary</h2>
+        <p>Experienced in synthesis and characterization of electrode materials (carbon/aluminum) and separators (wood-based) for energy storage. Skilled in slurry preparation, electrode coating, coin/split/pouch cell fabrication, and test system setup.</p>
+        <p>Pioneered development of a <span class="cv-highlight">thermally rechargeable supercapacitor technology</span> (thermopower coefficient 100 mV/K) for low-grade heat energy harvesting.</p>
+        <p>Collaborative, multidisciplinary approach: extensive work on supercapacitors, nanoparticle synthesis, and biomedical imaging sensors.</p>
+      </div>
+      <div class="cv-section">
+        <h2>Education</h2>
+        <ul>
+          <li><b>Clemson University</b>, South Carolina <span class="cv-highlight">(Dept. of Physics & Astronomy)</span></li>
+          <li>Focus: Electrochemical Energy Harvesting & Storage, Nanoparticle Synthesis</li>
+          <li>B.Sc. in Physics (Minor Mathematics & Statistics), April 2018<br>
+              Tribhuvan University, Kathmandu, Nepal</li>
+        </ul>
+      </div>
+      <div class="cv-section">
+        <h2>Technical Skills</h2>
+        <ul>
+          <li><b>Characterization:</b> SEM, TEM, EDX, Raman, UV-Vis, DLS, XRD, DSC</li>
+          <li><b>Software:</b> LabVIEW, SolidWorks, MATLAB, Arduino, Python</li>
+          <li><b>Simulation:</b> Molecular Dynamics with LAMMPS</li>
+          <li>Nanoparticle synthesis, circuit design, 3D printing, X-ray system handling</li>
+        </ul>
+      </div>
+      <div class="cv-section">
+        <h2>Notable Projects & Experience</h2>
+        <ul>
+          <li>Design/fabrication of carbon-based and aluminum electrode materials: carbonization, activation, anodization for supercapacitors</li>
+          <li>Wood-based separator fabrication (delignification of basal wood, 1.6 mm thick)</li>
+          <li>Thermal supercapacitor split/pouch cell design (current improvement)</li>
+          <li>Advanced characterization (TEM, SEM, XRD, Raman) for electrode/electrolyte/separator analysis</li>
+          <li>Discovery: Oscillatory voltage response— coined "Thermally Rechargeable Electrochemical Oscillator (TRECO)"</li>
+          <li>Nanophosphor synthesis (Gd2O2S: Eu/Tb) for biomedical imaging sensors via SEM, TEM, EDX, XRD, Raman</li>
+        </ul>
+      </div>
+      <div class="cv-section">
+        <h2>Positions Held</h2>
+        <ul>
+          <li><b>Graduate Research Intern</b> (Ardent Mills & KYOCERA AVX), Aug–Dec 2023</li>
+          <li><b>Graduate TA / Student Mentor</b> (Clemson), Aug 2019–May 2022
+            <ul>
+              <li>Led physics labs (10 sections, ~180 students), assignments, equipment setup</li>
+              <li>High school mentor (poster presentations)</li>
+              <li>Undergrad guidance—Raman project</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="cv-section">
+        <h2>Patent & Presentations</h2>
+        <ul>
+          <li>“Thermally Rechargeable Electrochemical Oscillator (TRECO)” discovery</li>
+          <li>APS March Meeting, 2024, Minneapolis:
+            <br>
+            “A thermally rechargeable electrochemical oscillator for harvesting near room temperature ultra-low grade waste heat.”
+            <br>
+            <b>Authors:</b> Basanta Ghimire, Mihir Parekh, Herbert Behlow, Morteza Sabet, Sriparna Bhattacharya, Nawraj Sapkota, Pankaj Chauhan, Abha Misra, Apparao Rao
+          </li>
+        </ul>
+      </div>
+      <div class="cv-section references">
+        <h2>References</h2>
+        <ul>
+          <li>Apparao Rao (<a href="mailto:arao@clemson.edu">arao@clemson.edu</a>), Clemson University</li>
+          <li>Jeffrey Anker, Ph.D.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
