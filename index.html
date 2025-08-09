@@ -1,321 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Basanta Ghimire - Energy Engineer</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Basanta Ghimire — Energy Systems Engineer</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --bg:#0f1518;--panel:#111a1e;--panel2:#0e1619;
+      --text:#eaf2ee;--muted:#a9c0b6;--stroke:#1e2a2f;
+      --brand:#26d59a;--brand2:#18a878;--chip:#132127;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+      background:
+        radial-gradient(1000px 600px at 20% -10%, #1a2b2b40 0%, transparent 60%),
+        radial-gradient(900px 600px at 110% 10%, #13312640 0%, transparent 60%),
+        var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit;text-decoration:none}
+
+    .wrap{max-width:1200px;margin:0 auto;padding:20px}
+
+    /* Top bar */
+    .top{
+      display:flex;align-items:center;justify-content:space-between;
+      margin-bottom:16px;padding:10px 14px;border:1px solid var(--stroke);
+      border-radius:12px;background:linear-gradient(180deg,var(--panel),var(--panel2));
+    }
+    .brand{
+      font-weight:800;letter-spacing:.02em;font-size:16px;
+      background:linear-gradient(90deg,#66ffd0,var(--brand));
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent
+    }
+    .nav{display:flex;gap:14px}
+    .nav a{color:#cfe3dc;font-weight:600;font-size:14px;padding:6px 10px;border-radius:8px}
+    .nav a:hover{background:#152229}
+    .contact-top{
+      padding:8px 12px;border-radius:9px;border:1px solid var(--stroke);
+      background:#101b1f;font-weight:700;font-size:13px;color:#dff6ed
+    }
+    .contact-top:hover{background:#142329}
+
+    /* Two rows (each row is a 2-col grid) */
+    .row{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin-bottom:16px}
+    .card{
+      background:linear-gradient(180deg,var(--panel),var(--panel2));
+      border:1px solid var(--stroke);border-radius:14px;padding:18px;
+      box-shadow:0 8px 26px #00000040, inset 0 1px 0 #ffffff0a;
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #fff;
-      color: #111;
-      line-height: 1.5;
-      font-weight: 400;
+    /* Row 1 left: hero */
+    .hero{display:grid;grid-template-columns:96px 1fr;gap:16px;align-items:center}
+    .avatar{width:96px;height:96px;border-radius:12px;
+      background:url('images/basanta.jpg') center/cover no-repeat;border:1px solid #2a3b3f}
+    .title{font-size:22px;font-weight:700;letter-spacing:.01em}
+    .sub{color:#9fd9c3;font-weight:600;margin-top:2px;font-size:14px}
+    .blurb{color:var(--muted);margin-top:8px;line-height:1.6;font-size:14px}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .btn{padding:10px 12px;border-radius:9px;border:1px solid var(--stroke);background:#111a1e;font-weight:700;font-size:13px}
+    .btn:hover{background:#152229}
+    .primary{background:linear-gradient(90deg,var(--brand2),var(--brand));color:#062418;border:none}
+
+    /* Row 1 right: quick facts */
+    .facts h4{font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:#aee4cf;margin-bottom:6px}
+    .facts .list{display:grid;gap:8px;margin-bottom:8px}
+    .chip{display:inline-block;background:var(--chip);border:1px solid var(--stroke);
+      border-radius:999px;padding:6px 10px;font-weight:600;font-size:12px;color:#d7efe7;margin:4px 6px 0 0}
+
+    /* Row 2 left: what I do */
+    .section h3{font-size:16px;margin-bottom:8px}
+    .section p{font-size:14px;color:#cfe3dc;line-height:1.6}
+
+    /* Row 2 right: toolbox */
+    .tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px}
+    .tile{background:#121c20;border:1px solid var(--stroke);border-radius:10px;padding:10px}
+    .k{color:#93cabb;font:700 11px/1 Inter;letter-spacing:.05em;text-transform:uppercase}
+    .v{color:#e8f5f0;font-weight:600;margin-top:4px;font-size:13px}
+
+    /* Fit above the fold on common laptop heights */
+    @media (min-width:1100px){
+      .row{grid-auto-rows:minmax(0,1fr)}
+      .card{height:100%}
     }
 
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 60px 24px;
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 80px;
-    }
-
-    .profile-pic {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: #f0f0f0;
-      margin: 0 auto 32px;
-      background-image: url('images/basanta.jpg');
-      background-size: cover;
-      background-position: center;
-    }
-
-    h1 {
-      font-size: 32px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      letter-spacing: -0.02em;
-    }
-
-    .role {
-      font-size: 18px;
-      color: #666;
-      margin-bottom: 32px;
-      font-weight: 500;
-    }
-
-    .bio {
-      font-size: 16px;
-      color: #333;
-      max-width: 480px;
-      margin: 0 auto 40px;
-      line-height: 1.6;
-    }
-
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 32px;
-      flex-wrap: wrap;
-    }
-
-    .contact-links a {
-      color: #666;
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.2s ease;
-    }
-
-    .contact-links a:hover {
-      color: #111;
-    }
-
-    .cta-section {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-      background: #111;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 6px;
-      font-size: 15px;
-      font-weight: 500;
-      text-decoration: none;
-      display: inline-block;
-      transition: all 0.2s ease;
-    }
-
-    .btn-primary:hover {
-      background: #000;
-      transform: translateY(-1px);
-    }
-
-    .btn-secondary {
-      background: white;
-      color: #111;
-      padding: 12px 24px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-size: 15px;
-      font-weight: 500;
-      text-decoration: none;
-      display: inline-block;
-      transition: all 0.2s ease;
-    }
-
-    .btn-secondary:hover {
-      border-color: #111;
-      background: #fafafa;
-    }
-
-    .content {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 80px;
-      margin-top: 80px;
-    }
-
-    .main {
-      border-right: 1px solid #f0f0f0;
-      padding-right: 60px;
-    }
-
-    .section {
-      margin-bottom: 48px;
-    }
-
-    .section-title {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 16px;
-      color: #111;
-    }
-
-    .section-content {
-      font-size: 15px;
-      color: #555;
-      line-height: 1.6;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .skill {
-      background: #f8f8f8;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 14px;
-      color: #666;
-      border: 1px solid #eee;
-    }
-
-    .sidebar {
-      padding-top: 8px;
-    }
-
-    .contact-item {
-      margin-bottom: 16px;
-    }
-
-    .contact-item a {
-      color: #111;
-      text-decoration: none;
-      font-size: 15px;
-      transition: color 0.2s ease;
-    }
-
-    .contact-item a:hover {
-      color: #666;
-    }
-
-    .availability {
-      background: #f8fcf8;
-      border: 1px solid #e8f5e8;
-      border-radius: 8px;
-      padding: 16px;
-      margin-top: 32px;
-      text-align: center;
-    }
-
-    .availability-status {
-      color: #16a34a;
-      font-weight: 500;
-      font-size: 14px;
-      margin-bottom: 4px;
-    }
-
-    .availability-text {
-      font-size: 13px;
-      color: #666;
-    }
-
-    @media (max-width: 768px) {
-      .content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .main {
-        border-right: none;
-        padding-right: 0;
-      }
-
-      .contact-links {
-        justify-content: flex-start;
-        margin-bottom: 24px;
-      }
-
-      .cta-section {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .btn-primary,
-      .btn-secondary {
-        width: 200px;
-        text-align: center;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        padding: 40px 16px;
-      }
-
-      h1 {
-        font-size: 28px;
-      }
-
-      .role {
-        font-size: 16px;
-      }
-
-      .content {
-        gap: 32px;
-      }
+    /* Responsive stack */
+    @media (max-width:900px){
+      .row{grid-template-columns:1fr}
+      .hero{grid-template-columns:72px 1fr}
+      .avatar{width:72px;height:72px}
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <div class="profile-pic"></div>
-      <h1>Basanta Ghimire</h1>
-      <div class="role">Energy Systems Engineer</div>
-      <div class="bio">
-        PhD student developing next-generation battery technologies. 
-        Ready to bring deep research experience and computational expertise to industry challenges.
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">Basanta Ghimire</div>
+      <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="aboutme.html">About</a>
+        <a href="research.html">Research</a>
+        <a href="cv.html">CV</a>
       </div>
-      <div class="contact-links">
-        <a href="mailto:basanta@email.com">basanta@email.com</a>
-        <a href="https://linkedin.com/in/basanta-ghimire">LinkedIn</a>
-        <a href="cv.html">Resume</a>
+      <a class="contact-top" href="mailto:basanta@email.com">Contact</a>
+    </div>
+
+    <!-- Row 1 -->
+    <div class="row">
+      <div class="card hero">
+        <div class="avatar"></div>
+        <div>
+          <div class="title">Energy Systems Engineer</div>
+          <div class="sub">Battery R&D • Electrochemistry • Materials</div>
+          <p class="blurb">
+            I build and test coin/split/pouch cells; synthesize and characterize
+            electrodes and separators (SEM, TEM, XRD, Raman); and use LAMMPS/MATLAB/Python
+            to guide experiments and accelerate outcomes.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="cv.html">View CV</a>
+            <a class="btn" href="mailto:basanta@email.com">Email</a>
+            <a class="btn" href="https://linkedin.com/in/basanta-ghimire">LinkedIn</a>
+          </div>
+        </div>
       </div>
-      <div class="cta-section">
-        <a href="mailto:basanta@email.com" class="btn-primary">Let's Talk</a>
-        <a href="cv.html" class="btn-secondary">View Resume</a>
+
+      <div class="card facts">
+        <h4>Quick links</h4>
+        <div class="list">
+          <div>
+            <a class="btn" href="cv.html">Download CV</a>
+            <a class="btn" href="research.html">Research</a>
+            <a class="btn" href="aboutme.html">About</a>
+          </div>
+        </div>
+        <h4>Highlights</h4>
+        <p style="color:#cfe3dc;font-size:14px;margin:6px 0 10px 0">
+          TRECO concept • Wood‑based separator • Porous Al electrodes • Thermal supercapacitors
+        </p>
+        <h4>Availability</h4>
+        <span class="chip">Open to Full‑Time</span>
+        <span class="chip">Battery R&D</span>
+        <span class="chip">Materials</span>
       </div>
-    </header>
+    </div>
 
-    <div class="content">
-      <main class="main">
-        <div class="section">
-          <h2 class="section-title">What I Do</h2>
-          <div class="section-content">
-            I specialize in electrochemical energy storage, combining experimental synthesis with computational modeling. 
-            My research has focused on nanoparticle optimization using Python, MATLAB, and molecular dynamics simulations.
-          </div>
-        </div>
+    <!-- Row 2 -->
+    <div class="row">
+      <div class="card section">
+        <h3>What I Do</h3>
+        <p>
+          • Synthesize and analyze electrode/separator materials; develop cells for thermal energy harvesting.<br/>
+          • Design experiments informed by MD simulation to reduce iteration time.<br/>
+          • Build robust data pipelines for analysis and decision-making.
+        </p>
+      </div>
 
-        <div class="section">
-          <h2 class="section-title">Core Skills</h2>
-          <div class="skills">
-            <span class="skill">Battery Technology</span>
-            <span class="skill">Materials Science</span>
-            <span class="skill">Python</span>
-            <span class="skill">MATLAB</span>
-            <span class="skill">LAMMPS</span>
-            <span class="skill">Data Analysis</span>
-            <span class="skill">R&D</span>
-          </div>
+      <div class="card section">
+        <h3>Toolbox</h3>
+        <div class="tiles">
+          <div class="tile"><div class="k">Software</div><div class="v">Python, MATLAB, LabVIEW</div></div>
+          <div class="tile"><div class="k">Simulation</div><div class="v">LAMMPS (MD)</div></div>
+          <div class="tile"><div class="k">Characterization</div><div class="v">SEM, TEM, XRD, Raman</div></div>
+          <div class="tile"><div class="k">Cell builds</div><div class="v">Coin / Split / Pouch</div></div>
         </div>
-      </main>
-
-      <aside class="sidebar">
-        <div class="section">
-          <h3 class="section-title">Quick Links</h3>
-          <div class="contact-item">
-            <a href="aboutme.html">About</a>
-          </div>
-          <div class="contact-item">
-            <a href="research.html">Research</a>
-          </div>
-        </div>
-
-        <div class="availability">
-          <div class="availability-status">● Available for hire</div>
-          <div class="availability-text">Open to full-time opportunities</div>
-        </div>
-      </aside>
+      </div>
     </div>
   </div>
 </body>
