@@ -8,140 +8,63 @@
     <style>
         /* General Styles */
         :root {
-            --bg-color: #03040c;
+            --bg-color-main: #03040c;
+            --bg-color-alt: #1a232f;
             --text-color: #e6f7ff;
             --accent-color: #00e5ff;
             --secondary-accent: #00c4e1;
             --border-color: #005f73;
-            --card-bg: #07101b;
             --shadow-glow: rgba(0, 229, 255, 0.5);
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
             font-family: 'Roboto Mono', monospace;
             line-height: 1.6;
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            color: var(--text-color);
             overflow-x: hidden;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="1" fill="%230e2c38" /></svg>');
-            background-size: 20px 20px;
-            animation: moveGrid 60s linear infinite;
-            z-index: -2;
-        }
-
-        @keyframes moveGrid {
-            from { background-position: 0 0; }
-            to { background-position: 200px 200px; }
-        }
-
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 40px 20px;
-        }
-
-        /* Header & Hero Section */
-        .hero {
-            text-align: center;
-            padding-bottom: 50px;
-            margin-bottom: 50px;
-            position: relative;
+        /* Left Side: Content */
+        .left-panel {
+            background-color: var(--bg-color-alt);
+            padding: 80px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
-        .profile-pic-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--accent-color);
-            box-shadow: 0 0 20px var(--shadow-glow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .profile-pic:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px var(--shadow-glow);
-        }
-
-        .hero h1 {
+        .left-panel h1 {
             font-family: 'Major Mono Display', monospace;
-            font-size: 3em;
+            font-size: 3.5em;
             color: var(--accent-color);
             text-shadow: 0 0 10px var(--shadow-glow);
-            margin-bottom: 5px;
+            margin-bottom: 0.5em;
+            letter-spacing: 2px;
         }
 
-        .hero p {
+        .left-panel .subtitle {
             font-size: 1.2em;
-            font-weight: 400;
             color: var(--secondary-accent);
+            margin-bottom: 2em;
         }
 
-        /* Section Styling */
         .section {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            padding: 30px;
-            margin-bottom: 25px;
-            box-shadow: 0 0 10px rgba(0, 229, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 30px;
         }
-
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-            animation: borderFlow 4s linear infinite;
-        }
-
-        @keyframes borderFlow {
-            from { left: -100%; }
-            to { left: 100%; }
-        }
-
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
-        }
-
+        
         .section h2 {
             font-family: 'Major Mono Display', monospace;
             font-size: 1.8em;
             color: var(--accent-color);
             text-shadow: 0 0 5px rgba(0, 229, 255, 0.2);
-            margin-bottom: 20px;
+            border-bottom: 1px dashed var(--border-color);
             padding-bottom: 5px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .section-content {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .section-content h3 {
@@ -166,7 +89,7 @@
         .link-button {
             display: inline-block;
             background-color: var(--accent-color);
-            color: var(--bg-color);
+            color: var(--bg-color-alt);
             padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
@@ -189,7 +112,7 @@
 
         .skill-item {
             background-color: var(--border-color);
-            color: var(--card-bg);
+            color: var(--bg-color-alt);
             padding: 8px 15px;
             border-radius: 3px;
             font-size: 0.9em;
@@ -199,13 +122,12 @@
 
         .skill-item:hover {
             background-color: var(--accent-color);
-            color: var(--bg-color);
+            color: var(--bg-color-alt);
         }
 
         .social-links {
             display: flex;
             gap: 20px;
-            justify-content: center;
             margin-top: 20px;
         }
 
@@ -220,9 +142,48 @@
             transform: translateY(-2px) scale(1.1);
         }
 
+        /* Right Side: Profile Picture */
+        .right-panel {
+            background-color: var(--bg-color-main);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: grayscale(100%) contrast(1.2);
+            opacity: 0.7;
+            transition: filter 0.5s ease;
+        }
+
+        .profile-pic:hover {
+            filter: grayscale(0%) contrast(1);
+            opacity: 1;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
-            .hero h1 {
+            body {
+                grid-template-columns: 1fr;
+            }
+
+            .left-panel {
+                order: 2;
+                padding: 40px 20px;
+            }
+
+            .right-panel {
+                order: 1;
+                height: 400px;
+            }
+
+            .left-panel h1 {
                 font-size: 2.5em;
             }
 
@@ -234,29 +195,25 @@
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container">
-        <header class="hero">
-            <div class="profile-pic-container">
-                <img src="basanta.jpg" alt="Basanta Ghimire" class="profile-pic">
-            </div>
+    <div class="left-panel">
+        <header>
             <h1>BASANTA GHIMIRE</h1>
-            <p>PhD Scholar // ENERGY HARVESTING // BIOIMAGING SENSORS</p>
+            <p class="subtitle">PhD Scholar // ENERGY HARVESTING // BIOIMAGING SENSORS</p>
         </header>
 
         <section class="section">
             <h2>ABOUT ME</h2>
-            <p>I am a PhD scholar at Clemson University, working on cutting-edge energy harvesting devices and bioimaging sensors. My research is focused on developing innovative solutions for sustainable energy and advanced medical imaging technologies. The goal is to push the boundaries of what's possible in applied physics and engineering.</p>
+            <p>I am a PhD scholar at Clemson University, working on cutting-edge energy harvesting devices and bioimaging sensors. My research is focused on developing innovative solutions for sustainable energy and advanced medical imaging technologies.</p>
             <p>My foundational engineering knowledge was built during my undergraduate studies at St. Xavier's College, Kathmandu, which prepared me for the rigors of advanced research.</p>
         </section>
-        
+
         <section class="section">
             <h2>RESEARCH</h2>
             <div class="section-content">
                 <h3>CURRENT PROJECTS</h3>
-                <p>My work at Clemson University is primarily focused on two key areas:</p>
                 <ul>
-                    <li>**Energy Harvesting:** Developing novel, high-efficiency piezoelectric nanogenerators for powering small-scale electronics and wireless sensors. This involves material synthesis, device fabrication, and performance testing.</li>
-                    <li>**Bioimaging Sensors:** Designing and fabricating advanced fluorescent sensors for real-time, non-invasive imaging of biological processes at the cellular level. This has applications in medical diagnostics and drug discovery.</li>
+                    <li>**Energy Harvesting:** Developing high-efficiency piezoelectric nanogenerators for powering small-scale electronics and wireless sensors.</li>
+                    <li>**Bioimaging Sensors:** Designing and fabricating advanced fluorescent sensors for real-time, non-invasive imaging of biological processes.</li>
                 </ul>
             </div>
             <div class="section-content">
@@ -291,6 +248,10 @@
                 <a href="#" title="Research Gate"><i class="fas fa-microscope social-icon"></i></a>
             </div>
         </section>
+    </div>
+
+    <div class="right-panel">
+        <img src="basanta.jpg" alt="Basanta Ghimire" class="profile-pic">
     </div>
 </body>
 </html>
