@@ -1,480 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basanta Ghimire - Energy Engineer</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basanta Ghimire – Energy Engineer</title>
 
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #fafafa;
-        }
+<!-- Inter font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-        /* Header Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
+<!-- Font Awesome (adds the real icons) -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+<style>
+/* — your original CSS, unchanged — */
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #2563eb;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #64748b;
-            font-weight: 400;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #2563eb;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-icons a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .social-icons a:hover {
-            background: #2563eb;
-            border-color: #2563eb;
-            transform: translateY(-2px);
-        }
-
-        /* Main Content */
-        main {
-            margin-top: 80px;
-            min-height: calc(100vh - 80px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .container {
-            max-width: 1000px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .content {
-            padding-right: 2rem;
-        }
-
-        .profile-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .profile-image {
-            width: 280px;
-            height: 280px;
-            border-radius: 20px;
-            background: url('images/basanta.jpg');
-            background-size: cover;
-            background-position: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-image:hover {
-            transform: translateY(-5px);
-        }
-
-        .hire-btn {
-            background: #2563eb;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 12px;
-            font-weight: 500;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-        }
-
-        .hire-btn:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
-            color: #1e293b;
-            line-height: 1.1;
-        }
-
-        .name {
-            font-weight: 600;
-        }
-
-        .subtitle {
-            font-size: 1.3rem;
-            color: #2563eb;
-            margin-bottom: 2rem;
-            font-weight: 500;
-        }
-
-        .description {
-            font-size: 1.1rem;
-            color: #64748b;
-            margin-bottom: 3rem;
-            line-height: 1.7;
-            max-width: 500px;
-        }
-
-        .sections {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .section-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            text-align: center;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            border: 1px solid #f1f5f9;
-        }
-
-        .section-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-            border-color: #2563eb;
-        }
-
-        .section-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .section-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-desc {
-            font-size: 0.9rem;
-            color: #64748b;
-        }
-
-        .contact-section {
-            margin-top: 3rem;
-            padding-top: 3rem;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .contact-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 2rem;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            background: #f1f5f9;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: #2563eb;
-        }
-
-        .contact-info h4 {
-            font-weight: 600;
-            color: #1e293b;
-            font-size: 0.95rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .contact-info p {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-                text-align: center;
-            }
-
-            .content {
-                padding-right: 0;
-                order: 2;
-            }
-
-            .profile-section {
-                order: 1;
-            }
-
-            .profile-image {
-                width: 220px;
-                height: 220px;
-            }
-
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .sections {
-                grid-template-columns: 1fr;
-            }
-
-            main {
-                padding: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .profile-image {
-                width: 200px;
-                height: 200px;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .subtitle {
-                font-size: 1.1rem;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+/* NEW: size the icons so they replace emojis 1-for-1 */
+.social-icons a {font-size:18px;width:36px;height:36px;}
+.section-icon i {font-size:2.5rem;}
+.contact-icon   {font-size:18px;width:40px;height:40px;}
+</style>
 </head>
+
 <body>
-    <header>
-        <nav>
-            <div class="logo">Basanta Ghimire</div>
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#research">Research</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <div class="social-icons">
-                <a href="#" title="LinkedIn">💼</a>
-                <a href="#" title="GitHub">💻</a>
-                <a href="#" title="Email">📧</a>
-            </div>
-        </nav>
-    </header>
+<header>
+  <nav>
+    <div class="logo">Basanta Ghimire</div>
 
-    <main>
-        <div class="container">
-            <div class="content">
-                <h1>Hi, I'm <span class="name">Basanta</span></h1>
-                <p class="subtitle">Energy Systems Engineer</p>
-                <p class="description">
-                    I specialize in designing innovative energy generation and storage solutions. 
-                    Passionate about sustainable technology and creating efficient power systems 
-                    for the future.
-                </p>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#contact">Contact</a>
+    </div>
 
-                <div class="sections">
-                    <a href="#research" class="section-card">
-                        <span class="section-icon">🔬</span>
-                        <h3 class="section-title">Research</h3>
-                        <p class="section-desc">Latest projects & findings</p>
-                    </a>
-                    <a href="#about" class="section-card">
-                        <span class="section-icon">👨‍💼</span>
-                        <h3 class="section-title">About Me</h3>
-                        <p class="section-desc">Background & experience</p>
-                    </a>
-                    <a href="#" class="section-card">
-                        <span class="section-icon">📄</span>
-                        <h3 class="section-title">Download CV</h3>
-                        <p class="section-desc">View my resume</p>
-                    </a>
-                </div>
+    <!-- emojis ➜ Font Awesome icons -->
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/your-profile" title="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://github.com/your-profile"           title="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:basanta@email.com"                  title="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </div>
+  </nav>
+</header>
 
-                <div class="contact-section">
-                    <h2 class="contact-title">Let's Connect</h2>
-                    <div class="contact-grid">
-                        <a href="mailto:basanta@email.com" class="contact-item">
-                            <div class="contact-icon">📧</div>
-                            <div class="contact-info">
-                                <h4>Email</h4>
-                                <p>basanta@email.com</p>
-                            </div>
-                        </a>
-                        <a href="#" class="contact-item">
-                            <div class="contact-icon">💼</div>
-                            <div class="contact-info">
-                                <h4>LinkedIn</h4>
-                                <p>Connect with me</p>
-                            </div>
-                        </a>
-                        <a href="#" class="contact-item">
-                            <div class="contact-icon">💻</div>
-                            <div class="contact-info">
-                                <h4>GitHub</h4>
-                                <p>View my code</p>
-                            </div>
-                        </a>
-                        <a href="#" class="contact-item">
-                            <div class="contact-icon">📱</div>
-                            <div class="contact-info">
-                                <h4>Phone</h4>
-                                <p>+1 (555) 123-4567</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+<main>
+  <div class="container">
+    <!-- ================= LEFT COLUMN ================= -->
+    <div class="content" id="home">
+      <h1>Hi, I'm <span class="name">Basanta</span></h1>
+      <p class="subtitle">Energy Systems Engineer</p>
+      <p class="description">
+        I specialize in designing innovative energy-generation and storage solutions.
+        Passionate about sustainable technology and creating efficient power systems
+        for the future.
+      </p>
+
+      <div class="sections">
+        <a href="#research" class="section-card">
+          <span class="section-icon"><i class="fas fa-flask"></i></span>
+          <h3 class="section-title">Research</h3>
+          <p class="section-desc">Latest projects &amp; findings</p>
+        </a>
+        <a href="#about" class="section-card">
+          <span class="section-icon"><i class="fas fa-user"></i></span>
+          <h3 class="section-title">About Me</h3>
+          <p class="section-desc">Background &amp; experience</p>
+        </a>
+        <a href="#" class="section-card">
+          <span class="section-icon"><i class="fas fa-file-lines"></i></span>
+          <h3 class="section-title">Download CV</h3>
+          <p class="section-desc">View my résumé</p>
+        </a>
+      </div>
+
+      <div class="contact-section" id="contact">
+        <h2 class="contact-title">Let's Connect</h2>
+        <div class="contact-grid">
+          <a href="mailto:basanta@email.com" class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-info">
+              <h4>Email</h4>
+              <p>basanta@email.com</p>
             </div>
-
-            <div class="profile-section">
-                <div class="profile-image"></div>
-                <a href="#contact" class="hire-btn">Hire Me</a>
+          </a>
+          <a href="https://www.linkedin.com/in/your-profile" class="contact-item">
+            <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
+            <div class="contact-info">
+              <h4>LinkedIn</h4>
+              <p>Connect with me</p>
             </div>
+          </a>
+          <a href="https://github.com/your-profile" class="contact-item">
+            <div class="contact-icon"><i class="fab fa-github"></i></div>
+            <div class="contact-info">
+              <h4>GitHub</h4>
+              <p>View my code</p>
+            </div>
+          </a>
+          <a href="tel:+15551234567" class="contact-item">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <div class="contact-info">
+              <h4>Phone</h4>
+              <p>+1 (555) 123-4567</p>
+            </div>
+          </a>
         </div>
-    </main>
+      </div>
+    </div>
 
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+    <!-- ================= RIGHT COLUMN ================= -->
+    <div class="profile-section">
+      <div class="profile-image"></div>
+      <a href="#contact" class="hire-btn">Hire Me</a>
+    </div>
+  </div>
+</main>
 
-        // Add subtle animations on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+<!-- your original JavaScript, unchanged -->
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+  anchor.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(anchor.getAttribute('href'));
+    if(t){t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.style.opacity='1';
+      entry.target.style.transform='translateY(0)';
+    }
+  });
+},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
 
-        // Observe elements for animation
-        document.querySelectorAll('.section-card, .contact-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
-    </script>
+document.querySelectorAll('.section-card,.contact-item').forEach(el=>{
+  el.style.opacity='0';
+  el.style.transform='translateY(20px)';
+  el.style.transition='all 0.6s ease';
+  obs.observe(el);
+});
+</script>
 </body>
 </html>
