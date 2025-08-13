@@ -1,679 +1,508 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Basanta Ghimire — Electrochemical Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-<style>
-  :root{
-    --bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --paper: #ffffff; 
-    --muted: #64748b; 
-    --text: #1e293b;
-    --line: #e2e8f0; 
-    --accent: #10b981; 
-    --accent-dark: #059669;
-    --chip: #f0fdf4; 
-    --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    --shadow-lg: 0 35px 60px -12px rgba(0, 0, 0, 0.3);
-  }
-  
-  *{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body{
-    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-    background: var(--bg);
-    min-height: 100vh;
-    color: var(--text);
-    line-height: 1.6;
-  }
-
-  /* Animated background particles */
-  .bg-animation {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1;
-  }
-  
-  .particle {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    animation: float 20s infinite ease-in-out;
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33% { transform: translateY(-30px) rotate(120deg); }
-    66% { transform: translateY(20px) rotate(240deg); }
-  }
-
-  /* Top bar with glassmorphism */
-  .topbar{
-    position: sticky; 
-    top: 0; 
-    z-index: 100;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  }
-  
-  .nav{
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 20px 24px;
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between;
-  }
-  
-  .brand{
-    font-weight: 800; 
-    color: #ffffff; 
-    letter-spacing: -0.02em;
-    font-size: 20px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .links{
-    display: flex; 
-    gap: 32px;
-  }
-  
-  .links a{
-    color: rgba(255, 255, 255, 0.9); 
-    text-decoration: none; 
-    font-weight: 600;
-    transition: all 0.3s ease;
-    position: relative;
-  }
-  
-  .links a:hover{
-    color: #ffffff;
-    transform: translateY(-1px);
-  }
-  
-  .links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent);
-    transition: width 0.3s ease;
-  }
-  
-  .links a:hover::after {
-    width: 100%;
-  }
-
-  /* Main container */
-  .wrap{
-    max-width: 1200px; 
-    margin: 40px auto; 
-    padding: 0 24px;
-  }
-  
-  .card{
-    background: var(--paper);
-    border-radius: 24px; 
-    box-shadow: var(--shadow-lg);
-    padding: 48px;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent), #3b82f6, #8b5cf6);
-  }
-
-  /* Header with improved layout */
-  .header-grid{
-    display: grid; 
-    grid-template-columns: 240px 1fr; 
-    gap: 48px; 
-    align-items: center;
-    margin-bottom: 48px;
-  }
-  
-  .avatar-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .avatar{
-    width: 200px; 
-    height: 200px; 
-    border-radius: 50%;
-    background: url('images/basanta.jpg') center/cover no-repeat;
-    border: 4px solid var(--paper);
-    box-shadow: var(--shadow);
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .avatar:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-lg);
-  }
-  
-  .avatar::after {
-    content: '';
-    position: absolute;
-    inset: -8px;
-    border-radius: 50%;
-    background: linear-gradient(45deg, var(--accent), #3b82f6, #8b5cf6);
-    z-index: -1;
-    animation: rotate 4s linear infinite;
-  }
-  
-  @keyframes rotate {
-    to { transform: rotate(360deg); }
-  }
-  
-  .name{
-    font-size: 36px; 
-    font-weight: 800; 
-    color: var(--text);
-    margin-bottom: 8px;
-    letter-spacing: -0.02em;
-  }
-  
-  .role{
-    color: var(--accent-dark); 
-    font-weight: 600; 
-    font-size: 18px;
-    margin-bottom: 16px;
-  }
-  
-  .affil{
-    color: var(--muted); 
-    line-height: 1.7;
-    font-size: 16px;
-    margin-bottom: 24px;
-  }
-  
-  .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-  
-  .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--muted);
-    text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-  }
-  
-  .contact-item:hover {
-    background: var(--chip);
-    color: var(--accent-dark);
-    transform: translateX(4px);
-  }
-  
-  .action-buttons {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  
-  .btn-primary {
-    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-    color: #ffffff;
-    border: none;
-    padding: 14px 28px;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 16px;
-    text-decoration: none;
-    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .btn-primary::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s;
-  }
-  
-  .btn-primary:hover::before {
-    left: 100%;
-  }
-  
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 35px rgba(16, 185, 129, 0.4);
-  }
-  
-  .btn-secondary {
-    background: transparent;
-    color: var(--accent-dark);
-    border: 2px solid var(--accent);
-    padding: 12px 24px;
-    border-radius: 12px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  
-  .btn-secondary:hover {
-    background: var(--accent);
-    color: white;
-    transform: translateY(-2px);
-  }
-
-  /* Content sections with better spacing */
-  .content-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-  }
-  
-  .section {
-    background: rgba(248, 250, 252, 0.5);
-    border-radius: 16px;
-    padding: 32px;
-    border: 1px solid var(--line);
-    transition: all 0.3s ease;
-  }
-  
-  .section:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
-  }
-  
-  .section-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  
-  .section-title::before {
-    content: '';
-    width: 4px;
-    height: 24px;
-    background: linear-gradient(135deg, var(--accent), #3b82f6);
-    border-radius: 2px;
-  }
-  
-  .content-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  
-  .content-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 16px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    transition: all 0.3s ease;
-  }
-  
-  .content-item:hover {
-    transform: translateX(8px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  }
-  
-  .content-item::before {
-    content: '▶';
-    color: var(--accent);
-    font-size: 12px;
-    margin-top: 2px;
-    flex-shrink: 0;
-  }
-  
-  .edu-item {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    transition: all 0.3s ease;
-  }
-  
-  .edu-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  .edu-degree {
-    font-weight: 700;
-    color: var(--text);
-    font-size: 16px;
-    margin-bottom: 4px;
-  }
-  
-  .edu-meta {
-    color: var(--muted);
-    font-size: 14px;
-  }
-
-  /* CTA Section */
-  .cta-section {
-    margin-top: 48px;
-    text-align: center;
-    padding: 48px 32px;
-    background: linear-gradient(135deg, var(--chip), rgba(16, 185, 129, 0.05));
-    border-radius: 20px;
-    border: 2px dashed var(--accent);
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .cta-section::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.03), transparent);
-    animation: pulse 4s ease-in-out infinite;
-  }
-  
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.1); opacity: 0.5; }
-  }
-  
-  .cta-title {
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--text);
-    margin-bottom: 12px;
-    position: relative;
-    z-index: 2;
-  }
-  
-  .cta-text {
-    color: var(--muted);
-    font-size: 16px;
-    margin-bottom: 24px;
-    position: relative;
-    z-index: 2;
-  }
-
-  /* Responsive design */
-  @media (max-width: 1024px) {
-    .content-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .header-grid {
-      grid-template-columns: 1fr;
-      text-align: center;
-      gap: 32px;
-    }
-    
-    .card {
-      padding: 32px 24px;
-    }
-    
-    .nav {
-      padding: 16px 20px;
-    }
-    
-    .links {
-      gap: 20px;
-    }
-    
-    .contact-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .action-buttons {
-      justify-content: center;
-    }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basanta Ghimire - Energy Researcher</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --gray: #94a3b8;
+            --light-gray: #e2e8f0;
+            --accent: #dc2626;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+        }
+        
+        /* Profile Section */
+        .profile-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(30deg);
+        }
+        
+        .profile-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.3);
+            background: linear-gradient(45deg, #1e40af, #3b82f6);
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        
+        .title {
+            font-size: 1.1rem;
+            text-align: center;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .contact-item i {
+            font-size: 1.1rem;
+            width: 25px;
+        }
+        
+        .divider {
+            height: 1px;
+            background: rgba(255,255,255,0.3);
+            margin: 25px 0;
+        }
+        
+        .skills {
+            margin-top: auto;
+        }
+        
+        .skills h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: rgba(255,255,255,0.15);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        /* Content Section */
+        .content-section {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title i {
+            background: var(--light-gray);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .about-text {
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .research-card {
+            background: var(--light-gray);
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .research-card:hover {
+            transform: translateY(-5px);
+            background: var(--light);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .research-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+        
+        .research-name {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+        
+        .research-desc {
+            font-size: 0.9rem;
+            color: var(--dark);
+            opacity: 0.9;
+        }
+        
+        .publications {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .publication-item {
+            display: flex;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .pub-icon {
+            background: var(--light-gray);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--primary);
+        }
+        
+        .pub-content {
+            flex: 1;
+        }
+        
+        .pub-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+        
+        .pub-authors {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid var(--light-gray);
+        }
+        
+        .btn {
+            padding: 14px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            justify-content: center;
+            flex: 1;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--light);
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 850px) {
+            .container {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+            }
+            
+            .profile-section {
+                padding: 30px;
+            }
+            
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 500px) {
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .profile-image {
+                width: 120px;
+                height: 120px;
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="bg-animation">
-    <div class="particle" style="left: 10%; animation-delay: 0s; width: 20px; height: 20px;"></div>
-    <div class="particle" style="left: 20%; animation-delay: 2s; width: 15px; height: 15px;"></div>
-    <div class="particle" style="left: 30%; animation-delay: 4s; width: 25px; height: 25px;"></div>
-    <div class="particle" style="left: 40%; animation-delay: 6s; width: 18px; height: 18px;"></div>
-    <div class="particle" style="left: 50%; animation-delay: 8s; width: 22px; height: 22px;"></div>
-    <div class="particle" style="left: 60%; animation-delay: 10s; width: 16px; height: 16px;"></div>
-    <div class="particle" style="left: 70%; animation-delay: 12s; width: 28px; height: 28px;"></div>
-    <div class="particle" style="left: 80%; animation-delay: 14s; width: 19px; height: 19px;"></div>
-    <div class="particle" style="left: 90%; animation-delay: 16s; width: 24px; height: 24px;"></div>
-  </div>
-
-  <div class="topbar">
-    <div class="nav">
-      <div class="brand">Basanta Ghimire</div>
-      <div class="links">
-        <a href="#about">About</a>
-        <a href="#expertise">Expertise</a>
-        <a href="#contact">Contact</a>
-      </div>
+    <div class="container">
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <div class="profile-content">
+                <div class="profile-image">BG</div>
+                <h1 class="name">Basanta Ghimire</h1>
+                <p class="title">Ph.D. Candidate in Physics</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        basantg@g.clemson.edu
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        (+1) 864-650-3941
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Clemson University, SC
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        linkedin.com/in/basanta-ghimire
+                    </div>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div class="skills">
+                    <h3>Key Expertise</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Electrochemistry</span>
+                        <span class="skill-tag">Battery Tech</span>
+                        <span class="skill-tag">Materials Science</span>
+                        <span class="skill-tag">Thermal Harvesting</span>
+                        <span class="skill-tag">MD Simulations</span>
+                        <span class="skill-tag">SEM/TEM</span>
+                        <span class="skill-tag">Python/MATLAB</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Content Section -->
+        <div class="content-section">
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-user"></i> Professional Summary
+                </h2>
+                <p class="about-text">
+                    Ph.D. candidate with 5+ years of research experience specializing in renewable energy harvesting and storage systems. 
+                    Developed groundbreaking thermally rechargeable supercapacitor technology with record 100 mV/K thermopower coefficient.
+                </p>
+                <p class="about-text">
+                    Expertise in electrode material synthesis, electrochemical characterization, and Molecular Dynamics simulations. 
+                    Inventor of patented Thermoelectrochemical Oscillator technology for waste heat recovery applications.
+                </p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-flask"></i> Research Highlights
+                </h2>
+                <div class="research-grid">
+                    <div class="research-card">
+                        <div class="research-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="research-name">Thermal Supercapacitors</h3>
+                        <p class="research-desc">
+                            Achieved 100 mV/K thermopower coefficient - 4x higher than previous records.
+                        </p>
+                    </div>
+                    
+                    <div class="research-card">
+                        <div class="research-icon">
+                            <i class="fas fa-atom"></i>
+                        </div>
+                        <h3 class="research-name">MD Simulations</h3>
+                        <p class="research-desc">
+                            Ion transport studies using LAMMPS for electrode/electrolyte systems.
+                        </p>
+                    </div>
+                    
+                    <div class="research-card">
+                        <div class="research-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <h3 class="research-name">Material Synthesis</h3>
+                        <p class="research-desc">
+                            Carbon-based electrodes and wood-based separators fabrication.
+                        </p>
+                    </div>
+                    
+                    <div class="research-card">
+                        <div class="research-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3 class="research-name">Patent & Publications</h3>
+                        <p class="research-desc">
+                            Co-inventor of Thermoelectrochemical Oscillator patent.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-file-contract"></i> Key Publication
+                </h2>
+                <div class="publications">
+                    <div class="publication-item">
+                        <div class="pub-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="pub-content">
+                            <div class="pub-title">
+                                Thermoelectrochemical Oscillator for Waste Heat Harvesting
+                            </div>
+                            <div class="pub-authors">
+                                Ghimire, B. et al. (2025), Journal of Materials Chemistry A
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="#" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Hire Me
+                </a>
+                <a href="#" class="btn btn-outline">
+                    <i class="fas fa-download"></i> Download CV
+                </a>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="wrap">
-    <div class="card">
-      <!-- Header section -->
-      <div class="header-grid">
-        <div class="avatar-container">
-          <div class="avatar"></div>
-        </div>
-        <div>
-          <div class="name">Basanta Ghimire</div>
-          <div class="role">Electrochemical Systems Engineer</div>
-          <div class="affil">
-            Ph.D. Candidate in Physics — Clemson University<br>
-            Specializing in Electrochemical Energy Harvesting, Storage & Nanoparticle Synthesis
-          </div>
-          
-          <div class="contact-grid">
-            <a href="mailto:basantg@clemson.edu" class="contact-item">
-              📧 basantg@clemson.edu
-            </a>
-            <a href="https://linkedin.com/in/basanta-ghimire" class="contact-item">
-              💼 LinkedIn Profile
-            </a>
-          </div>
-          
-          <div class="action-buttons">
-            <a class="btn-primary" href="mailto:basanta@email.com?subject=Hire%20Basanta%20Ghimire">
-              🚀 Hire Me
-            </a>
-            <a class="btn-secondary" href="mailto:basantg@clemson.edu">
-              💬 Get in Touch
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Content sections -->
-      <div class="content-grid">
-        <!-- Expertise -->
-        <div class="section">
-          <div class="section-title">Core Expertise</div>
-          <div class="content-list">
-            <div class="content-item">
-              <div>
-                <strong>Electrochemical Energy Systems</strong><br>
-                <small>Storage, harvesting, and thermal supercapacitors</small>
-              </div>
-            </div>
-            <div class="content-item">
-              <div>
-                <strong>Materials Characterization</strong><br>
-                <small>SEM, TEM, XRD, Raman spectroscopy, DSC</small>
-              </div>
-            </div>
-            <div class="content-item">
-              <div>
-                <strong>Battery Development</strong><br>
-                <small>Coin/split/pouch cell fabrication and testing</small>
-              </div>
-            </div>
-            <div class="content-item">
-              <div>
-                <strong>Computational Modeling</strong><br>
-                <small>LAMMPS MD simulations, MATLAB/Python analysis</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Education -->
-        <div class="section">
-          <div class="section-title">Education</div>
-          <div class="content-list">
-            <div class="edu-item">
-              <div class="edu-degree">Ph.D. in Physics (In Progress)</div>
-              <div class="edu-meta">Clemson University — Department of Physics & Astronomy</div>
-            </div>
-            <div class="edu-item">
-              <div class="edu-degree">B.Sc. in Physics</div>
-              <div class="edu-meta">Tribhuvan University — April 2018<br>Minor: Mathematics & Statistics</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Technical Skills -->
-        <div class="section">
-          <div class="section-title">Technical Skills</div>
-          <div class="content-list">
-            <div class="content-item">
-              <div>
-                <strong>Laboratory Techniques</strong><br>
-                <small>Electrode & separator fabrication, anodization, carbonization</small>
-              </div>
-            </div>
-            <div class="content-item">
-              <div>
-                <strong>Software & Tools</strong><br>
-                <small>MATLAB, Origin, LabVIEW, LAMMPS, SolidWorks, Arduino</small>
-              </div>
-            </div>
-            <div class="content-item">
-              <div>
-                <strong>Data Analysis</strong><br>
-                <small>Automation, statistical analysis, experimental design</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Research Focus -->
-        <div class="section">
-          <div class="section-title">Research Highlights</div>
-          <div class="content-list">
-            <div class="content-item">
-              <div>
-                <strong>TRECO Development</strong><br>
-                <small>Innovative thermal energy conversion system</small>
-              </div>
-            </div>
-            <div class="content-item">
-              <div>
-                <strong>Low-Grade Heat Utilization</strong><br>
-                <small>Thermal supercapacitors for waste heat recovery</small>
-              </div>
-            </div>
-            <div class="content-item">
-              <div>
-                <strong>Nanoparticle Synthesis</strong><br>
-                <small>Advanced materials for energy applications</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Call to Action -->
-      <div class="cta-section">
-        <div class="cta-title">Ready for Your Next Challenge?</div>
-        <div class="cta-text">
-          Seeking full-time opportunities in battery R&D, materials science, and energy systems engineering
-        </div>
-        <a class="btn-primary" href="mailto:basanta@email.com?subject=Job%20Opportunity%20for%20Basanta%20Ghimire">
-          Let's Discuss Opportunities 🎯
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // Add smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
+    <script>
+        // Simple hover effects
+        document.querySelectorAll('.research-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px)';
+                card.style.boxShadow = '0 10px 25px rgba(0,0,0,0.08)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = 'none';
+            });
         });
-      });
-    });
-
-    // Add dynamic particle animation
-    function createFloatingParticles() {
-      const particles = document.querySelectorAll('.particle');
-      particles.forEach((particle, index) => {
-        particle.style.animationDelay = `${index * 2}s`;
-        particle.style.top = `${Math.random() * 100}%`;
-      });
-    }
-
-    // Initialize animations
-    createFloatingParticles();
-
-    // Add hover effects for cards
-    document.querySelectorAll('.section').forEach(section => {
-      section.addEventListener('mouseenter', function() {
-        this.style.background = 'rgba(16, 185, 129, 0.02)';
-      });
-      
-      section.addEventListener('mouseleave', function() {
-        this.style.background = 'rgba(248, 250, 252, 0.5)';
-      });
-    });
-  </script>
+        
+        // Button hover effects
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transform = 'translateY(-3px)';
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
 </body>
 </html>
