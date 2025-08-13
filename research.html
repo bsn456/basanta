@@ -1,111 +1,543 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <title>Research - Basanta Ghimire</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet"/>
-  <style>
-    body {
-      background: linear-gradient(135deg, #051937, #121212 70%, #26d0ce 100%);
-      color: #c6ffe7;
-      font-family: 'Montserrat', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      box-sizing: border-box;
-    }
-    header {
-      text-align: center;
-      padding: 50px 20px 20px 20px;
-      border-bottom: 2px solid #0ff;
-      margin-bottom: 40px;
-    }
-    .name {
-      font-family: 'Orbitron', 'Montserrat', Arial, sans-serif;
-      font-size: 3em;
-      background: linear-gradient(90deg, #81ffef, #f067b4 50%, #63cfff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 20px #14ffe9, 0 0 5px #252728;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
-    .section {
-      padding: 40px 10vw;
-      margin-bottom: 30px;
-      background: rgba(18,34,51,0.45);
-      border-radius: 20px;
-      box-shadow: 0 2px 36px #00f2ff22, 0 8px 8px #10073833;
-    }
-    .section h2 {
-      font-family: 'Orbitron', Arial, sans-serif;
-      color: #14ffe9;
-      letter-spacing: 2px;
-      text-shadow: 0 0 6px #32e4ff99;
-      border-bottom: 2px solid #56ffc7;
-      display: inline-block;
-      margin-bottom: 15px;
-      font-size: 1.7em;
-    }
-    .placeholder {
-      opacity: 0.7;
-      font-style: italic;
-      font-size: 1.1em;
-      color: #bdffe5;
-      padding: 5px 0;
-    }
-    .nav-link {
-      display: inline-block;
-      margin: 10px 15px;
-      padding: 8px 16px;
-      background: linear-gradient(135deg, #20e3b2, #2cccff, #fc5c7d);
-      color: white;
-      text-decoration: none;
-      border-radius: 20px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 15px rgba(38, 208, 206, 0.3);
-    }
-    .nav-link:hover {
-      background: linear-gradient(135deg, #fed6e3, #3ee3ff 75%, #12fff7 100%);
-      box-shadow: 0 0 25px rgba(129, 255, 239, 0.6);
-      transform: translateY(-2px);
-    }
-    @media (max-width:700px){
-      .section{padding:30px 4vw;}
-      .name{font-size:2em;}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRECO - Revolutionary Heat Harvesting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+            cursor: none;
+        }
+        
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ff6b35;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.2s ease;
+        }
+        
+        .cursor-hover {
+            transform: scale(2);
+            background: rgba(255, 107, 53, 0.2);
+        }
+        
+        .floating-particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+            opacity: 0.6;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at 30% 40%, #ff6b35 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, #f7931e 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, #ffbe0b 0%, transparent 50%),
+                        linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-content {
+            text-align: center;
+            z-index: 3;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: clamp(4rem, 12vw, 8rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff6b35, #f7931e, #ffbe0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px #ff6b35); }
+            to { filter: drop-shadow(0 0 40px #f7931e); }
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: slideUp 1s ease-out 0.5s both;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 0.9; }
+        }
+        
+        .voltage-display {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            background: linear-gradient(90deg, #00f5ff, #0080ff, #8000ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 2rem 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+        
+        .content-section {
+            min-height: 100vh;
+            padding: 5rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 4rem;
+            background: linear-gradient(45deg, #ffffff, #cccccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+        
+        .feature-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 30px 60px rgba(255, 107, 53, 0.3);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b35, #f7931e, #ffbe0b);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        
+        .feature-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ff6b35;
+        }
+        
+        .performance-showcase {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(247, 147, 30, 0.1));
+            border-radius: 30px;
+            padding: 4rem;
+            margin: 4rem 0;
+            text-align: center;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, #00f5ff, #0080ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .demo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+        
+        .demo-card {
+            background: linear-gradient(145deg, rgba(16, 21, 62, 0.8), rgba(26, 26, 46, 0.8));
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .demo-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        .demo-image {
+            height: 250px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .demo-image.has-image {
+            background: none;
+        }
+        
+        .demo-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .demo-content {
+            padding: 2rem;
+        }
+        
+        .demo-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ff6b35;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(16, 21, 62, 0.2));
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.6);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .demo-gallery { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="name">Research</div>
-    <div class="placeholder">
-      Basanta Ghimire's Research Portfolio
+    <div class="custom-cursor"></div>
+    
+    <div class="floating-particles">
+        <!-- Particles will be generated by JavaScript -->
     </div>
-    <nav>
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="social.html" class="nav-link">Social Links</a>
-    </nav>
-  </header>
-  <section class="section">
-    <h2>Research Areas</h2>
-    <div class="placeholder">
-      ()
-    </div>
-  </section>
-  <section class="section">
-    <h2>Publications</h2>
-    <div class="placeholder">
-      ()
-    </div>
-  </section>
-  <section class="section">
-    <h2>Projects</h2>
-    <div class="placeholder">
-      ()
-    </div>
-  </section>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>TRECO</h1>
+            <p class="hero-subtitle">Revolutionary Heat Harvesting Technology</p>
+            <div class="voltage-display">1.02V</div>
+            <p style="font-size: 1.4rem; opacity: 0.9;">From just 10°C temperature difference!</p>
+        </div>
+        <div class="scroll-indicator">
+            <div style="color: #ff6b35; font-size: 2rem;">↓</div>
+        </div>
+    </section>
+    
+    <section class="content-section">
+        <div class="container">
+            <div class="performance-showcase">
+                <h2 style="font-size: 3rem; margin-bottom: 2rem; color: #ff6b35;">Breaking All Records</h2>
+                <p style="font-size: 1.4rem; opacity: 0.9; margin-bottom: 2rem;">
+                    <strong>4-5x better performance</strong> than any previous heat harvesting device
+                </p>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">102</span>
+                        <span class="stat-label">mV/K Thermopower</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">825</span>
+                        <span class="stat-label">mV from Body Heat</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">6°C</span>
+                        <span class="stat-label">Minimum Temperature</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Continuous Operation</span>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Game-Changing Features</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🔥</span>
+                    <h3 class="feature-title">Ultra-Low Heat Harvesting</h3>
+                    <p>Converts waste heat from your smartphone, laptop, or even your body into usable electricity. Works with temperature differences as small as 6°C!</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <h3 class="feature-title">Record-Breaking Power</h3>
+                    <p>Achieves >100 mV/K thermopower - completely smashing previous records. This isn't just an improvement, it's a revolution.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🌊</span>
+                    <h3 class="feature-title">Voltage Oscillations</h3>
+                    <p>World's first device to show controlled voltage oscillations during discharge - opening up entirely new applications in electronics.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🔄</span>
+                    <h3 class="feature-title">Self-Sustaining</h3>
+                    <p>No moving parts, no degradation, no replacement needed. Just maintain a temperature difference and harvest energy forever.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">See It In Action</h2>
+            
+            <div class="demo-gallery">
+                <div class="demo-card">
+                    <div class="demo-image has-image" style="background-image: url('images/Cell Setup.png');">
+                    </div>
+                    <div class="demo-content">
+                        <h3 class="demo-title">Laboratory Testing</h3>
+                        <p>Precise temperature control setup showing how we achieve record-breaking voltages with minimal heat input.</p>
+                    </div>
+                </div>
+                
+                <div class="demo-card">
+                    <div class="demo-image has-image" style="background-image: url('images/Calculator.png');">
+                    </div>
+                    <div class="demo-content">
+                        <h3 class="demo-title">Powering Electronics</h3>
+                        <p>TRECO successfully powers a calculator in real-time, demonstrating practical applications for everyday devices.</p>
+                    </div>
+                </div>
+                
+                <div class="demo-card">
+                    <div class="demo-image has-image" style="background-image: url('images/Morteza Arm.png');">
+                    </div>
+                    <div class="demo-content">
+                        <h3 class="demo-title">Body Heat Harvesting</h3>
+                        <p>Generating 825mV just from arm temperature - perfect for powering wearable devices without batteries.</p>
+                    </div>
+                </div>
+                
+                <div class="demo-card">
+                    <div class="demo-image has-image" style="background-image: url('images/OCV.png');">
+                    </div>
+                    <div class="demo-content">
+                        <h3 class="demo-title">Stable Performance</h3>
+                        <p>Long-term voltage stability showing consistent power generation over extended periods.</p>
+                    </div>
+                </div>
+                
+                <div class="demo-card">
+                    <div class="demo-image has-image" style="background-image: url('images/Oscillation.png');">
+                    </div>
+                    <div class="demo-content">
+                        <h3 class="demo-title">Revolutionary Oscillations</h3>
+                        <p>Never-before-seen voltage oscillations that could enable new applications in electronics and sensing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <h2 style="font-size: 3rem; margin-bottom: 2rem;">The Future is Here</h2>
+            <p style="font-size: 1.4rem; margin-bottom: 3rem; opacity: 0.9;">
+                Two-thirds of all energy is wasted as heat. TRECO changes that forever.
+            </p>
+            <a href="#" class="cta-button">Learn More About TRECO</a>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <p>Research conducted at Clemson University | Published in Journal of Materials Chemistry A, 2025</p>
+    </footer>
+    
+    <script>
+        // Custom cursor
+        const cursor = document.querySelector('.custom-cursor');
+        const interactiveElements = document.querySelectorAll('.feature-card, .demo-card, .cta-button');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+        });
+        
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+        });
+        
+        // Floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            document.querySelector('.floating-particles').appendChild(particle);
+            
+            setTimeout(() => particle.remove(), 25000);
+        }
+        
+        setInterval(createParticle, 300);
+        
+        // Smooth scrolling for scroll indicator
+        document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            document.querySelector('.content-section').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        });
+    </script>
 </body>
 </html>
