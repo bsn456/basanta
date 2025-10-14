@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basanta Ghimire - PhD Student</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,320 +15,472 @@
         }
         
         body {
-            font-family: Georgia, serif;
-            background: #fafafa;
-            color: #2c2c2c;
-            padding: 20px;
-            line-height: 1.8;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+        
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: -1;
+            background-image: url('data:image/svg+xml,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
         }
         
         .container {
-            max-width: 700px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 100px 50px;
         }
         
-        .header-content {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 50px;
-            padding-bottom: 30px;
-            border-bottom: 2px solid #e0e0e0;
+        header {
+            margin-bottom: 120px;
+        }
+        
+        .profile-section {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 70px;
+            align-items: start;
         }
         
         .profile-pic {
-            width: 240px;
-            height: 240px;
-            border-radius: 10%;
+            width: 280px;
+            height: 280px;
+            border-radius: 2px;
             object-fit: cover;
-            border: 3px solid #4a90e2;
+            border: 2px solid #00d9ff;
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.2);
+            transition: all 0.4s ease;
         }
         
-        .header-text {
-            flex: 1;
+        .profile-pic:hover {
+            box-shadow: 0 0 60px rgba(0, 217, 255, 0.4);
+            transform: translateY(-5px);
         }
         
-        h1 {
-            font-size: 5.5em;
-            margin-bottom: 10px;
-            font-weight: 400;
-            letter-spacing: -1px;
+        .header-text h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            letter-spacing: -2px;
+            line-height: 1.1;
         }
         
         .subtitle {
-            color: #666;
-            margin-bottom: 10px;
-            font-size: 2em;
-            font-style: italic;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            color: #00d9ff;
+            margin-bottom: 12px;
+            font-weight: 500;
+            letter-spacing: -0.5px;
         }
         
         .location {
-            color: #999;
-            font-size: 1.9em;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            font-size: 1.1rem;
+            color: #888;
+            margin-bottom: 35px;
+            font-weight: 400;
         }
         
-        .section {
-            margin: 40px 0;
-            padding: 30px 0;
-            border-bottom: 1px solid #e0e0e0;
+        .intro {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #b0b0b0;
+            max-width: 650px;
         }
         
-        .section:last-of-type {
-            border-bottom: none;
+        .accent-line {
+            height: 2px;
+            background: linear-gradient(90deg, #00d9ff 0%, transparent 100%);
+            margin: 80px 0;
+            animation: pulse 3s ease-in-out infinite;
         }
         
-        .section h2 {
-            color: #2c2c2c;
-            margin-bottom: 20px;
-            font-size: 2.6em;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
         
-        .icon {
-            font-size: 2.6em;
+        section {
+            margin-bottom: 100px;
         }
         
-        .energy-flow {
-            width: 100%;
-            height: 40px;
-            margin: 30px 0;
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #ffffff;
+            letter-spacing: -1px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #00d9ff;
+        }
+        
+        .research-grid {
+            display: grid;
+            gap: 40px;
+        }
+        
+        .research-card {
+            padding: 45px;
+            background: linear-gradient(135deg, #111 0%, #0d0d0d 100%);
+            border: 1px solid #222;
+            border-left: 4px solid #00d9ff;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            border-top: 2px solid #e0e0e0;
-            border-bottom: 2px solid #e0e0e0;
         }
         
-        .energy-dot {
+        .research-card::before {
+            content: '';
             position: absolute;
-            width: 8px;
-            height: 8px;
-            background: #4a90e2;
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-            animation: flow 4s linear infinite;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0, 217, 255, 0.05) 0%, transparent 100%);
+            transition: width 0.4s ease;
         }
         
-        .energy-dot:nth-child(2) {
-            animation-delay: 1s;
-            opacity: 0.7;
+        .research-card:hover::before {
+            width: 100%;
         }
         
-        .energy-dot:nth-child(3) {
-            animation-delay: 2s;
-            opacity: 0.5;
+        .research-card:hover {
+            border-color: #00d9ff;
+            transform: translateX(10px);
+            box-shadow: 0 10px 40px rgba(0, 217, 255, 0.1);
         }
         
-        @keyframes flow {
-            0% {
-                left: -10px;
-            }
-            100% {
-                left: 100%;
-            }
-        }
-        
-        .research-project {
-            margin: 25px 0;
-            padding: 20px;
-            background: #f9f9f9;
-            border-left: 3px solid #4a90e2;
-        }
-        
-        .research-project h3 {
-            font-size: 2.2em;
-            margin-bottom: 10px;
+        .research-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            margin-bottom: 18px;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            position: relative;
         }
         
-        .research-project p {
-            font-size: 1.9em;
-            margin-bottom: 15px;
-            color: #555;
+        .research-card p {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            margin-bottom: 25px;
+            line-height: 1.8;
+            position: relative;
+        }
+        
+        .research-link {
+            display: inline-block;
+            font-size: 1rem;
+            color: #00d9ff;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .research-link:hover {
+            border-bottom-color: #00d9ff;
+            letter-spacing: 0.5px;
         }
         
         .status {
             display: inline-block;
-            padding: 4px 12px;
-            background: #4a90e2;
-            color: white;
-            font-size: 1.5em;
-            font-family: 'Courier New', monospace;
-            margin-top: 5px;
-            font-weight: 600;
+            padding: 8px 18px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            border-radius: 2px;
+            font-family: 'Space Grotesk', sans-serif;
         }
         
-        .status.coming-soon {
-            background: #999;
+        .status.published {
+            background: rgba(0, 217, 255, 0.15);
+            color: #00d9ff;
+            border: 1px solid #00d9ff;
         }
         
-        a {
-            color: #4a90e2;
-            text-decoration: none;
-            border-bottom: 1px solid #4a90e2;
+        .status.in-progress {
+            background: rgba(255, 165, 0, 0.15);
+            color: #ffa500;
+            border: 1px solid #ffa500;
+        }
+        
+        .lab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 35px;
+            margin-top: 30px;
+        }
+        
+        .lab-intro {
+            color: #999;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        
+        .lab-card {
+            padding: 40px;
+            background: linear-gradient(135deg, #0f0f0f 0%, #0a0a0a 100%);
+            border: 1px solid #222;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .lab-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #00d9ff 0%, transparent 100%);
+            opacity: 0;
             transition: opacity 0.3s ease;
         }
         
-        a:hover {
-            opacity: 0.7;
+        .lab-card:hover::before {
+            opacity: 1;
         }
         
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
+        .lab-card:hover {
+            border-color: #333;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
         }
         
-        .link-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .link-label {
-            font-size: 1.8em;
-            color: #999;
-            min-width: 120px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        .lab-list {
-            margin-top: 20px;
-        }
-        
-        .lab-item {
-            margin: 15px 0;
-            padding: 15px;
-            background: #f9f9f9;
-        }
-        
-        .lab-item h3 {
-            font-size: 2em;
-            margin-bottom: 5px;
+        .lab-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
             font-weight: 600;
+            margin-bottom: 12px;
+            color: #ffffff;
         }
         
-        .lab-item p {
-            font-size: 1.8em;
+        .lab-card .lab-type {
+            font-size: 1rem;
             color: #666;
-            margin-bottom: 8px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            font-size: 0.9rem;
         }
         
-        .footer {
-            margin-top: 60px;
+        .lab-card a {
+            font-size: 1rem;
+            color: #00d9ff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .lab-card a:hover {
+            letter-spacing: 0.5px;
+        }
+        
+        .contact-grid {
+            display: grid;
+            gap: 25px;
+            max-width: 700px;
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            align-items: center;
+            padding: 25px 0;
+            border-bottom: 1px solid #1a1a1a;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            border-bottom-color: #00d9ff;
+            padding-left: 10px;
+        }
+        
+        .contact-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .contact-link {
+            font-size: 1.1rem;
+            color: #00d9ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            letter-spacing: 0.5px;
+        }
+        
+        footer {
+            margin-top: 120px;
+            padding-top: 40px;
+            border-top: 1px solid #1a1a1a;
             text-align: center;
-            color: #999;
-            font-size: 1.8em;
-            font-style: italic;
+            color: #555;
+            font-size: 0.95rem;
         }
         
-        @media (max-width: 600px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
+        @media (max-width: 968px) {
+            .container {
+                padding: 60px 30px;
             }
             
-            .link-item {
-                flex-direction: column;
-                align-items: flex-start;
+            .profile-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .profile-pic {
+                width: 100%;
+                max-width: 280px;
+                height: 280px;
+                margin: 0 auto;
+            }
+            
+            .header-text h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .lab-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-item {
+                grid-template-columns: 1fr;
+                gap: 8px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="grain"></div>
+    
     <div class="container">
-        <div class="header-content">
-            <img src="images/basanta.jpg" alt="Basanta Ghimire" class="profile-pic">
-            <div class="header-text">
-                <h1>Basanta Ghimire</h1>
-                <div class="subtitle">PhD Student — Experimental Physics</div>
-                <div class="location">Clemson University | Nepal → South Carolina</div>
+        <header>
+            <div class="profile-section">
+                <img src="images/basanta.jpg" alt="Basanta Ghimire" class="profile-pic">
+                <div class="header-text">
+                    <h1>Basanta Ghimire</h1>
+                    <div class="subtitle">PhD Student · Experimental Physics</div>
+                    <div class="location">Clemson University / South Carolina</div>
+                    <p class="intro">
+                        Working at the intersection of energy harvesting and biosensing through electrochemical systems and LED-based imaging. 
+                        Focused on developing experimental approaches to capture ambient energy and decode biological environments.
+                    </p>
+                </div>
             </div>
-        </div>
-    </div>
-</body>
-
+        </header>
         
-        <div class="energy-flow">
-            <div class="energy-dot"></div>
-            <div class="energy-dot"></div>
-            <div class="energy-dot"></div>
-        </div>
+        <div class="accent-line"></div>
         
-        <div class="section">
-            <h2><span class="icon">🚀</span>The Journey</h2>
-            <p>Working at the intersection of energy harvesting and biosensing. My research explores how we can capture ambient energy and understand biological environments through innovative experimental approaches. Each project is a step forward in making devices smarter, more sustainable, and more informative.</p>
-        </div>
-        
-        <div class="section">
-            <h2><span class="icon">🔬</span>Research Projects</h2>
-            
-            <div class="research-project">
-                <h3><span class="icon">⚡</span>Energy Harvesting via Electrochemical Systems</h3>
-                <p>Developing devices that harvest energy using electrochemical processes—turning chemical gradients into usable power.</p>
-                <a href="https://pubs.rsc.org/en/content/articlelanding/2025/ta/d4ta08559k" target="_blank">Read the paper →</a>
-                <div class="status">PUBLISHED</div>
+        <section id="research">
+            <h2>Research</h2>
+            <div class="research-grid">
+                <div class="research-card">
+                    <h3>Energy Harvesting via Electrochemical Systems</h3>
+                    <p>
+                        Developing devices that harvest energy using electrochemical processes—converting chemical gradients into usable power 
+                        for sustainable energy applications.
+                    </p>
+                    <a href="https://pubs.rsc.org/en/content/articlelanding/2025/ta/d4ta08559k" class="research-link" target="_blank">
+                        View Publication →
+                    </a>
+                    <div class="status published">Published</div>
+                </div>
+                
+                <div class="research-card">
+                    <h3>LED-Based Biosensing for Implants</h3>
+                    <p>
+                        Imaging the biochemical environment around implants using LED-based sensors—providing real-time insights 
+                        into tissue-device interfaces and biological responses.
+                    </p>
+                    <div class="status in-progress">In Progress</div>
+                </div>
             </div>
-            
-            <div class="research-project">
-                <h3><span class="icon">💡</span>LED-Based Biosensing for Implants</h3>
-                <p>Imaging the biochemical environment around implants using LED-based sensors—giving us real-time insights into what's happening at the tissue-device interface.</p>
-                <div class="status coming-soon">COMING SOON</div>
-            </div>
-        </div>
+        </section>
         
-        <div class="section">
-            <h2><span class="icon">🏛️</span>Labs</h2>
-            <p>I work across two research groups at Clemson University, each bringing a unique perspective to my research.</p>
-            <div class="lab-list">
-                <div class="lab-item">
+        <section id="labs">
+            <h2>Labs</h2>
+            <p class="lab-intro">
+                Collaborating across two research groups at Clemson University, each bringing unique expertise to interdisciplinary work.
+            </p>
+            <div class="lab-grid">
+                <div class="lab-card">
                     <h3>Clemson Nanomaterial Institute</h3>
-                    <p>Materials & Fabrication</p>
+                    <div class="lab-type">Materials & Fabrication</div>
                     <a href="https://scienceweb.clemson.edu/rrg/" target="_blank">Visit Lab →</a>
                 </div>
-                <div class="lab-item">
+                <div class="lab-card">
                     <h3>Anker's Research Group</h3>
-                    <p>Biosensing & Spectroscopy</p>
+                    <div class="lab-type">Biosensing & Spectroscopy</div>
                     <a href="https://scienceweb.clemson.edu/anker-research/" target="_blank">Visit Lab →</a>
                 </div>
             </div>
-        </div>
+        </section>
         
-        <div class="section">
-            <h2><span class="icon">🌐</span>Connect</h2>
-            <div class="links">
-                <div class="link-item">
-                    <span class="link-label">💼 LinkedIn</span>
-                    <a href="https://www.linkedin.com/in/basanta-ghimire" target="_blank">linkedin.com/in/basanta-ghimire</a>
+        <div class="accent-line"></div>
+        
+        <section id="contact">
+            <h2>Connect</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-label">LinkedIn</div>
+                    <a href="https://www.linkedin.com/in/basanta-ghimire" class="contact-link" target="_blank">
+                        linkedin.com/in/basanta-ghimire
+                    </a>
                 </div>
-                <div class="link-item">
-                    <span class="link-label">📧 Email</span>
-                    <a href="mailto:basantaghimire456@gmail.com">basantaghimire456@gmail.com</a>
+                <div class="contact-item">
+                    <div class="contact-label">Email</div>
+                    <a href="mailto:basantaghimire456@gmail.com" class="contact-link">
+                        basantaghimire456@gmail.com
+                    </a>
                 </div>
-                <div class="link-item">
-                    <span class="link-label">🎵 Music</span>
-                    <a href="#" target="_blank">Coming Soon</a>
+                <div class="contact-item">
+                    <div class="contact-label">Music</div>
+                    <span style="color: #666; font-size: 1.1rem;">Coming Soon</span>
                 </div>
             </div>
-        </div>
+        </section>
         
-        <div class="footer">
-            <p>Converting energy, exploring biology, one experiment at a time</p>
-        </div>
+        <footer>
+            <p>© 2025 Basanta Ghimire</p>
+        </footer>
     </div>
 </body>
 </html>
