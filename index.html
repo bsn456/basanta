@@ -24,17 +24,27 @@
             max-width: 700px;
             margin: 0 auto;
             padding: 60px 20px;
-            position: relative;
         }
         
-        .particle {
-            position: fixed;
-            width: 3px;
-            height: 3px;
-            background: #2c2c2c;
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .profile-pic {
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            pointer-events: none;
-            opacity: 0.2;
+            object-fit: cover;
+            border: 3px solid #4a90e2;
+        }
+        
+        .header-text {
+            flex: 1;
         }
         
         h1 {
@@ -42,11 +52,6 @@
             margin-bottom: 10px;
             font-weight: 400;
             letter-spacing: -1px;
-            transition: transform 0.3s ease;
-        }
-        
-        h1:hover {
-            transform: translateX(10px);
         }
         
         .subtitle {
@@ -59,81 +64,50 @@
         .location {
             color: #999;
             font-size: 0.9em;
-            margin-bottom: 50px;
-        }
-        
-        .header-content {
             display: flex;
             align-items: center;
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        
-        .profile-pic {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #2c2c2c;
-            transition: transform 0.3s ease;
-        }
-        
-        .profile-pic:hover {
-            transform: scale(1.05);
-        }
-        
-        .header-text {
-            flex: 1;
+            gap: 6px;
         }
         
         .section {
             margin: 40px 0;
-            padding: 30px;
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
-            position: relative;
+            padding: 30px 0;
+            border-bottom: 1px solid #e0e0e0;
         }
         
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #2c2c2c;
-            transition: width 0.5s ease;
-        }
-        
-        .section:hover::before {
-            width: 100%;
-        }
-        
-        .section:hover {
-            background: #f5f5f5;
-            transform: translateX(5px);
+        .section:last-of-type {
+            border-bottom: none;
         }
         
         .section h2 {
             color: #2c2c2c;
-            margin-bottom: 15px;
-            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-size: 1.3em;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .icon {
+            font-size: 1.3em;
         }
         
         .energy-flow {
             width: 100%;
-            height: 60px;
+            height: 40px;
             margin: 30px 0;
             position: relative;
             overflow: hidden;
+            border-top: 2px solid #e0e0e0;
+            border-bottom: 2px solid #e0e0e0;
         }
         
         .energy-dot {
             position: absolute;
             width: 8px;
             height: 8px;
-            background: #2c2c2c;
+            background: #4a90e2;
             border-radius: 50%;
             top: 50%;
             transform: translateY(-50%);
@@ -142,30 +116,20 @@
         
         .energy-dot:nth-child(2) {
             animation-delay: 1s;
-            opacity: 0.6;
+            opacity: 0.7;
         }
         
         .energy-dot:nth-child(3) {
             animation-delay: 2s;
-            opacity: 0.4;
-        }
-        
-        .energy-dot:nth-child(4) {
-            animation-delay: 3s;
-            opacity: 0.3;
+            opacity: 0.5;
         }
         
         @keyframes flow {
             0% {
                 left: -10px;
-                transform: translateY(-50%) scale(1);
-            }
-            50% {
-                transform: translateY(-50%) scale(1.5);
             }
             100% {
                 left: 100%;
-                transform: translateY(-50%) scale(1);
             }
         }
         
@@ -173,34 +137,33 @@
             margin: 25px 0;
             padding: 20px;
             background: #f9f9f9;
-            border-left: 3px solid #2c2c2c;
-            transition: all 0.3s ease;
-        }
-        
-        .research-project:hover {
-            background: #f0f0f0;
-            transform: translateX(5px);
+            border-left: 3px solid #4a90e2;
         }
         
         .research-project h3 {
-            font-size: 1em;
+            font-size: 1.1em;
             margin-bottom: 10px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .research-project p {
             font-size: 0.95em;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            color: #555;
         }
         
         .status {
             display: inline-block;
-            padding: 3px 10px;
-            background: #2c2c2c;
-            color: #fafafa;
+            padding: 4px 12px;
+            background: #4a90e2;
+            color: white;
             font-size: 0.75em;
             font-family: 'Courier New', monospace;
             margin-top: 5px;
+            font-weight: 600;
         }
         
         .status.coming-soon {
@@ -208,122 +171,154 @@
         }
         
         a {
-            color: #2c2c2c;
+            color: #4a90e2;
             text-decoration: none;
-            border-bottom: 1px solid #2c2c2c;
-            transition: all 0.3s ease;
-            display: inline-block;
+            border-bottom: 1px solid #4a90e2;
+            transition: opacity 0.3s ease;
         }
         
         a:hover {
-            transform: translateY(-2px);
-            border-bottom: 2px solid #2c2c2c;
+            opacity: 0.7;
         }
         
         .links {
             display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 15px;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
         }
         
         .link-item {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 15px;
         }
         
         .link-label {
-            font-size: 0.85em;
+            font-size: 0.9em;
             color: #999;
+            min-width: 120px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .lab-list {
+            margin-top: 20px;
+        }
+        
+        .lab-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f9f9f9;
+        }
+        
+        .lab-item h3 {
+            font-size: 1em;
             margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .lab-item p {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 8px;
         }
         
         .footer {
-            margin-top: 80px;
+            margin-top: 60px;
             text-align: center;
             color: #999;
             font-size: 0.9em;
             font-style: italic;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
         }
         
-        .footer:hover {
-            opacity: 1;
-        }
-        
-        .music-note {
-            display: inline-block;
-            margin-left: 10px;
-            opacity: 0.6;
-            transition: transform 0.3s ease;
-        }
-        
-        .music-note:hover {
-            transform: rotate(20deg) scale(1.2);
+        @media (max-width: 600px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .link-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Basanta Ghimire</h1>
-        <div class="subtitle">PhD Student — Experimental Physics</div>
-        <div class="location">Nepal → Clemson, South Carolina</div>
+        <div class="header-content">
+            <img src="images/basanta.jpg" alt="Basanta Ghimire" class="profile-pic">
+            <div class="header-text">
+                <h1>Basanta Ghimire</h1>
+                <div class="subtitle">PhD Student — Experimental Physics</div>
+                <div class="location">📍 Clemson University | Nepal → South Carolina</div>
+            </div>
+        </div>
+    </div>
+</body>
+
         
         <div class="energy-flow">
             <div class="energy-dot"></div>
             <div class="energy-dot"></div>
             <div class="energy-dot"></div>
-            <div class="energy-dot"></div>
         </div>
         
         <div class="section">
-            <h2>The Journey</h2>
+            <h2><span class="icon">🚀</span>The Journey</h2>
             <p>Working at the intersection of energy harvesting and biosensing. My research explores how we can capture ambient energy and understand biological environments through innovative experimental approaches. Each project is a step forward in making devices smarter, more sustainable, and more informative.</p>
         </div>
         
         <div class="section">
-            <h2>Research Projects</h2>
+            <h2><span class="icon">🔬</span>Research Projects</h2>
             
             <div class="research-project">
-                <h3>Energy Harvesting via Electrochemical Systems</h3>
+                <h3><span class="icon">⚡</span>Energy Harvesting via Electrochemical Systems</h3>
                 <p>Developing devices that harvest energy using electrochemical processes—turning chemical gradients into usable power.</p>
                 <a href="https://pubs.rsc.org/en/content/articlelanding/2025/ta/d4ta08559k" target="_blank">Read the paper →</a>
                 <div class="status">PUBLISHED</div>
             </div>
             
             <div class="research-project">
-                <h3>LED-Based Biosensing for Implants</h3>
+                <h3><span class="icon">💡</span>LED-Based Biosensing for Implants</h3>
                 <p>Imaging the biochemical environment around implants using LED-based sensors—giving us real-time insights into what's happening at the tissue-device interface.</p>
                 <div class="status coming-soon">COMING SOON</div>
             </div>
         </div>
         
         <div class="section">
-            <h2>Labs</h2>
+            <h2><span class="icon">🏛️</span>Labs</h2>
             <p>I work across two research groups at Clemson University, each bringing a unique perspective to my research.</p>
-            <div class="links" style="margin-top: 20px;">
-                <div class="link-item">
-                    <span class="link-label">Materials & Fabrication</span>
-                    <a href="https://scienceweb.clemson.edu/rrg/" target="_blank">Clemson Nanomaterial Institute</a>
+            <div class="lab-list">
+                <div class="lab-item">
+                    <h3>Clemson Nanomaterial Institute</h3>
+                    <p>Materials & Fabrication</p>
+                    <a href="https://scienceweb.clemson.edu/rrg/" target="_blank">Visit Lab →</a>
                 </div>
-                <div class="link-item">
-                    <span class="link-label">Biosensing & Spectroscopy</span>
-                    <a href="https://scienceweb.clemson.edu/anker-research/" target="_blank">Anker's Research Group</a>
+                <div class="lab-item">
+                    <h3>Anker's Research Group</h3>
+                    <p>Biosensing & Spectroscopy</p>
+                    <a href="https://scienceweb.clemson.edu/anker-research/" target="_blank">Visit Lab →</a>
                 </div>
             </div>
         </div>
         
         <div class="section">
-            <h2>Connect</h2>
+            <h2><span class="icon">🌐</span>Connect</h2>
             <div class="links">
                 <div class="link-item">
-                    <span class="link-label">Professional</span>
-                    <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+                    <span class="link-label">💼 LinkedIn</span>
+                    <a href="https://www.linkedin.com/in/basanta-ghimire" target="_blank">linkedin.com/in/basanta-ghimire</a>
                 </div>
                 <div class="link-item">
-                    <span class="link-label">Beyond Research</span>
-                    <a href="#" target="_blank">Music <span class="music-note">♪</span></a>
+                    <span class="link-label">📧 Email</span>
+                    <a href="mailto:basantaghimire456@gmail.com">basantaghimire456@gmail.com</a>
+                </div>
+                <div class="link-item">
+                    <span class="link-label">🎵 Music</span>
+                    <a href="#" target="_blank">Coming Soon</a>
                 </div>
             </div>
         </div>
@@ -332,35 +327,5 @@
             <p>Converting energy, exploring biology, one experiment at a time</p>
         </div>
     </div>
-    
-    <script>
-        // Create floating particles
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * window.innerWidth + 'px';
-            particle.style.top = Math.random() * window.innerHeight + 'px';
-            document.body.appendChild(particle);
-            
-            const duration = 3000 + Math.random() * 4000;
-            const dx = (Math.random() - 0.5) * 200;
-            const dy = (Math.random() - 0.5) * 200;
-            
-            particle.animate([
-                { transform: 'translate(0, 0)', opacity: 0.2 },
-                { transform: `translate(${dx}px, ${dy}px)`, opacity: 0 }
-            ], {
-                duration: duration,
-                easing: 'ease-out'
-            }).onfinish = () => particle.remove();
-        }
-        
-        setInterval(createParticle, 300);
-        
-        // Initial particles
-        for (let i = 0; i < 10; i++) {
-            setTimeout(createParticle, i * 100);
-        }
-    </script>
 </body>
 </html>
