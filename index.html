@@ -3,88 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basanta Ghimire</title>
+    <title>Basanta Ghimire - PhD Student</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            font-family: Georgia, serif;
+            background: #fafafa;
+            color: #2c2c2c;
+            padding: 20px;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            position: relative;
+        }
+        
+        .particle {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: #2c2c2c;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.2;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 400;
+            letter-spacing: -1px;
+            transition: transform 0.3s ease;
+        }
+        
+        h1:hover {
+            transform: translateX(10px);
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 1em;
+            font-style: italic;
+        }
+        
+        .location {
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 50px;
+        }
+        
+        .header-content {
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 20px;
+            gap: 30px;
+            margin-bottom: 50px;
         }
-
-        .container {
-            max-width: 500px;
+        
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #2c2c2c;
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
+        
+        .header-text {
+            flex: 1;
+        }
+        
+        .section {
+            margin: 40px 0;
+            padding: 30px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2c2c2c;
+            transition: width 0.5s ease;
+        }
+        
+        .section:hover::before {
             width: 100%;
         }
-
-        .card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 50px 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            text-align: center;
+        
+        .section:hover {
+            background: #f5f5f5;
+            transform: translateX(5px);
         }
-
-        h1 {
-            font-size: 42px;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 40px;
+        
+        .section h2 {
+            color: #2c2c2c;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            font-weight: 600;
         }
-
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        
+        .energy-flow {
+            width: 100%;
+            height: 60px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
         }
-
-        .link-item {
-            padding: 15px 25px;
-            background: #667eea;
-            border-radius: 10px;
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
+        
+        .energy-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #2c2c2c;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: flow 4s linear infinite;
+        }
+        
+        .energy-dot:nth-child(2) {
+            animation-delay: 1s;
+            opacity: 0.6;
+        }
+        
+        .energy-dot:nth-child(3) {
+            animation-delay: 2s;
+            opacity: 0.4;
+        }
+        
+        .energy-dot:nth-child(4) {
+            animation-delay: 3s;
+            opacity: 0.3;
+        }
+        
+        @keyframes flow {
+            0% {
+                left: -10px;
+                transform: translateY(-50%) scale(1);
+            }
+            50% {
+                transform: translateY(-50%) scale(1.5);
+            }
+            100% {
+                left: 100%;
+                transform: translateY(-50%) scale(1);
+            }
+        }
+        
+        .research-project {
+            margin: 25px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-left: 3px solid #2c2c2c;
             transition: all 0.3s ease;
         }
-
-        .link-item:hover {
-            background: #764ba2;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        
+        .research-project:hover {
+            background: #f0f0f0;
+            transform: translateX(5px);
         }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 32px;
-            }
-            .card {
-                padding: 40px 30px;
-            }
+        
+        .research-project h3 {
+            font-size: 1em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .research-project p {
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 3px 10px;
+            background: #2c2c2c;
+            color: #fafafa;
+            font-size: 0.75em;
+            font-family: 'Courier New', monospace;
+            margin-top: 5px;
+        }
+        
+        .status.coming-soon {
+            background: #999;
+        }
+        
+        a {
+            color: #2c2c2c;
+            text-decoration: none;
+            border-bottom: 1px solid #2c2c2c;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        a:hover {
+            transform: translateY(-2px);
+            border-bottom: 2px solid #2c2c2c;
+        }
+        
+        .links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        
+        .link-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .link-label {
+            font-size: 0.85em;
+            color: #999;
+            margin-bottom: 5px;
+        }
+        
+        .footer {
+            margin-top: 80px;
+            text-align: center;
+            color: #999;
+            font-size: 0.9em;
+            font-style: italic;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer:hover {
+            opacity: 1;
+        }
+        
+        .music-note {
+            display: inline-block;
+            margin-left: 10px;
+            opacity: 0.6;
+            transition: transform 0.3s ease;
+        }
+        
+        .music-note:hover {
+            transform: rotate(20deg) scale(1.2);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="card">
-            <h1>Basanta Ghimire</h1>
-            <div class="links">
-                <a href="mailto:basantaghimire456@gmail.com" class="link-item">basantaghimire456@gmail.com</a>
-                <a href="mailto:basantg@clemson.edu" class="link-item">basantg@clemson.edu</a>
-                <a href="https://linkedin.com/in/basanta-ghimire" target="_blank" class="link-item">LinkedIn</a>
+        <h1>Basanta Ghimire</h1>
+        <div class="subtitle">PhD Student — Experimental Physics</div>
+        <div class="location">Nepal → Clemson, South Carolina</div>
+        
+        <div class="energy-flow">
+            <div class="energy-dot"></div>
+            <div class="energy-dot"></div>
+            <div class="energy-dot"></div>
+            <div class="energy-dot"></div>
+        </div>
+        
+        <div class="section">
+            <h2>The Journey</h2>
+            <p>Working at the intersection of energy harvesting and biosensing. My research explores how we can capture ambient energy and understand biological environments through innovative experimental approaches. Each project is a step forward in making devices smarter, more sustainable, and more informative.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Research Projects</h2>
+            
+            <div class="research-project">
+                <h3>Energy Harvesting via Electrochemical Systems</h3>
+                <p>Developing devices that harvest energy using electrochemical processes—turning chemical gradients into usable power.</p>
+                <a href="https://pubs.rsc.org/en/content/articlelanding/2025/ta/d4ta08559k" target="_blank">Read the paper →</a>
+                <div class="status">PUBLISHED</div>
+            </div>
+            
+            <div class="research-project">
+                <h3>LED-Based Biosensing for Implants</h3>
+                <p>Imaging the biochemical environment around implants using LED-based sensors—giving us real-time insights into what's happening at the tissue-device interface.</p>
+                <div class="status coming-soon">COMING SOON</div>
             </div>
         </div>
+        
+        <div class="section">
+            <h2>Labs</h2>
+            <p>I work across two research groups at Clemson University, each bringing a unique perspective to my research.</p>
+            <div class="links" style="margin-top: 20px;">
+                <div class="link-item">
+                    <span class="link-label">Materials & Fabrication</span>
+                    <a href="https://scienceweb.clemson.edu/rrg/" target="_blank">Clemson Nanomaterial Institute</a>
+                </div>
+                <div class="link-item">
+                    <span class="link-label">Biosensing & Spectroscopy</span>
+                    <a href="https://scienceweb.clemson.edu/anker-research/" target="_blank">Anker's Research Group</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Connect</h2>
+            <div class="links">
+                <div class="link-item">
+                    <span class="link-label">Professional</span>
+                    <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+                </div>
+                <div class="link-item">
+                    <span class="link-label">Beyond Research</span>
+                    <a href="#" target="_blank">Music <span class="music-note">♪</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Converting energy, exploring biology, one experiment at a time</p>
+        </div>
     </div>
+    
+    <script>
+        // Create floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = Math.random() * window.innerHeight + 'px';
+            document.body.appendChild(particle);
+            
+            const duration = 3000 + Math.random() * 4000;
+            const dx = (Math.random() - 0.5) * 200;
+            const dy = (Math.random() - 0.5) * 200;
+            
+            particle.animate([
+                { transform: 'translate(0, 0)', opacity: 0.2 },
+                { transform: `translate(${dx}px, ${dy}px)`, opacity: 0 }
+            ], {
+                duration: duration,
+                easing: 'ease-out'
+            }).onfinish = () => particle.remove();
+        }
+        
+        setInterval(createParticle, 300);
+        
+        // Initial particles
+        for (let i = 0; i < 10; i++) {
+            setTimeout(createParticle, i * 100);
+        }
+    </script>
 </body>
 </html>
