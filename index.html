@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basanta Ghimire - PhD Student</title>
+    <title>Basanta Ghimire</title>
     <style>
         * {
             margin: 0;
@@ -12,170 +12,51 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
-            color: #1a1a1a;
-            padding: 20px;
-            line-height: 1.8;
+            font-family: 'Courier New', monospace;
+            background: #0a0f1a;
+            color: #00ff88;
             overflow-x: hidden;
-            min-height: 100vh;
             cursor: crosshair;
         }
         
-        .stars {
+        .circuit-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            opacity: 0.1;
+            z-index: 0;
             pointer-events: none;
         }
         
-        .star {
+        .circuit-line {
             position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 3s infinite;
-        }
-        
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
-        }
-        
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 60px 40px;
-            position: relative;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(30px);
-            border-radius: 40px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4), 0 0 100px rgba(126, 34, 206, 0.3);
-            animation: floatContainer 6s ease-in-out infinite;
-        }
-        
-        @keyframes floatContainer {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .particle {
-            position: fixed;
-            border-radius: 50%;
-            pointer-events: none;
-            filter: blur(1px);
-        }
-        
-        .glow-orb {
-            position: fixed;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            background: radial-gradient(circle, rgba(126, 34, 206, 0.4) 0%, transparent 70%);
-            filter: blur(40px);
-        }
-        
-        h1 {
-            font-size: 3.5em;
-            margin-bottom: 10px;
-            font-weight: 800;
-            letter-spacing: -3px;
-            transition: all 0.5s ease;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f857a6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 3s ease infinite;
-            background-size: 200% 200%;
-            cursor: pointer;
-        }
-        
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        h1:hover {
-            transform: scale(1.05) rotate(-2deg);
-            filter: drop-shadow(0 0 20px rgba(126, 34, 206, 0.5));
-        }
-        
-        .subtitle {
-            color: #555;
-            margin-bottom: 10px;
-            font-size: 1.2em;
-            font-weight: 600;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-        
-        .location {
-            color: #888;
-            font-size: 1em;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .header-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            margin-bottom: 50px;
-            animation: fadeInUp 1s ease both;
-        }
-        
-        .profile-pic-container {
-            position: relative;
-        }
-        
-        .profile-pic {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 6px solid transparent;
-            background: linear-gradient(white, white) padding-box,
-                        linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f857a6 100%) border-box;
-            transition: all 0.5s ease;
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
-            cursor: pointer;
+            background: #00ff88;
             animation: pulse 3s ease-in-out infinite;
         }
         
+        .circuit-line.horizontal {
+            height: 2px;
+            width: 100%;
+        }
+        
+        .circuit-line.vertical {
+            width: 2px;
+            height: 100%;
+        }
+        
         @keyframes pulse {
-            0%, 100% { box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4); }
-            50% { box-shadow: 0 20px 60px rgba(126, 34, 206, 0.6); }
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
         }
         
-        .profile-pic:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 20px 60px rgba(126, 34, 206, 0.8);
-        }
-        
-        .profile-ring {
+        .chip {
             position: absolute;
-            top: -10px;
-            left: -10px;
-            width: calc(100% + 20px);
-            height: calc(100% + 20px);
-            border-radius: 50%;
-            border: 2px solid rgba(126, 34, 206, 0.3);
+            width: 20px;
+            height: 20px;
+            background: #00ff88;
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
             animation: rotate 10s linear infinite;
         }
         
@@ -184,520 +65,567 @@
             to { transform: rotate(360deg); }
         }
         
-        .header-text {
-            flex: 1;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            position: relative;
+            z-index: 1;
         }
         
-        .section {
-            margin: 40px 0;
-            padding: 35px;
-            border: 2px solid transparent;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        .terminal-window {
+            background: rgba(10, 15, 26, 0.95);
+            border: 2px solid #00ff88;
+            box-shadow: 0 0 40px rgba(0, 255, 136, 0.3),
+                        inset 0 0 60px rgba(0, 255, 136, 0.05);
+            padding: 40px;
+            margin-bottom: 40px;
             position: relative;
-            border-radius: 25px;
+            animation: fadeIn 1s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .terminal-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #00ff88;
+        }
+        
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1px solid #00ff88;
+            animation: blink 2s ease-in-out infinite;
+        }
+        
+        .terminal-button:nth-child(1) { animation-delay: 0s; }
+        .terminal-button:nth-child(2) { animation-delay: 0.3s; }
+        .terminal-button:nth-child(3) { animation-delay: 0.6s; }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; box-shadow: 0 0 10px #00ff88; }
+        }
+        
+        .glitch {
+            position: relative;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            animation: glitch 5s infinite;
+        }
+        
+        @keyframes glitch {
+            0%, 90%, 100% { text-shadow: none; }
+            92% { 
+                text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff;
+                transform: translate(1px);
+            }
+            94% {
+                text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff;
+                transform: translate(-1px);
+            }
+            96% {
+                text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff;
+            }
+        }
+        
+        .prompt {
+            color: #00ff88;
+            margin-bottom: 20px;
+        }
+        
+        .prompt::before {
+            content: '> ';
+            color: #ff00ff;
+            animation: blink-cursor 1s infinite;
+        }
+        
+        @keyframes blink-cursor {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .section-title {
+            color: #00ffff;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .section-title::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            animation: bounce 1s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
+        }
+        
+        .chip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2px;
+            background: #00ff88;
+            padding: 2px;
+            margin: 30px 0;
+        }
+        
+        .chip-cell {
+            background: #0a0f1a;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
             overflow: hidden;
+        }
+        
+        .chip-cell::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(0, 255, 136, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
+        }
+        
+        .chip-cell:hover::before {
+            width: 200%;
+            height: 200%;
+        }
+        
+        .chip-cell:hover {
+            background: rgba(0, 255, 136, 0.1);
+            transform: scale(1.05);
+            box-shadow: inset 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+        
+        .chip-label {
+            font-size: 0.7rem;
+            color: #888;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .chip-value {
+            font-size: 0.9rem;
+            color: #00ff88;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .project-card {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid #00ff88;
+            padding: 30px;
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
             cursor: pointer;
         }
         
-        .section::before {
+        .project-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(126, 34, 206, 0.1), transparent);
-            transition: left 0.7s ease;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            transition: left 0.6s ease;
         }
         
-        .section:hover::before {
+        .project-card:hover::before {
             left: 100%;
         }
         
-        .section:hover {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
-            transform: translateX(10px) scale(1.02);
-            border-color: rgba(126, 34, 206, 0.3);
-            box-shadow: 0 10px 40px rgba(126, 34, 206, 0.2);
+        .project-card:hover {
+            border-color: #00ffff;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+            transform: translateX(10px);
         }
         
-        .section h2 {
-            color: #1a1a1a;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            font-weight: 800;
-            position: relative;
-            display: inline-block;
+        .project-title {
+            color: #00ffff;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: bold;
         }
         
-        .section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            transition: width 0.5s ease;
-        }
-        
-        .section:hover h2::after {
-            width: 100%;
-        }
-        
-        .energy-flow {
-            width: 100%;
-            height: 100px;
-            margin: 50px 0;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(90deg, 
-                rgba(102, 126, 234, 0.15) 0%, 
-                rgba(118, 75, 162, 0.15) 50%, 
-                rgba(248, 87, 166, 0.15) 100%);
-            border-radius: 50px;
-            box-shadow: inset 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .energy-dot {
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f857a6 100%);
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-            animation: flow 5s ease-in-out infinite;
-            box-shadow: 0 0 30px rgba(126, 34, 206, 0.8);
-            filter: blur(1px);
-        }
-        
-        .energy-dot:nth-child(2) {
-            animation-delay: 1.25s;
-            opacity: 0.8;
-        }
-        
-        .energy-dot:nth-child(3) {
-            animation-delay: 2.5s;
-            opacity: 0.6;
-        }
-        
-        .energy-dot:nth-child(4) {
-            animation-delay: 3.75s;
-            opacity: 0.5;
-        }
-        
-        @keyframes flow {
-            0% {
-                left: -30px;
-                transform: translateY(-50%) scale(1);
-            }
-            25% {
-                transform: translateY(-30%) scale(1.5);
-            }
-            50% {
-                transform: translateY(-50%) scale(2);
-            }
-            75% {
-                transform: translateY(-30%) scale(1.5);
-            }
-            100% {
-                left: calc(100% + 30px);
-                transform: translateY(-50%) scale(1);
-            }
-        }
-        
-        .research-project {
-            margin: 30px 0;
-            padding: 30px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            border-left: 5px solid #667eea;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 15px;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .research-project::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(126, 34, 206, 0.1), transparent);
-            transition: width 0.5s ease;
-        }
-        
-        .research-project:hover::before {
-            width: 100%;
-        }
-        
-        .research-project:hover {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
-            transform: translateX(15px) scale(1.03);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
-            border-left-color: #f857a6;
-        }
-        
-        .research-project h3 {
-            font-size: 1.3em;
+        .project-desc {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.6;
             margin-bottom: 15px;
-            font-weight: 800;
-            color: #1a1a1a;
-            position: relative;
         }
         
-        .research-project p {
-            font-size: 1em;
-            margin-bottom: 18px;
-            color: #444;
-            position: relative;
-        }
-        
-        .status {
+        .status-badge {
             display: inline-block;
-            padding: 8px 18px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f857a6 100%);
-            color: white;
-            font-size: 0.8em;
-            font-weight: 700;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            margin-top: 10px;
-            border-radius: 25px;
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.5);
-            transition: all 0.3s ease;
+            padding: 5px 15px;
+            border: 1px solid #00ff88;
+            color: #00ff88;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
+            letter-spacing: 0.1em;
+            animation: pulse-border 2s ease-in-out infinite;
         }
         
-        .status:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 30px rgba(126, 34, 206, 0.7);
+        @keyframes pulse-border {
+            0%, 100% { 
+                border-color: #00ff88;
+                box-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+            }
+            50% { 
+                border-color: #00ffff;
+                box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+            }
         }
         
-        .status.coming-soon {
-            background: linear-gradient(135deg, #888 0%, #666 100%);
-            box-shadow: 0 5px 20px rgba(136, 136, 136, 0.4);
+        .status-badge.gray {
+            border-color: #666;
+            color: #666;
+            animation: none;
         }
         
-        a {
-            color: #667eea;
+        .link-line {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(0, 255, 136, 0.03);
+            border-left: 3px solid #00ff88;
+            transition: all 0.3s ease;
             text-decoration: none;
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s ease;
-            display: inline-block;
-            font-weight: 700;
-            position: relative;
+            color: #00ff88;
         }
         
-        a::before {
-            content: '→';
-            position: absolute;
-            left: -20px;
-            opacity: 0;
-            transition: all 0.3s ease;
+        .link-line:hover {
+            background: rgba(0, 255, 136, 0.1);
+            border-left-width: 6px;
+            transform: translateX(10px);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
         }
         
-        a:hover::before {
-            left: -25px;
-            opacity: 1;
+        .link-icon {
+            font-size: 1.2rem;
+            min-width: 25px;
         }
         
-        a:hover {
-            transform: translateX(5px);
-            color: #764ba2;
-            border-bottom-color: #f857a6;
-        }
-        
-        .links {
-            display: flex;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-top: 25px;
-        }
-        
-        .link-item {
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease;
-        }
-        
-        .link-item:hover {
-            transform: translateY(-5px);
+        .link-text {
+            flex: 1;
         }
         
         .link-label {
-            font-size: 0.85em;
-            color: #888;
-            margin-bottom: 10px;
-            font-weight: 600;
+            font-size: 0.7rem;
+            color: #666;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 0.1em;
+        }
+        
+        .link-title {
+            font-size: 0.95rem;
+            color: #00ff88;
+            font-weight: bold;
+        }
+        
+        .assembly-line {
+            height: 60px;
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px dashed #00ff88;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .moving-chip {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #00ff88;
+            top: 50%;
+            transform: translateY(-50%);
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            animation: moveChip 8s linear infinite;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.8);
+        }
+        
+        .moving-chip:nth-child(2) {
+            animation-delay: 2s;
+        }
+        
+        .moving-chip:nth-child(3) {
+            animation-delay: 4s;
+        }
+        
+        .moving-chip:nth-child(4) {
+            animation-delay: 6s;
+        }
+        
+        @keyframes moveChip {
+            0% {
+                left: -20px;
+                transform: translateY(-50%) rotate(0deg);
+            }
+            100% {
+                left: calc(100% + 20px);
+                transform: translateY(-50%) rotate(360deg);
+            }
         }
         
         .footer {
-            margin-top: 80px;
             text-align: center;
-            color: #888;
-            font-size: 1em;
-            font-style: italic;
-            opacity: 0.8;
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease 0.8s both;
+            color: #666;
+            font-size: 0.8rem;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px dashed #00ff88;
         }
         
-        .footer:hover {
-            opacity: 1;
-            transform: scale(1.05);
-        }
-        
-        .music-note {
-            display: inline-block;
-            margin-left: 8px;
-            opacity: 0.7;
-            transition: all 0.3s ease;
-            font-size: 1.3em;
-            animation: bounce 2s ease-in-out infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-        
-        .music-note:hover {
-            transform: rotate(360deg) scale(1.5);
-            opacity: 1;
-        }
-        
-        .click-ripple {
+        .scanline {
             position: fixed;
-            border-radius: 50%;
-            border: 2px solid rgba(126, 34, 206, 0.5);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 136, 0.03),
+                rgba(0, 255, 136, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
             pointer-events: none;
-            animation: ripple 0.6s ease-out;
+            z-index: 9999;
+            animation: scan 8s linear infinite;
         }
         
-        @keyframes ripple {
-            from {
-                width: 0;
-                height: 0;
-                opacity: 1;
-            }
-            to {
-                width: 100px;
-                height: 100px;
-                opacity: 0;
-            }
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(10px); }
         }
         
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            h1 {
-                font-size: 2.5em;
-            }
-            
-            .profile-pic {
-                width: 150px;
-                height: 150px;
-            }
-            
             .container {
-                padding: 40px 25px;
+                padding: 40px 20px;
+            }
+            
+            .terminal-window {
+                padding: 25px;
+            }
+            
+            .glitch {
+                font-size: 2rem;
+            }
+            
+            .chip-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="stars" id="stars"></div>
-    <div class="glow-orb" id="glowOrb"></div>
+    <div class="scanline"></div>
+    
+    <div class="circuit-bg">
+        <div class="circuit-line horizontal" style="top: 10%;"></div>
+        <div class="circuit-line horizontal" style="top: 30%;"></div>
+        <div class="circuit-line horizontal" style="top: 60%;"></div>
+        <div class="circuit-line horizontal" style="top: 85%;"></div>
+        <div class="circuit-line vertical" style="left: 15%;"></div>
+        <div class="circuit-line vertical" style="left: 45%;"></div>
+        <div class="circuit-line vertical" style="left: 75%;"></div>
+        
+        <div class="chip" style="top: 10%; left: 15%;"></div>
+        <div class="chip" style="top: 30%; left: 45%;"></div>
+        <div class="chip" style="top: 60%; left: 75%;"></div>
+        <div class="chip" style="top: 85%; left: 15%;"></div>
+    </div>
     
     <div class="container">
-        <div class="header-content">
-            <div class="profile-pic-container">
-                <div class="profile-ring"></div>
-                <img src="images/basanta.jpg" alt="Basanta Ghimire" class="profile-pic">
-            </div>
-            <div class="header-text">
-                <h1>Basanta Ghimire</h1>
-                <div class="subtitle">PhD Student — Experimental Physics</div>
-                <div class="location">Nepal → Clemson, South Carolina</div>
-            </div>
-        </div>
-        
-        <div class="energy-flow">
-            <div class="energy-dot"></div>
-            <div class="energy-dot"></div>
-            <div class="energy-dot"></div>
-            <div class="energy-dot"></div>
-        </div>
-        
-        <div class="section">
-            <h2>The Journey</h2>
-            <p>Working at the intersection of energy harvesting and biosensing. My research explores how we can capture ambient energy and understand biological environments through innovative experimental approaches. Each project is a step forward in making devices smarter, more sustainable, and more informative.</p>
-        </div>
-        
-        <div class="section">
-            <h2>Research Projects</h2>
-            
-            <div class="research-project">
-                <h3>Energy Harvesting via Electrochemical Systems</h3>
-                <p>Developing devices that harvest energy using electrochemical processes—turning chemical gradients into usable power.</p>
-                <a href="https://pubs.rsc.org/en/content/articlelanding/2025/ta/d4ta08559k" target="_blank">Read the paper</a>
-                <div class="status">PUBLISHED</div>
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-button"></div>
+                <div class="terminal-button"></div>
+                <div class="terminal-button"></div>
             </div>
             
-            <div class="research-project">
-                <h3>LED-Based Biosensing for Implants</h3>
-                <p>Imaging the biochemical environment around implants using LED-based sensors—giving us real-time insights into what's happening at the tissue-device interface.</p>
-                <div class="status coming-soon">COMING SOON</div>
+            <h1 class="glitch">BASANTA GHIMIRE</h1>
+            <p class="prompt">Microchip Technology</p>
+            <p class="prompt">PhD from Clemson University</p>
+        </div>
+        
+        <div class="assembly-line">
+            <div class="moving-chip"></div>
+            <div class="moving-chip"></div>
+            <div class="moving-chip"></div>
+            <div class="moving-chip"></div>
+        </div>
+        
+        <div class="terminal-window">
+            <h2 class="section-title">System Info</h2>
+            <div class="chip-grid">
+                <div class="chip-cell">
+                    <div class="chip-label">ROLE</div>
+                    <div class="chip-value">SR. PROCESS<br>ENGINEER</div>
+                </div>
+                <div class="chip-cell">
+                    <div class="chip-label">COMPANY</div>
+                    <div class="chip-value">MICROCHIP<br>TECH</div>
+                </div>
+                <div class="chip-cell">
+                    <div class="chip-label">DEGREE</div>
+                    <div class="chip-value">PhD<br>PHYSICS</div>
+                </div>
+                <div class="chip-cell">
+                    <div class="chip-label">UNIVERSITY</div>
+                    <div class="chip-value">CLEMSON<br>2025</div>
+                </div>
             </div>
         </div>
         
-        <div class="section">
-            <h2>Labs</h2>
-            <p>I work across two research groups at Clemson University, each bringing a unique perspective to my research.</p>
-            <div class="links" style="margin-top: 20px;">
-                <div class="link-item">
-                    <span class="link-label">Materials & Fabrication</span>
-                    <a href="https://scienceweb.clemson.edu/rrg/" target="_blank">Clemson Nanomaterial Institute</a>
+        <div class="terminal-window">
+            <h2 class="section-title">Connect</h2>
+            
+            <a href="https://www.linkedin.com/in/basanta-ghimire" target="_blank" class="link-line">
+                <div class="link-icon">◆</div>
+                <div class="link-text">
+                    <div class="link-label">Professional</div>
+                    <div class="link-title">LinkedIn</div>
                 </div>
-                <div class="link-item">
-                    <span class="link-label">Biosensing & Spectroscopy</span>
-                    <a href="https://scienceweb.clemson.edu/anker-research/" target="_blank">Anker's Research Group</a>
+            </a>
+            
+            <a href="#" target="_blank" class="link-line">
+                <div class="link-icon">♪</div>
+                <div class="link-text">
+                    <div class="link-label">Beyond Work</div>
+                    <div class="link-title">Music</div>
+                </div>
+            </a>
+        </div>
+        
+        <div class="terminal-window">
+            <h2 class="section-title">PhD Works</h2>
+            
+            <div class="project-card">
+                <div class="project-title">⚡ Energy Harvesting via Electrochemical Systems</div>
+                <div class="project-desc">Developed devices that harvest energy using electrochemical processes — converting chemical gradients into usable power.</div>
+                <a href="https://pubs.rsc.org/en/content/articlelanding/2025/ta/d4ta08559k" target="_blank" style="color: #00ffff; text-decoration: none; font-weight: bold;">→ View Publication</a>
+                <div style="margin-top: 15px;">
+                    <span class="status-badge">PUBLISHED</span>
+                    <span class="status-badge gray">2025</span>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-title">🔬 LED-Based Biosensing for Implants</div>
+                <div class="project-desc">Imaging the biochemical environment around implants using LED-based sensors — providing real-time insights into tissue-device interfaces.</div>
+                <div style="margin-top: 15px;">
+                    <span class="status-badge gray">IN PROGRESS</span>
                 </div>
             </div>
         </div>
         
-        <div class="section">
-            <h2>Connect</h2>
-            <div class="links">
-                <div class="link-item">
-                    <span class="link-label">Professional</span>
-                    <a href="https://www.linkedin.com/in/basanta-ghimire" target="_blank">LinkedIn</a>
+        <div class="terminal-window">
+            <h2 class="section-title">Worked At</h2>
+            
+            <a href="https://scienceweb.clemson.edu/rrg/" target="_blank" class="link-line">
+                <div class="link-icon">⚙</div>
+                <div class="link-text">
+                    <div class="link-label">Materials & Fabrication</div>
+                    <div class="link-title">Clemson Nanomaterial Institute</div>
                 </div>
-                <div class="link-item">
-                    <span class="link-label">Beyond Research</span>
-                    <a href="#" target="_blank">Music <span class="music-note">♪</span></a>
+            </a>
+            
+            <a href="https://scienceweb.clemson.edu/anker-research/" target="_blank" class="link-line">
+                <div class="link-icon">⚗</div>
+                <div class="link-text">
+                    <div class="link-label">Biosensing & Spectroscopy</div>
+                    <div class="link-title">Anker's Research Group</div>
                 </div>
-            </div>
+            </a>
         </div>
         
         <div class="footer">
-            <p>Converting energy, exploring biology, one experiment at a time</p>
+            <p>MANUFACTURING SEMICONDUCTORS • PROCESSING INNOVATIONS • ONE WAFER AT A TIME</p>
         </div>
     </div>
     
     <script>
-        // Create starfield
-        const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 100; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.animationDelay = Math.random() * 3 + 's';
-            starsContainer.appendChild(star);
-        }
-        
-        // Cursor glow effect
-        const glowOrb = document.getElementById('glowOrb');
+        // Cursor trail effect
         document.addEventListener('mousemove', (e) => {
-            glowOrb.style.left = (e.clientX - 150) + 'px';
-            glowOrb.style.top = (e.clientY - 150) + 'px';
-            glowOrb.style.opacity = '1';
-        });
-        
-        // Create colorful particles on mouse move
-        let particleTimeout;
-        document.addEventListener('mousemove', (e) => {
-            clearTimeout(particleTimeout);
-            particleTimeout = setTimeout(() => {
-                createParticle(e.clientX, e.clientY);
-            }, 50);
-        });
-        
-        function createParticle(x, y) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            const size = Math.random() * 6 + 3;
-            particle.style.width = size + 'px';
-            particle.style.height = size + 'px';
-            particle.style.left = x + 'px';
-            particle.style.top = y + 'px';
+            const trail = document.createElement('div');
+            trail.style.position = 'fixed';
+            trail.style.width = '4px';
+            trail.style.height = '4px';
+            trail.style.background = '#00ff88';
+            trail.style.borderRadius = '50%';
+            trail.style.pointerEvents = 'none';
+            trail.style.left = e.clientX + 'px';
+            trail.style.top = e.clientY + 'px';
+            trail.style.zIndex = '9998';
+            trail.style.boxShadow = '0 0 10px #00ff88';
+            document.body.appendChild(trail);
             
-            const colors = ['#667eea', '#764ba2', '#f857a6', '#ff6b95'];
-            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-            particle.style.boxShadow = `0 0 ${size * 3}px ${particle.style.background}`;
-            
-            document.body.appendChild(particle);
-            
-            const duration = 2000 + Math.random() * 2000;
-            const dx = (Math.random() - 0.5) * 200;
-            const dy = (Math.random() - 0.5) * 200;
-            
-            particle.animate([
-                { transform: 'translate(0, 0) scale(1)', opacity: 0.8 },
-                { transform: `translate(${dx}px, ${dy}px) scale(0)`, opacity: 0 }
-            ], {
-                duration: duration,
-                easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
-            }).onfinish = () => particle.remove();
-        }
-        
-        // Click ripple effect
-        document.addEventListener('click', (e) => {
-            const ripple = document.createElement('div');
-            ripple.className = 'click-ripple';
-            ripple.style.left = (e.clientX - 50) + 'px';
-            ripple.style.top = (e.clientY - 50) + 'px';
-            document.body.appendChild(ripple);
-            
-            setTimeout(() => ripple.remove(), 600);
-        });
-        
-        // Interactive sections sound effect (visual feedback)
-        const sections = document.querySelectorAll('.section, .research-project');
-        sections.forEach(section => {
-            section.addEventListener('mouseenter', () => {
-                section.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-            });
-        });
-        
-        // Parallax effect on scroll
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const stars = document.querySelectorAll('.star');
-            stars.forEach((star, index) => {
-                const speed = (index % 3 + 1) * 0.5;
-                star.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-        });
-        
-        // Profile picture interaction
-        const profilePic = document.querySelector('.profile-pic');
-        profilePic.addEventListener('click', () => {
-            profilePic.style.animation = 'none';
             setTimeout(() => {
-                profilePic.style.animation = 'pulse 3s ease-in-out infinite';
+                trail.style.transition = 'all 0.5s ease';
+                trail.style.opacity = '0';
+                trail.style.transform = 'scale(0)';
+                setTimeout(() => trail.remove(), 500);
             }, 10);
         });
         
-        // Smooth reveal on load
-        window.addEventListener('load', () => {
-            document.querySelector('.container').style.opacity = '0';
+        // Random chip generation
+        function createRandomChip() {
+            const chip = document.createElement('div');
+            chip.className = 'chip';
+            chip.style.position = 'fixed';
+            chip.style.left = Math.random() * 100 + '%';
+            chip.style.top = Math.random() * 100 + '%';
+            chip.style.width = (Math.random() * 15 + 10) + 'px';
+            chip.style.height = chip.style.width;
+            chip.style.opacity = '0.1';
+            chip.style.zIndex = '0';
+            document.body.appendChild(chip);
+            
             setTimeout(() => {
-                document.querySelector('.container').style.transition = 'opacity 1s ease';
-                document.querySelector('.container').style.opacity = '1';
+                chip.style.transition = 'all 2s ease';
+                chip.style.opacity = '0';
+                setTimeout(() => chip.remove(), 2000);
             }, 100);
-        });
+        }
+        
+        setInterval(createRandomChip, 3000);
+        
+        // Glitch effect on title
+        const glitchTitle = document.querySelector('.glitch');
+        setInterval(() => {
+            glitchTitle.style.textShadow = Math.random() > 0.95 ? 
+                '2px 0 #ff00ff, -2px 0 #00ffff' : 'none';
+        }, 100);
     </script>
 </body>
 </html>
