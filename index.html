@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basanta Ghimire</title>
+    <title>Basanta Ghimire - Fab Floor</title>
     <style>
         * {
             margin: 0;
@@ -13,51 +13,57 @@
         
         body {
             font-family: 'Courier New', monospace;
-            background: #0a0f1a;
-            color: #00ff88;
+            background: #0a0a14;
+            color: #0ff;
             overflow-x: hidden;
-            cursor: crosshair;
         }
         
-        .circuit-bg {
+        /* Wafer Background */
+        .wafer-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.1;
+            top: -200px;
+            right: -200px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #1a1a3e 0%, #0a0a14 70%);
+            border: 5px solid rgba(0, 255, 255, 0.2);
             z-index: 0;
-            pointer-events: none;
+            animation: rotate 30s linear infinite;
         }
         
-        .circuit-line {
+        .wafer-bg::before {
+            content: '';
             position: absolute;
-            background: #00ff88;
-            animation: pulse 3s ease-in-out infinite;
+            inset: 20px;
+            border-radius: 50%;
+            background: 
+                repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(0, 255, 255, 0.1) 15px, rgba(0, 255, 255, 0.1) 16px),
+                repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(0, 255, 255, 0.1) 15px, rgba(0, 255, 255, 0.1) 16px);
+            opacity: 0.5;
         }
         
-        .circuit-line.horizontal {
-            height: 2px;
-            width: 100%;
+        .wafer-bg-2 {
+            position: fixed;
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #1a3e1a 0%, #0a0a14 70%);
+            border: 5px solid rgba(0, 255, 136, 0.2);
+            z-index: 0;
+            animation: rotate 40s linear infinite reverse;
         }
         
-        .circuit-line.vertical {
-            width: 2px;
-            height: 100%;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.7; }
-        }
-        
-        .chip {
+        .wafer-bg-2::before {
+            content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #00ff88;
-            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-            animation: rotate 10s linear infinite;
+            inset: 15px;
+            border-radius: 50%;
+            background: 
+                repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(0, 255, 136, 0.1) 20px, rgba(0, 255, 136, 0.1) 21px);
+            opacity: 0.4;
         }
         
         @keyframes rotate {
@@ -65,567 +71,748 @@
             to { transform: rotate(360deg); }
         }
         
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 80px 40px;
+        /* Floating Die Elements */
+        .die {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #ff00ff 0%, #00ffff 100%);
+            clip-path: polygon(15% 0%, 85% 0%, 100% 15%, 100% 85%, 85% 100%, 15% 100%, 0% 85%, 0% 15%);
+            opacity: 0.15;
+            animation: floatDie 20s ease-in-out infinite;
+            z-index: 0;
+        }
+        
+        .die:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .die:nth-child(2) { top: 70%; right: 15%; animation-delay: 5s; }
+        .die:nth-child(3) { bottom: 25%; left: 30%; animation-delay: 10s; }
+        .die:nth-child(4) { top: 40%; right: 25%; animation-delay: 15s; }
+        
+        @keyframes floatDie {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.15; }
+            50% { transform: translateY(-30px) rotate(180deg); opacity: 0.3; }
+        }
+        
+        /* Main Container - Diagonal Split Layout */
+        .fab-floor {
             position: relative;
             z-index: 1;
-        }
-        
-        .terminal-window {
-            background: rgba(10, 15, 26, 0.95);
-            border: 2px solid #00ff88;
-            box-shadow: 0 0 40px rgba(0, 255, 136, 0.3),
-                        inset 0 0 60px rgba(0, 255, 136, 0.05);
+            min-height: 100vh;
             padding: 40px;
-            margin-bottom: 40px;
+        }
+        
+        /* Hero Section - Diagonal */
+        .hero-section {
             position: relative;
-            animation: fadeIn 1s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .terminal-header {
+            height: 60vh;
             display: flex;
-            gap: 8px;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #00ff88;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 100px;
         }
         
-        .terminal-button {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            border: 1px solid #00ff88;
-            animation: blink 2s ease-in-out infinite;
+        .hero-diagonal {
+            position: absolute;
+            top: 0;
+            left: -10%;
+            width: 120%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, transparent 100%);
+            transform: skewY(-3deg);
+            border-top: 2px solid #0ff;
+            border-bottom: 2px solid #0ff;
         }
         
-        .terminal-button:nth-child(1) { animation-delay: 0s; }
-        .terminal-button:nth-child(2) { animation-delay: 0.3s; }
-        .terminal-button:nth-child(3) { animation-delay: 0.6s; }
-        
-        @keyframes blink {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; box-shadow: 0 0 10px #00ff88; }
-        }
-        
-        .glitch {
+        .hero-content {
             position: relative;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: bold;
+            text-align: center;
+            z-index: 2;
+        }
+        
+        .fab-id {
+            font-size: 0.9rem;
+            color: #888;
             margin-bottom: 10px;
+            letter-spacing: 0.3em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .name-display {
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: bold;
+            line-height: 1;
+            margin-bottom: 20px;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            animation: glitch 5s infinite;
+            background: linear-gradient(90deg, #0ff 0%, #0f0 50%, #ff0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideGradient 3s ease infinite;
+            background-size: 200% 100%;
         }
         
-        @keyframes glitch {
-            0%, 90%, 100% { text-shadow: none; }
-            92% { 
-                text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff;
-                transform: translate(1px);
-            }
-            94% {
-                text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff;
-                transform: translate(-1px);
-            }
-            96% {
-                text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff;
-            }
+        @keyframes slideGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
         
-        .prompt {
-            color: #00ff88;
-            margin-bottom: 20px;
-        }
-        
-        .prompt::before {
-            content: '> ';
-            color: #ff00ff;
-            animation: blink-cursor 1s infinite;
-        }
-        
-        @keyframes blink-cursor {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-        
-        .section-title {
-            color: #00ffff;
+        .role-badge {
+            display: inline-block;
+            padding: 10px 30px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid #0ff;
+            color: #0ff;
             font-size: 1.2rem;
-            margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 0.2em;
             position: relative;
-            padding-left: 20px;
-        }
-        
-        .section-title::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            animation: bounce 1s ease-in-out infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(5px); }
-        }
-        
-        .chip-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2px;
-            background: #00ff88;
-            padding: 2px;
-            margin: 30px 0;
-        }
-        
-        .chip-cell {
-            background: #0a0f1a;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
             overflow: hidden;
         }
         
-        .chip-cell::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(0, 255, 136, 0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.5s ease, height 0.5s ease;
-        }
-        
-        .chip-cell:hover::before {
-            width: 200%;
-            height: 200%;
-        }
-        
-        .chip-cell:hover {
-            background: rgba(0, 255, 136, 0.1);
-            transform: scale(1.05);
-            box-shadow: inset 0 0 20px rgba(0, 255, 136, 0.3);
-        }
-        
-        .chip-label {
-            font-size: 0.7rem;
-            color: #888;
-            margin-bottom: 8px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .chip-value {
-            font-size: 0.9rem;
-            color: #00ff88;
-            font-weight: bold;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .project-card {
-            background: rgba(0, 255, 136, 0.05);
-            border: 1px solid #00ff88;
-            padding: 30px;
-            margin-bottom: 25px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .project-card::before {
+        .role-badge::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-        
-        .project-card:hover::before {
-            left: 100%;
-        }
-        
-        .project-card:hover {
-            border-color: #00ffff;
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
-            transform: translateX(10px);
-        }
-        
-        .project-title {
-            color: #00ffff;
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            font-weight: bold;
-        }
-        
-        .project-desc {
-            color: #888;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        
-        .status-badge {
-            display: inline-block;
-            padding: 5px 15px;
-            border: 1px solid #00ff88;
-            color: #00ff88;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            animation: pulse-border 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse-border {
-            0%, 100% { 
-                border-color: #00ff88;
-                box-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
-            }
-            50% { 
-                border-color: #00ffff;
-                box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
-            }
-        }
-        
-        .status-badge.gray {
-            border-color: #666;
-            color: #666;
-            animation: none;
-        }
-        
-        .link-line {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin: 15px 0;
-            padding: 15px;
-            background: rgba(0, 255, 136, 0.03);
-            border-left: 3px solid #00ff88;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: #00ff88;
-        }
-        
-        .link-line:hover {
-            background: rgba(0, 255, 136, 0.1);
-            border-left-width: 6px;
-            transform: translateX(10px);
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
-        }
-        
-        .link-icon {
-            font-size: 1.2rem;
-            min-width: 25px;
-        }
-        
-        .link-text {
-            flex: 1;
-        }
-        
-        .link-label {
-            font-size: 0.7rem;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-        
-        .link-title {
-            font-size: 0.95rem;
-            color: #00ff88;
-            font-weight: bold;
-        }
-        
-        .assembly-line {
-            height: 60px;
-            background: rgba(0, 255, 136, 0.05);
-            border: 1px dashed #00ff88;
-            margin: 40px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .moving-chip {
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background: #00ff88;
-            top: 50%;
-            transform: translateY(-50%);
-            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-            animation: moveChip 8s linear infinite;
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.8);
-        }
-        
-        .moving-chip:nth-child(2) {
-            animation-delay: 2s;
-        }
-        
-        .moving-chip:nth-child(3) {
-            animation-delay: 4s;
-        }
-        
-        .moving-chip:nth-child(4) {
-            animation-delay: 6s;
-        }
-        
-        @keyframes moveChip {
-            0% {
-                left: -20px;
-                transform: translateY(-50%) rotate(0deg);
-            }
-            100% {
-                left: calc(100% + 20px);
-                transform: translateY(-50%) rotate(360deg);
-            }
-        }
-        
-        .footer {
-            text-align: center;
-            color: #666;
-            font-size: 0.8rem;
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 1px dashed #00ff88;
-        }
-        
-        .scanline {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 255, 136, 0.03),
-                rgba(0, 255, 136, 0.03) 1px,
-                transparent 1px,
-                transparent 2px
-            );
-            pointer-events: none;
-            z-index: 9999;
-            animation: scan 8s linear infinite;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+            animation: scan 2s ease-in-out infinite;
         }
         
         @keyframes scan {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(10px); }
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
         
+        .company-line {
+            margin-top: 15px;
+            font-size: 1.5rem;
+            color: #0f0;
+            font-weight: bold;
+        }
+        
+        .edu-line {
+            margin-top: 8px;
+            font-size: 1rem;
+            color: #888;
+        }
+        
+        /* Wafer Display Section */
+        .wafer-stats {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 80px 0;
+        }
+        
+        .wafer-chip {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #1e3a8a 0%, #0a0a14 100%);
+            border: 4px solid #0ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 
+                inset 0 0 30px rgba(0, 255, 255, 0.2),
+                0 0 40px rgba(0, 255, 255, 0.3);
+        }
+        
+        .wafer-chip::before {
+            content: '';
+            position: absolute;
+            inset: 10px;
+            border-radius: 50%;
+            background: 
+                repeating-linear-gradient(0deg, transparent 0px, transparent 12px, rgba(0, 255, 255, 0.1) 12px, rgba(0, 255, 255, 0.1) 13px),
+                repeating-linear-gradient(90deg, transparent 0px, transparent 12px, rgba(0, 255, 255, 0.1) 12px, rgba(0, 255, 255, 0.1) 13px);
+        }
+        
+        .wafer-chip:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 
+                inset 0 0 50px rgba(0, 255, 255, 0.4),
+                0 0 60px rgba(0, 255, 255, 0.6);
+            border-color: #0f0;
+        }
+        
+        .wafer-label {
+            font-size: 0.7rem;
+            color: #666;
+            margin-bottom: 5px;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .wafer-value {
+            font-size: 0.95rem;
+            color: #0ff;
+            font-weight: bold;
+            z-index: 1;
+            text-align: center;
+            line-height: 1.3;
+        }
+        
+        /* Process Line - Horizontal Scrolling */
+        .process-line {
+            margin: 100px 0;
+            position: relative;
+        }
+        
+        .process-title {
+            font-size: 2rem;
+            color: #ff0;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 40px;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(255, 255, 0, 0.5);
+        }
+        
+        .conveyor-belt {
+            height: 4px;
+            background: linear-gradient(90deg, #0ff 0%, #0f0 50%, #ff0 100%);
+            position: relative;
+            margin-bottom: 60px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+        
+        .belt-indicator {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff0;
+            top: -8px;
+            border-radius: 50%;
+            animation: moveBelt 5s linear infinite;
+            box-shadow: 0 0 20px #ff0;
+        }
+        
+        @keyframes moveBelt {
+            0% { left: 0%; }
+            100% { left: 100%; }
+        }
+        
+        /* Research Cards - Staggered Layout */
+        .research-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .research-card {
+            background: rgba(0, 255, 255, 0.03);
+            border: 2px solid #0ff;
+            padding: 40px;
+            position: relative;
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px));
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .research-card:nth-child(even) {
+            transform: translateX(40px);
+            border-color: #0f0;
+            background: rgba(0, 255, 136, 0.03);
+        }
+        
+        .research-card:hover {
+            transform: translateX(0) scale(1.02);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.4);
+            background: rgba(0, 255, 255, 0.1);
+        }
+        
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            background: #0ff;
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
+        }
+        
+        .research-card:nth-child(even)::before {
+            background: #0f0;
+        }
+        
+        .research-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .research-title {
+            font-size: 1.5rem;
+            color: #0ff;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .research-card:nth-child(even) .research-title {
+            color: #0f0;
+        }
+        
+        .research-desc {
+            color: #888;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .research-link {
+            color: #ff0;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            padding: 8px 20px;
+            border: 2px solid #ff0;
+            transition: all 0.3s ease;
+        }
+        
+        .research-link:hover {
+            background: #ff0;
+            color: #000;
+            box-shadow: 0 0 20px #ff0;
+        }
+        
+        .status-pill {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(0, 255, 255, 0.2);
+            border: 1px solid #0ff;
+            color: #0ff;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-top: 15px;
+            margin-right: 10px;
+        }
+        
+        .status-pill.gray {
+            background: rgba(136, 136, 136, 0.2);
+            border-color: #666;
+            color: #666;
+        }
+        
+        /* Connect Section - Circular Layout */
+        .connect-section {
+            margin: 120px 0;
+            text-align: center;
+        }
+        
+        .section-header {
+            font-size: 2.5rem;
+            color: #f0f;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin-bottom: 60px;
+            text-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+        }
+        
+        .connect-hub {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .connect-node {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 0, 255, 0.2) 0%, transparent 70%);
+            border: 3px solid #f0f;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #f0f;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .connect-node::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+        }
+        
+        .connect-node:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 50px rgba(255, 0, 255, 0.6);
+        }
+        
+        .connect-node:hover::before {
+            border-color: #f0f;
+            animation: rotate 2s linear infinite;
+        }
+        
+        .connect-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        .connect-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+        
+        /* Labs Section - Hexagonal Grid */
+        .labs-section {
+            margin: 120px 0;
+        }
+        
+        .hex-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .hex-lab {
+            width: 250px;
+            height: 280px;
+            background: rgba(255, 255, 0, 0.05);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            border: 3px solid #ff0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 30px;
+            text-decoration: none;
+            color: #ff0;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .hex-lab:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 50px rgba(255, 255, 0, 0.6);
+            background: rgba(255, 255, 0, 0.1);
+        }
+        
+        .hex-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .hex-title {
+            font-size: 0.9rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            line-height: 1.4;
+        }
+        
+        .hex-subtitle {
+            font-size: 0.7rem;
+            color: #888;
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        /* Footer */
+        .fab-footer {
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 100px;
+            border-top: 2px solid #0ff;
+            color: #666;
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                padding: 40px 20px;
+            .fab-floor {
+                padding: 20px;
             }
             
-            .terminal-window {
-                padding: 25px;
+            .hero-section {
+                height: 50vh;
             }
             
-            .glitch {
-                font-size: 2rem;
+            .name-display {
+                font-size: 3rem;
             }
             
-            .chip-grid {
-                grid-template-columns: 1fr 1fr;
+            .wafer-chip {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .research-card {
+                clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+            }
+            
+            .research-card:nth-child(even) {
+                transform: translateX(0);
+            }
+            
+            .connect-node {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .hex-lab {
+                width: 200px;
+                height: 230px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="scanline"></div>
+    <!-- Background Elements -->
+    <div class="wafer-bg"></div>
+    <div class="wafer-bg-2"></div>
+    <div class="die"></div>
+    <div class="die"></div>
+    <div class="die"></div>
+    <div class="die"></div>
     
-    <div class="circuit-bg">
-        <div class="circuit-line horizontal" style="top: 10%;"></div>
-        <div class="circuit-line horizontal" style="top: 30%;"></div>
-        <div class="circuit-line horizontal" style="top: 60%;"></div>
-        <div class="circuit-line horizontal" style="top: 85%;"></div>
-        <div class="circuit-line vertical" style="left: 15%;"></div>
-        <div class="circuit-line vertical" style="left: 45%;"></div>
-        <div class="circuit-line vertical" style="left: 75%;"></div>
-        
-        <div class="chip" style="top: 10%; left: 15%;"></div>
-        <div class="chip" style="top: 30%; left: 45%;"></div>
-        <div class="chip" style="top: 60%; left: 75%;"></div>
-        <div class="chip" style="top: 85%; left: 15%;"></div>
-    </div>
-    
-    <div class="container">
-        <div class="terminal-window">
-            <div class="terminal-header">
-                <div class="terminal-button"></div>
-                <div class="terminal-button"></div>
-                <div class="terminal-button"></div>
-            </div>
-            
-            <h1 class="glitch">BASANTA GHIMIRE</h1>
-            <p class="prompt">Microchip Technology</p>
-            <p class="prompt">PhD from Clemson University</p>
-        </div>
-        
-        <div class="assembly-line">
-            <div class="moving-chip"></div>
-            <div class="moving-chip"></div>
-            <div class="moving-chip"></div>
-            <div class="moving-chip"></div>
-        </div>
-        
-        <div class="terminal-window">
-            <h2 class="section-title">System Info</h2>
-            <div class="chip-grid">
-                <div class="chip-cell">
-                    <div class="chip-label">ROLE</div>
-                    <div class="chip-value">SR. PROCESS<br>ENGINEER</div>
-                </div>
-                <div class="chip-cell">
-                    <div class="chip-label">COMPANY</div>
-                    <div class="chip-value">MICROCHIP<br>TECH</div>
-                </div>
-                <div class="chip-cell">
-                    <div class="chip-label">DEGREE</div>
-                    <div class="chip-value">PhD<br>PHYSICS</div>
-                </div>
-                <div class="chip-cell">
-                    <div class="chip-label">UNIVERSITY</div>
-                    <div class="chip-value">CLEMSON<br>2025</div>
-                </div>
+    <div class="fab-floor">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-diagonal"></div>
+            <div class="hero-content">
+                <div class="fab-id">[ FAB-ENGINEER-ID: BG-2025 ]</div>
+                <h1 class="name-display">BASANTA<br>GHIMIRE</h1>
+                <div class="role-badge">SENIOR PROCESS ENGINEER</div>
+                <div class="company-line">→ MICROCHIP TECHNOLOGY ←</div>
+                <div class="edu-line">PhD • Physics • Clemson University • Dec 2025</div>
             </div>
         </div>
         
-        <div class="terminal-window">
-            <h2 class="section-title">Connect</h2>
-            
-            <a href="https://www.linkedin.com/in/basanta-ghimire" target="_blank" class="link-line">
-                <div class="link-icon">◆</div>
-                <div class="link-text">
-                    <div class="link-label">Professional</div>
-                    <div class="link-title">LinkedIn</div>
-                </div>
-            </a>
-            
-            <a href="#" target="_blank" class="link-line">
-                <div class="link-icon">♪</div>
-                <div class="link-text">
-                    <div class="link-label">Beyond Work</div>
-                    <div class="link-title">Music</div>
-                </div>
-            </a>
+        <!-- Wafer Stats -->
+        <div class="wafer-stats">
+            <div class="wafer-chip">
+                <div class="wafer-label">SPECIALIZATION</div>
+                <div class="wafer-value">SEMICONDUCTOR<br>MANUFACTURING</div>
+            </div>
+            <div class="wafer-chip">
+                <div class="wafer-label">RESEARCH AREA</div>
+                <div class="wafer-value">ENERGY<br>HARVESTING</div>
+            </div>
+            <div class="wafer-chip">
+                <div class="wafer-label">EXPERTISE</div>
+                <div class="wafer-value">ELECTROCHEMICAL<br>SYSTEMS</div>
+            </div>
+            <div class="wafer-chip">
+                <div class="wafer-label">TECH DOMAIN</div>
+                <div class="wafer-value">BIOSENSING<br>DEVICES</div>
+            </div>
         </div>
         
-        <div class="terminal-window">
-            <h2 class="section-title">PhD Works</h2>
-            
-            <div class="project-card">
-                <div class="project-title">⚡ Energy Harvesting via Electrochemical Systems</div>
-                <div class="project-desc">Developed devices that harvest energy using electrochemical processes — converting chemical gradients into usable power.</div>
-                <a href="https://pubs.rsc.org/en/content/articlelanding/2025/ta/d4ta08559k" target="_blank" style="color: #00ffff; text-decoration: none; font-weight: bold;">→ View Publication</a>
-                <div style="margin-top: 15px;">
-                    <span class="status-badge">PUBLISHED</span>
-                    <span class="status-badge gray">2025</span>
-                </div>
+        <!-- Process Line -->
+        <div class="process-line">
+            <h2 class="process-title">⚡ PhD RESEARCH OUTPUT ⚡</h2>
+            <div class="conveyor-belt">
+                <div class="belt-indicator"></div>
             </div>
             
-            <div class="project-card">
-                <div class="project-title">🔬 LED-Based Biosensing for Implants</div>
-                <div class="project-desc">Imaging the biochemical environment around implants using LED-based sensors — providing real-time insights into tissue-device interfaces.</div>
-                <div style="margin-top: 15px;">
-                    <span class="status-badge gray">IN PROGRESS</span>
+            <div class="research-grid">
+                <div class="research-card">
+                    <div class="research-icon">⚡</div>
+                    <h3 class="research-title">Energy Harvesting via Electrochemical Systems</h3>
+                    <p class="research-desc">
+                        Developed devices that harvest energy using electrochemical processes — converting chemical gradients into usable power through innovative experimental approaches in nanomaterial fabrication.
+                    </p>
+                    <a href="https://pubs.rsc.org/en/content/articlelanding/2025/ta/d4ta08559k" target="_blank" class="research-link">→ VIEW PUBLICATION</a>
+                    <div>
+                        <span class="status-pill">PUBLISHED</span>
+                        <span class="status-pill gray">2025</span>
+                    </div>
+                </div>
+                
+                <div class="research-card">
+                    <div class="research-icon">🔬</div>
+                    <h3 class="research-title">LED-Based Biosensing for Implants</h3>
+                    <p class="research-desc">
+                        Imaging the biochemical environment around implants using LED-based sensors — providing real-time insights into tissue-device interfaces through advanced spectroscopy techniques.
+                    </p>
+                    <div>
+                        <span class="status-pill gray">IN PROGRESS</span>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <div class="terminal-window">
-            <h2 class="section-title">Worked At</h2>
-            
-            <a href="https://scienceweb.clemson.edu/rrg/" target="_blank" class="link-line">
-                <div class="link-icon">⚙</div>
-                <div class="link-text">
-                    <div class="link-label">Materials & Fabrication</div>
-                    <div class="link-title">Clemson Nanomaterial Institute</div>
-                </div>
-            </a>
-            
-            <a href="https://scienceweb.clemson.edu/anker-research/" target="_blank" class="link-line">
-                <div class="link-icon">⚗</div>
-                <div class="link-text">
-                    <div class="link-label">Biosensing & Spectroscopy</div>
-                    <div class="link-title">Anker's Research Group</div>
-                </div>
-            </a>
+        <!-- Connect Section -->
+        <div class="connect-section">
+            <h2 class="section-header">CONNECT</h2>
+            <div class="connect-hub">
+                <a href="https://www.linkedin.com/in/basanta-ghimire" target="_blank" class="connect-node">
+                    <div class="connect-icon">💼</div>
+                    <div class="connect-label">LinkedIn<br>Professional</div>
+                </a>
+                <a href="#" target="_blank" class="connect-node">
+                    <div class="connect-icon">♪</div>
+                    <div class="connect-label">Music<br>Beyond Work</div>
+                </a>
+            </div>
         </div>
         
-        <div class="footer">
-            <p>MANUFACTURING SEMICONDUCTORS • PROCESSING INNOVATIONS • ONE WAFER AT A TIME</p>
+        <!-- Labs Section -->
+        <div class="labs-section">
+            <h2 class="section-header">RESEARCH LABS</h2>
+            <div class="hex-grid">
+                <a href="https://scienceweb.clemson.edu/rrg/" target="_blank" class="hex-lab">
+                    <div class="hex-icon">⚙️</div>
+                    <div class="hex-title">Clemson Nanomaterial Institute</div>
+                    <div class="hex-subtitle">Materials & Fabrication</div>
+                </a>
+                <a href="https://scienceweb.clemson.edu/anker-research/" target="_blank" class="hex-lab">
+                    <div class="hex-icon">🔭</div>
+                    <div class="hex-title">Anker's Research Group</div>
+                    <div class="hex-subtitle">Biosensing & Spectroscopy</div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="fab-footer">
+            [ PROCESSING WAFERS • ENGINEERING INNOVATIONS • ONE DIE AT A TIME ]
         </div>
     </div>
     
     <script>
-        // Cursor trail effect
-        document.addEventListener('mousemove', (e) => {
-            const trail = document.createElement('div');
-            trail.style.position = 'fixed';
-            trail.style.width = '4px';
-            trail.style.height = '4px';
-            trail.style.background = '#00ff88';
-            trail.style.borderRadius = '50%';
-            trail.style.pointerEvents = 'none';
-            trail.style.left = e.clientX + 'px';
-            trail.style.top = e.clientY + 'px';
-            trail.style.zIndex = '9998';
-            trail.style.boxShadow = '0 0 10px #00ff88';
-            document.body.appendChild(trail);
+        // Create floating wafer particles
+        function createWaferParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = Math.random() * 30 + 20 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.borderRadius = '50%';
+            particle.style.border = '2px solid rgba(0, 255, 255, 0.3)';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = '-50px';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '0';
+            particle.style.opacity = '0.3';
             
-            setTimeout(() => {
-                trail.style.transition = 'all 0.5s ease';
-                trail.style.opacity = '0';
-                trail.style.transform = 'scale(0)';
-                setTimeout(() => trail.remove(), 500);
-            }, 10);
-        });
-        
-        // Random chip generation
-        function createRandomChip() {
-            const chip = document.createElement('div');
-            chip.className = 'chip';
-            chip.style.position = 'fixed';
-            chip.style.left = Math.random() * 100 + '%';
-            chip.style.top = Math.random() * 100 + '%';
-            chip.style.width = (Math.random() * 15 + 10) + 'px';
-            chip.style.height = chip.style.width;
-            chip.style.opacity = '0.1';
-            chip.style.zIndex = '0';
-            document.body.appendChild(chip);
+            // Grid pattern inside
+            const grid = document.createElement('div');
+            grid.style.position = 'absolute';
+            grid.style.inset = '3px';
+            grid.style.borderRadius = '50%';
+            grid.style.background = `
+                repeating-linear-gradient(0deg, transparent, transparent 5px, rgba(0, 255, 255, 0.2) 5px, rgba(0, 255, 255, 0.2) 6px),
+                repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0, 255, 255, 0.2) 5px, rgba(0, 255, 255, 0.2) 6px)
+            `;
+            particle.appendChild(grid);
             
-            setTimeout(() => {
-                chip.style.transition = 'all 2s ease';
-                chip.style.opacity = '0';
-                setTimeout(() => chip.remove(), 2000);
-            }, 100);
+            document.body.appendChild(particle);
+            
+            const duration = Math.random() * 10000 + 10000;
+            const drift = Math.random() * 200 - 100;
+            
+            particle.animate([
+                { transform: 'translateY(0) rotate(0deg)', opacity: 0.3 },
+                { transform: `translateY(${window.innerHeight + 100}px) translateX(${drift}px) rotate(360deg)`, opacity: 0 }
+            ], {
+                duration: duration,
+                easing: 'linear'
+            }).onfinish = () => particle.remove();
         }
         
-        setInterval(createRandomChip, 3000);
+        setInterval(createWaferParticle, 3000);
         
-        // Glitch effect on title
-        const glitchTitle = document.querySelector('.glitch');
-        setInterval(() => {
-            glitchTitle.style.textShadow = Math.random() > 0.95 ? 
-                '2px 0 #ff00ff, -2px 0 #00ffff' : 'none';
-        }, 100);
+        // Create die burst effect on click
+        document.addEventListener('click', (e) => {
+            for (let i = 0; i < 8; i++) {
+                const die = document.createElement('div');
+                die.style.position = 'fixed';
+                die.style.width = '15px';
+                die.style.height = '15px';
+                die.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                die.style.clipPath = 'polygon(15% 0%, 85% 0%, 100% 15%, 100% 85%, 85% 100%, 15% 100%, 0% 85%, 0% 15%)';
+                die.style.left = e.clientX + 'px';
+                die.style.top = e.clientY + 'px';
+                die.style.pointerEvents = 'none';
+                die.style.zIndex = '9999';
+                
+                document.body.appendChild(die);
+                
+                const angle = (Math.PI * 2 * i) / 8;
+                const distance = 100;
+                const x = Math.cos(angle) * distance;
+                const y = Math.sin(angle) * distance;
+                
+                die.animate([
+                    { transform: 'translate(0, 0) rotate(0deg) scale(1)', opacity: 1 },
+                    { transform: `translate(${x}px, ${y}px) rotate(360deg) scale(0)`, opacity: 0 }
+                ], {
+                    duration: 800,
+                    easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                }).onfinish = () => die.remove();
+            }
+        });
+        
+        // Wafer chip interaction
+        document.querySelectorAll('.wafer-chip').forEach(chip => {
+            chip.addEventListener('mouseenter', () => {
+                chip.style.animation = 'none';
+                setTimeout(() => {
+                    chip.style.animation = 'rotate 10s linear infinite';
+                }, 10);
+            });
+        });
+        
+        // Research card hover effect - create particle trail
+        document.querySelectorAll('.research-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                const rect = this.getBoundingClientRect();
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const spark = document.createElement('div');
+                        spark.style.position = 'fixed';
+                        spark.style.width = '4px';
+                        spark.style.height = '4px';
+                        spark.style.background = '#0ff';
+                        spark.style.borderRadius = '50%';
+                        spark.style.left = rect.right + 'px';
+                        spark.style.top = (rect.top + Math.random() * rect.height) + 'px';
+                        spark.style.pointerEvents = 'none';
+                        spark.style.zIndex = '9999';
+                        spark.style.boxShadow = '0 0 10px #0ff';
+                        
+                        document.body.appendChild(spark);
+                        
+                        spark.animate([
+                            { transform: 'translateX(0) scale(1)', opacity: 1 },
+                            { transform: `translateX(${Math.random() * 50 - 25}px) scale(0)`, opacity: 0 }
+                        ], {
+                            duration: 600,
+                            easing: 'ease-out'
+                        }).onfinish = () => spark.remove();
+                    }, i * 50);
+                }
+            });
+        });
     </script>
 </body>
 </html>
