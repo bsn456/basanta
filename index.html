@@ -128,6 +128,48 @@
             position: relative;
             text-align: center;
             z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .photo-wafer {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #0ff;
+            padding: 10px;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 255, 255, 0.2) 0%, transparent 70%);
+            position: relative;
+            box-shadow: 
+                inset 0 0 40px rgba(0, 255, 255, 0.3),
+                0 0 60px rgba(0, 255, 255, 0.5);
+            animation: rotateWafer 20s linear infinite;
+        }
+        
+        @keyframes rotateWafer {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .photo-wafer::before {
+            content: '';
+            position: absolute;
+            inset: 5px;
+            border-radius: 50%;
+            border: 2px dashed rgba(0, 255, 255, 0.3);
+            animation: rotateWafer 15s linear infinite reverse;
+        }
+        
+        .photo-wafer img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+            border: 3px solid #000;
         }
         
         .fab-id {
@@ -553,7 +595,13 @@
             }
             
             .hero-section {
-                height: 50vh;
+                height: auto;
+                padding: 40px 0;
+            }
+            
+            .photo-wafer {
+                width: 150px;
+                height: 150px;
             }
             
             .name-display {
@@ -600,6 +648,9 @@
             <div class="hero-diagonal"></div>
             <div class="hero-content">
                 <div class="fab-id">[ FAB-ENGINEER-ID: BG-2025 ]</div>
+                <div class="photo-wafer">
+                    <img src="images/basanta.jpg" alt="Basanta Ghimire">
+                </div>
                 <h1 class="name-display">BASANTA<br>GHIMIRE</h1>
                 <div class="role-badge">SENIOR PROCESS ENGINEER</div>
                 <div class="company-line">→ MICROCHIP TECHNOLOGY ←</div>
